@@ -1,29 +1,7 @@
--- This script reads *.md files in INPUT_PATH and writes lua docs into OUTPUT_PATH
-local INPUT_PATH = './docs'
-local OUTPUT_PATH = './generated'
+--
+local M = {}
+local utils = require('utils')
 require('strings')
-
-local lfs = require('lfs')
-local function iter(dir, out)
-    out = out or {}
-    for entry in lfs.dir(dir) do
-        --entry is in MBCS on windows
-        if entry ~= '.' and entry ~= '..' then
-            local path = dir .. '/' .. entry
-            local attr = lfs.attributes(path)
-            if not attr then
-                --print('can not find path: ' .. path)
-            else
-                if attr.mode == 'directory' then
-                    -- iter(path, out)
-                elseif attr.mode == 'file' then
-                    table.insert(out, { path, attr })
-                end
-            end
-        end
-    end
-    return out
-end
 
 local function extractCName(s)
     if s:sub(1, 1) == '[' then
@@ -297,9 +275,12 @@ local BlackList = {
     PLACEHOLDER = true
 }
 
-local function run(dir)
-    lfs.mkdir(OUTPUT_PATH)
-    for _, t in ipairs(iter(dir)) do
+--- Reads *.md files in `input` and writes lua docs into `output`
+---@param input string
+---@param output string
+function M.run(input, output)
+    utils.mkdir(output)
+    for _, t in ipairs(utils.enumFiles(input)) do
         ---@type string
         local path = t[1]
         local fname = string.filename(path)
@@ -308,7 +289,7 @@ local function run(dir)
             local content = file:read("*a")
             file:close()
             local result = proc(content)
-            local newpath = ('%s/%s.lua'):format(OUTPUT_PATH, fname)
+            local newpath = ('%s/%s.lua'):format(output, fname)
             file = io.open(newpath, "w+b")
             file:write(result)
             file:close()
@@ -317,4 +298,4 @@ local function run(dir)
     end
 end
 
-run(INPUT_PATH)
+return M

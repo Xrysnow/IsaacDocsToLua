@@ -44,6 +44,7 @@ local concat = table.concat
 
 ---@param s string
 ---@param sep string
+---@return string[]
 function string.split(s, sep)
    local ret = {}
    if not sep or sep == '' then
