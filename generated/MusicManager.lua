@@ -1,4 +1,4 @@
----@class MusicManager
+---@class MusicManager @
 local MusicManager = {}
 
 --------------------
@@ -22,28 +22,33 @@ end
 --------------------
 
 ---@param ID MusicManager @
-function MusicManager:Crossfade(ID)
+---@param FadeRate number @ (float) (default 0.08)
+function MusicManager:Crossfade(ID, FadeRate)
 end
 
 function MusicManager:Disable()
 end
 
-function MusicManager:DisableLayer()
+---@param LayerId number @ (int) (default 0)
+function MusicManager:DisableLayer(LayerId)
 end
 
 function MusicManager:Enable()
 end
 
 ---@param LayerId number @ (int) (default 0)
-function MusicManager:EnableLayer(LayerId)
+---@param Instant boolean @ (default false)
+function MusicManager:EnableLayer(LayerId, Instant)
 end
 
 ---@param ID MusicManager @
 ---@param Volume number @ (float) (default 1)
-function MusicManager:Fadein(ID, Volume)
+---@param FadeRate number @ (float) (default 0.08)
+function MusicManager:Fadein(ID, Volume, FadeRate)
 end
 
-function MusicManager:Fadeout()
+---@param FadeRate number @ (float) (default 0.08)
+function MusicManager:Fadeout(FadeRate)
 end
 
 ---@return MusicManager @
@@ -58,21 +63,25 @@ end
 function MusicManager:IsEnabled()
 end
 
+---@param LayerId number @ (int) (default 0)
 ---@return boolean @
-function MusicManager:IsLayerEnabled()
+function MusicManager:IsLayerEnabled(LayerId)
 end
 
 function MusicManager:Pause()
 end
 
-function MusicManager:PitchSlide()
+---@param TargetPitch number @ (float)
+function MusicManager:PitchSlide(TargetPitch)
 end
 
 ---@param ID MusicManager @
-function MusicManager:Play(ID)
+---@param Volume number @ (float)
+function MusicManager:Play(ID, Volume)
 end
 
-function MusicManager:Queue()
+---@param ID MusicManager @
+function MusicManager:Queue(ID)
 end
 
 function MusicManager:ResetPitch()
@@ -86,5 +95,6 @@ function MusicManager:UpdateVolume()
 end
 
 ---@param TargetVolume number @ (float)
-function MusicManager:VolumeSlide(TargetVolume)
+---@param FadeRate number @ (float) (default 0.08)
+function MusicManager:VolumeSlide(TargetVolume, FadeRate)
 end

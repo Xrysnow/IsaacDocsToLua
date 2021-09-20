@@ -1,4 +1,4 @@
----@class GridEntityRock:GridEntity
+---@class GridEntityRock:GridEntity @
 local GridEntityRock = {}
 
 --------------------
@@ -17,7 +17,8 @@ end
 function GridEntityRock:GetSprite()
 end
 
-function GridEntityRock:SetBigRockFrame()
+---@param Frame number @ (int)
+function GridEntityRock:SetBigRockFrame(Frame)
 end
 
 function GridEntityRock:UpdateAnimFrame()

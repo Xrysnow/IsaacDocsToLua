@@ -1,4 +1,4 @@
----@class Sprite
+---@class Sprite @
 local Sprite = {}
 
 --------------------
@@ -85,32 +85,38 @@ end
 ---@param SamplePos Vector @
 ---@param RenderPos Vector @
 ---@param AlphaThreshold number @ (float)
+---@param LayerID number @ (int) (default 0)
 ---@return Color @
-function Sprite:GetTexel(SamplePos, RenderPos, AlphaThreshold)
+function Sprite:GetTexel(SamplePos, RenderPos, AlphaThreshold, LayerID)
 end
 
+---@param EventName string @
 ---@return boolean @
-function Sprite:IsEventTriggered()
+function Sprite:IsEventTriggered(EventName)
 end
 
+---@param AnimationName string @
 ---@return boolean @
-function Sprite:IsFinished()
+function Sprite:IsFinished(AnimationName)
 end
 
 ---@return boolean @
 function Sprite:IsLoaded()
 end
 
+---@param AnimationName string @
 ---@return boolean @
-function Sprite:IsOverlayFinished()
+function Sprite:IsOverlayFinished(AnimationName)
 end
 
+---@param AnimationName string @
 ---@return boolean @
-function Sprite:IsOverlayPlaying()
+function Sprite:IsOverlayPlaying(AnimationName)
 end
 
+---@param AnimationName string @
 ---@return boolean @
-function Sprite:IsPlaying()
+function Sprite:IsPlaying(AnimationName)
 end
 --- Loads a given ".anm2" file. The filepath is relative to the "resources" folder. The boolean can be used to load the graphics (.png files) as well, without calling the [LoadGraphics()](#LoadGraphics) function.
 --- 
@@ -123,7 +129,8 @@ end
 ---     mySprite:Render(Vector(75,75), Vector(0,0), Vector(0,0))
 ---     ```
 ---@param Filename string @
-function Sprite:Load(Filename)
+---@param LoadGraphics boolean @
+function Sprite:Load(Filename, LoadGraphics)
 end
 --- Loads and applies assosiated graphic-objects like ".png" files.
 --- 
@@ -140,14 +147,17 @@ function Sprite:LoadGraphics()
 end
 
 ---@param AnimationName string @
-function Sprite:Play(AnimationName)
+---@param Force boolean @
+function Sprite:Play(AnimationName, Force)
 end
 
 ---@param AnimationName string @
-function Sprite:PlayOverlay(AnimationName)
+---@param Force boolean @
+function Sprite:PlayOverlay(AnimationName, Force)
 end
 
-function Sprite:PlayRandom()
+---@param Seed number @ (int)
+function Sprite:PlayRandom(Seed)
 end
 
 function Sprite:Reload()
@@ -158,13 +168,15 @@ end
 
 ---@param Pos Vector @
 ---@param TopLeftClamp Vector @
-function Sprite:Render(Pos, TopLeftClamp)
+---@param BottomRightClamp Vector @
+function Sprite:Render(Pos, TopLeftClamp, BottomRightClamp)
 end
 
 ---@param LayerId number @ (int)
 ---@param Pos Vector @
 ---@param TopLeftClamp Vector @ (default Vector.Zero)
-function Sprite:RenderLayer(LayerId, Pos, TopLeftClamp)
+---@param BottomRightClamp Vector @ (default Vector.Zero)
+function Sprite:RenderLayer(LayerId, Pos, TopLeftClamp, BottomRightClamp)
 end
 --- Changes the ".png" file assosiated to a specific layer of a sprite.
 --- 
@@ -181,7 +193,8 @@ end
 --- 	mySprite:LoadGraphics()
 ---     ```
 ---@param LayerId number @ (int)
-function Sprite:ReplaceSpritesheet(LayerId)
+---@param PngFilename string @
+function Sprite:ReplaceSpritesheet(LayerId, PngFilename)
 end
 
 function Sprite:Reset()
@@ -191,31 +204,37 @@ end
 ---     Passing Reset as false will continue the animation from the current frame. This is a really good tool for familiars that alternate between different FloatDirection animations dynamically and other entities that follow similar behaviors.
 ---
 ---@param AnimationName string @
+---@param Reset boolean @ (default true)
 ---@return boolean @
-function Sprite:SetAnimation(AnimationName)
+function Sprite:SetAnimation(AnimationName, Reset)
 end
 
 ---
 ---@param AnimationName string @
-function Sprite:SetFrame(AnimationName)
+---@param FrameNum number @ (int)
+function Sprite:SetFrame(AnimationName, FrameNum)
 end
 
 function Sprite:SetLastFrame()
 end
 
 ---@param LayerId number @ (int)
-function Sprite:SetLayerFrame(LayerId)
-end
-
----@return boolean @
-function Sprite:SetOverlayAnimation()
+---@param FrameNum number @ (int)
+function Sprite:SetLayerFrame(LayerId, FrameNum)
 end
 
 ---@param AnimationName string @
-function Sprite:SetOverlayFrame(AnimationName)
+---@return boolean @
+function Sprite:SetOverlayAnimation(AnimationName)
 end
 
-function Sprite:SetOverlayRenderPriority()
+---@param AnimationName string @
+---@param FrameNum number @ (int)
+function Sprite:SetOverlayFrame(AnimationName, FrameNum)
+end
+
+---@param RenderFirst boolean @
+function Sprite:SetOverlayRenderPriority(RenderFirst)
 end
 
 function Sprite:Stop()
@@ -224,8 +243,9 @@ end
 function Sprite:Update()
 end
 
+---@param EventName string @
 ---@return boolean @
-function Sprite:WasEventTriggered()
+function Sprite:WasEventTriggered(EventName)
 end
 
 --------------------

@@ -1,4 +1,4 @@
----@class KColor
+---@class KColor @
 local KColor = {}
 
 --------------------
@@ -10,8 +10,9 @@ local KColor = {}
 ---@param red number @ (float)
 ---@param green number @ (float)
 ---@param blue number @ (float)
+---@param alpha number @ (float)
 ---@return KColor @
-function KColor:KColor(red, green, blue)
+function KColor:KColor(red, green, blue, alpha)
 end
 
 --------------------

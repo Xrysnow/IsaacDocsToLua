@@ -1,4 +1,4 @@
----@class CppContainer.EntityList
+---@class EntityList @ (CppContainer.EntityList)
 local EntityList = {}
 
 --------------------
@@ -17,8 +17,9 @@ end
 
 --- Returns an [Entity](Entity.md) at the index of the list provided.
 ---
+---@param idx number @ (int)
 ---@return Entity @
-function EntityList:Get()
+function EntityList:Get(idx)
 end
 
 --------------------

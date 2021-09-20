@@ -1,4 +1,4 @@
----@class EntityProjectile:Entity
+---@class EntityProjectile:Entity @
 local EntityProjectile = {}
 
 --------------------
@@ -6,30 +6,38 @@ local EntityProjectile = {}
 --------------------
 
 --- See [ChangeFlags](#ChangeFlags).
-function EntityProjectile:AddChangeFlags()
+---@param Flags number @ (int)
+function EntityProjectile:AddChangeFlags(Flags)
 end
 
-function EntityProjectile:AddFallingAccel()
+---@param Value number @ (float)
+function EntityProjectile:AddFallingAccel(Value)
 end
 
-function EntityProjectile:AddFallingSpeed()
+---@param Value number @ (float)
+function EntityProjectile:AddFallingSpeed(Value)
 end
 
-function EntityProjectile:AddHeight()
+---@param Value number @ (float)
+function EntityProjectile:AddHeight(Value)
 end
 
 --- Uses [ProjectileFlags](enums/ProjectileFlags.md) to define the projectile attributes.
-function EntityProjectile:AddProjectileFlags()
+---@param Flags number @ (int)
+function EntityProjectile:AddProjectileFlags(Flags)
 end
 
-function EntityProjectile:AddScale()
+---@param Value number @ (float)
+function EntityProjectile:AddScale(Value)
 end
 
-function EntityProjectile:ClearProjectileFlags()
+---@param Flags number @ (int)
+function EntityProjectile:ClearProjectileFlags(Flags)
 end
 
+---@param Flags number @ (int)
 ---@return boolean @
-function EntityProjectile:HasProjectileFlags()
+function EntityProjectile:HasProjectileFlags(Flags)
 end
 
 --------------------

@@ -1,4 +1,4 @@
----@class Vector
+---@class Vector @
 local Vector = {}
 
 --------------------
@@ -32,8 +32,9 @@ Vector.One = nil
 ---     local vec2 = Vector(5,3)
 ---     local result = vec1+vec2 -- result equals Vector(7,4) now
 ---     ```
+---@param Right Vector @
 ---@return Vector @
-function Vector:__add()
+function Vector:__add(Right)
 end
 --- Defines the Division of two Vector objects using the `/` operator.
 --- 
@@ -43,8 +44,9 @@ end
 ---     local vec2 = Vector(2,4)
 ---     local result = vec1/vec2 -- result equals Vector(3,1) now
 ---     ```
+---@param Modifier number @ (float)
 ---@return Vector @
-function Vector:__div()
+function Vector:__div(Modifier)
 end
 --- Defines the Multiplication of two Vector objects using the `*` operator.
 --- 
@@ -54,8 +56,9 @@ end
 ---     local vec2 = Vector(5,3)
 ---     local result = vec1*vec2 -- result equals Vector(10,9) now
 ---     ```
+---@param Modifier number @ (float)
 ---@return Vector @
-function Vector:__mul()
+function Vector:__mul(Modifier)
 end
 --- Defines the Subtraction of two Vector objects using the `-` operator.
 --- 
@@ -65,8 +68,9 @@ end
 ---     local vec2 = Vector(5,3)
 ---     local result = vec1-vec2 -- result equals Vector(-3,-2) now
 ---     ```
+---@param Right Vector @
 ---@return Vector @
-function Vector:__sub()
+function Vector:__sub(Right)
 end
 --- Defines the inversion of a Vector object using the `-` operator.
 --- 
@@ -76,8 +80,9 @@ end
 ---     local result = -vec1 -- result equals Vector(-2,-1) now
 ---     ```
 ---
+---@param Right Vector @
 ---@return Vector @
-function Vector:__unm()
+function Vector:__unm(Right)
 end
 
 --------------------
@@ -87,18 +92,21 @@ end
 ---@param MinX number @ (float)
 ---@param MinY number @ (float)
 ---@param MaxX number @ (float)
-function Vector:Clamp(MinX, MinY, MaxX)
+---@param MaxY number @ (float)
+function Vector:Clamp(MinX, MinY, MaxX, MaxY)
 end
 --- Returns a clamped version of the vector.
 ---@param MinX number @ (float)
 ---@param MinY number @ (float)
 ---@param MaxX number @ (float)
+---@param MaxY number @ (float)
 ---@return Vector @
-function Vector:Clamped(MinX, MinY, MaxX)
+function Vector:Clamped(MinX, MinY, MaxX, MaxY)
 end
 --- Cross product this is the 2x2 matrix determinant or the resulting z value for their 3D versions with z=0
+---@param second Vector @
 ---@return number @ (float)
-function Vector:Cross()
+function Vector:Cross(second)
 end
 --- Returns distance between two vectors
 --- 
@@ -109,8 +117,9 @@ end
 ---     ```
 ---
 ---@param first Vector @
+---@param second Vector @
 ---@return number @ (float)
-function Vector:Distance(first)
+function Vector:Distance(first, second)
 end
 --- Returns squared distance between two vectors
 --- 
@@ -121,12 +130,14 @@ end
 ---     ```
 ---
 ---@param first Vector @
+---@param second Vector @
 ---@return number @ (float)
-function Vector:DistanceSquared(first)
+function Vector:DistanceSquared(first, second)
 end
 --- Dot product
+---@param second Vector @
 ---@return number @ (float)
-function Vector:Dot()
+function Vector:Dot(second)
 end
 --- Build a [Vector](Vector.md) from an angle, returns a normalized vector. Angle 0 will result in (1, 0). Angle 90 will result in (0, 1).
 --- 
@@ -136,8 +147,9 @@ end
 ---     local vec = Vector.FromAngle(45)) --vec is now Vector(0.70711,0.70711)
 --- 
 ---     ```
+---@param AngleDegrees number @ (float)
 ---@return Vector @
-function Vector.FromAngle()
+function Vector.FromAngle(AngleDegrees)
 end
 
 --- Returns the angle the vector is facing. The vector (1, 0) will be at 0 degrees. The vector (0, 1) will be at 90 degrees.
@@ -191,8 +203,9 @@ end
 ---     ```
 ---@param first Vector @
 ---@param second Vector @
+---@param t number @ (float)
 ---@return Vector @
-function Vector:Lerp(first, second)
+function Vector:Lerp(first, second, t)
 end
 --- Normalizes this vector
 function Vector:Normalize()
@@ -202,15 +215,18 @@ end
 function Vector:Normalized()
 end
 --- Resizes the vector length.
-function Vector:Resize()
+---@param NewLength number @ (float)
+function Vector:Resize(NewLength)
 end
 --- Returns a resized version of the vector.
+---@param NewLength number @ (float)
 ---@return Vector @
-function Vector:Resized()
+function Vector:Resized(NewLength)
 end
 --- Returns a rotated version of the vector by AngleDegrees
+---@param AngleDegrees number @ (float)
 ---@return Vector @
-function Vector:Rotated()
+function Vector:Rotated(AngleDegrees)
 end
 
 --------------------

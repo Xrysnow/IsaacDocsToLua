@@ -1,5 +1,4 @@
 --
-local Global_Functions = _G
 
 --------------------
 -- Constructors
@@ -20,16 +19,19 @@ local Global_Functions = _G
 ---@param A number @ (float)
 ---@param RO number @ (int)
 ---@param GO number @ (int)
+---@param BO number @ (int)
 ---@return Color @
-function Global_Functions:Color(R, G, B, A, RO, GO)
+function Color(R, G, B, A, RO, GO, BO)
 end
 
+---@param entity Entity @
 ---@return EntityPtr @
-function Global_Functions:EntityPtr()
+function EntityPtr(entity)
 end
 
+---@param entity Entity @
 ---@return EntityRef @
-function Global_Functions:EntityRef()
+function EntityRef(entity)
 end
 
 --- Constructor for the "[Font](Font.md)" class.
@@ -44,7 +46,7 @@ end
 ---     ```
 ---
 ---@return Font @
-function Global_Functions:Font()
+function Font()
 end
 
 --- Returns a [Game](Game.md) object.
@@ -57,7 +59,7 @@ end
 --- 
 ---     ```
 ---@return Game @
-function Global_Functions:Game()
+function Game()
 end
 
 --- Constructor for the "[KColor](KColor.md)" class.
@@ -65,8 +67,9 @@ end
 ---@param red number @ (float)
 ---@param green number @ (float)
 ---@param blue number @ (float)
+---@param alpha number @ (float)
 ---@return KColor @
-function Global_Functions:KColor(red, green, blue)
+function KColor(red, green, blue, alpha)
 end
 
 --- Returns a [MusicManager](MusicManager.md) object.
@@ -78,11 +81,11 @@ end
 --- 
 ---     ```
 ---@return MusicManager @
-function Global_Functions:MusicManager()
+function MusicManager()
 end
 
 ---@return ProjectileParams @
-function Global_Functions:ProjectileParams()
+function ProjectileParams()
 end
 
 --- Method to define a mod in the game. This needs to be defined to handle callbacks and save data in your mod.
@@ -96,16 +99,17 @@ end
 ---     ```
 ---
 ---@param modName string @
+---@param apiVersion number @ (int)
 ---@return Mod.Reference @
-function Global_Functions:RegisterMod(modName)
+function RegisterMod(modName, apiVersion)
 end
 
 ---@return RNG @
-function Global_Functions:RNG()
+function RNG()
 end
 
 ---@return Sprite @
-function Global_Functions:Sprite()
+function Sprite()
 end
 
 --- Returns a [SFXManager](SFXManager.md) object.
@@ -117,12 +121,13 @@ end
 --- 
 ---     ```
 ---@return SFXManager @
-function Global_Functions:SFXManager()
+function SFXManager()
 end
 
 ---@param x number @ (float)
+---@param y number @ (float)
 ---@return Vector @
-function Global_Functions:Vector(x)
+function Vector(x, y)
 end
 
 --------------------
@@ -150,14 +155,15 @@ end
 --- 
 ---     ```
 ---
+---@param object Object @
 ---@return number @ (int)
-function Global_Functions:GetPtrHash()
+function GetPtrHash(object)
 end
 --- Returns a random integer. (0 to 2^32)
 ---@return number @ (int)
-function Global_Functions:Random()
+function Random()
 end
 --- Returns a random vector with length 1. Multiply this vector by a number for larger random vectors.
 ---@return Vector @
-function Global_Functions:RandomVector()
+function RandomVector()
 end

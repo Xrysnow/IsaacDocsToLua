@@ -1,4 +1,4 @@
----@class ItemConfig
+---@class ItemConfig @
 local ItemConfig = {}
 
 --------------------
@@ -6,8 +6,9 @@ local ItemConfig = {}
 --------------------
 --- Returns `nil` if no itemconfig to the given ID can be found.
 ---
+---@param ID Card @
 ---@return ItemConfig.Card @ (const)
-function ItemConfig:GetCard()
+function ItemConfig:GetCard(ID)
 end
 
 --- + bug "Bugs"
@@ -25,8 +26,9 @@ end
 ---     ```lua
 ---         Isaac.GetItemConfig():GetCollectible(1)
 ---     ```
+---@param ID number @ (int)
 ---@return ItemConfig.Item @ (const)
-function ItemConfig:GetCollectible()
+function ItemConfig:GetCollectible(ID)
 end
 
 --- Returns the List of all Collectibles.
@@ -59,8 +61,9 @@ function ItemConfig:GetCostumes()
 end
 --- Returns `nil` if no itemconfig to the given ID can be found.
 ---
+---@param ID number @ (int)
 ---@return ItemConfig.Item @ (const)
-function ItemConfig:GetNullItem()
+function ItemConfig:GetNullItem(ID)
 end
 
 --- + bug "Bugs"
@@ -71,8 +74,9 @@ function ItemConfig:GetNullItems()
 end
 --- Returns `nil` if no itemconfig to the given ID can be found.
 ---
+---@param ID PillEffect @
 ---@return ItemConfig.PillEffect @ (const)
-function ItemConfig:GetPillEffect()
+function ItemConfig:GetPillEffect(ID)
 end
 
 --- + bug "Bugs"
@@ -83,8 +87,9 @@ function ItemConfig:GetPillEffects()
 end
 --- Returns `nil` if no itemconfig to the given ID can be found.
 ---
+---@param ID number @ (int)
 ---@return ItemConfig.Item @ (const)
-function ItemConfig:GetTrinket()
+function ItemConfig:GetTrinket(ID)
 end
 
 --- + bug "Bugs"
@@ -108,8 +113,9 @@ end
 --- 
 --- + bug "Bugs"
 ---     This function returns false for modded items! Use itemConfig:GetCollectible() instead.
+---@param ID CollectibleType @
 ---@return boolean @
-function ItemConfig.IsValidCollectible()
+function ItemConfig.IsValidCollectible(ID)
 end
 --- Returns weather a given item config object should add a costume when picking up the associated item.
 --- 
@@ -123,6 +129,7 @@ end
 ---     ItemConfig.Config.ShouldAddCostumeOnPickup(sadOnionItemConfig) -- returns true
 --- 
 ---     ```
+---@param Config ItemConfig.Item @
 ---@return boolean @
-function ItemConfig.ShouldAddCostumeOnPickup()
+function ItemConfig.ShouldAddCostumeOnPickup(Config)
 end

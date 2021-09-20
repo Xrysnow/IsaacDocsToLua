@@ -1,4 +1,4 @@
----@class CppContainer.ArrayProxy.intValues
+---@class CppContainer.ArrayProxy.intValues @
 local intValues = {}
 
 --------------------
@@ -15,8 +15,9 @@ end
 -- Functions
 --------------------
 
+---@param idx number @ (int)
 ---@return userdata @
-function intValues:Get()
+function intValues:Get(idx)
 end
 
 --------------------

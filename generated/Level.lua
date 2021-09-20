@@ -1,36 +1,41 @@
----@class Level
+---@class Level @
 local Level = {}
 
 --------------------
 -- Functions
 --------------------
 
-function Level:AddAngelRoomChance()
+---@param Chance number @ (float)
+function Level:AddAngelRoomChance(Chance)
 end
 
 ---@param Curse LevelCurse @
-function Level:AddCurse(Curse)
+---@param ShowName boolean @
+function Level:AddCurse(Curse, ShowName)
 end
 
 function Level:ApplyBlueMapEffect()
 end
 
-function Level:ApplyCompassEffect()
+---@param Persistent boolean @
+function Level:ApplyCompassEffect(Persistent)
 end
 
 function Level:ApplyMapEffect()
 end
 
+---@param RoomIndex number @ (int)
 ---@return boolean @
-function Level:CanOpenChallengeRoom()
+function Level:CanOpenChallengeRoom(RoomIndex)
 end
 
 ---@return boolean @
 function Level:CanSpawnDevilRoom()
 end
 
+---@param Stage LevelStage @
 ---@return boolean @
-function Level:CanStageHaveCurseOfLabyrinth()
+function Level:CanStageHaveCurseOfLabyrinth(Stage)
 end
 --- - note "Notes"
 ---     List of technical ids:
@@ -59,14 +64,16 @@ end
 --- 		* 1: Secondary dimension, used by Downpour mirror dimension and Mines escape sequence
 --- 		* 2: Death Certificate dimension
 ---@param RoomIndex number @ (int)
-function Level:ChangeRoom(RoomIndex)
+---@param Dimension number @ (int) (default -1)
+function Level:ChangeRoom(RoomIndex, Dimension)
 end
 
 function Level:DisableDevilRoom()
 end
 --- return true on success
+---@param Seed number @ (int)
 ---@return boolean @
-function Level:ForceHorsemanBoss()
+function Level:ForceHorsemanBoss(Seed)
 end
 --- In non-Greed Mode, returns the same thing as the `GetStage()` method. In Greed Mode, returns the adjusted stage similar to what it would be in non-Greed Mode.
 --- 
@@ -158,8 +165,9 @@ function Level:GetPreviousRoomIndex()
 end
 
 ---@param IAmErrorRoom boolean @
+---@param Seed number @ (int)
 ---@return number @ (int)
-function Level:GetRandomRoomIndex(IAmErrorRoom)
+function Level:GetRandomRoomIndex(IAmErrorRoom, Seed)
 end
 
 --- - example "Example Code"
@@ -178,8 +186,9 @@ end
 --- 		* 2: Death Certificate dimension
 ---
 ---@param RoomIdx number @ (int)
+---@param Dimension number @ (int) (default -1)
 ---@return RoomDescriptor @
-function Level:GetRoomByIdx(RoomIdx)
+function Level:GetRoomByIdx(RoomIdx, Dimension)
 end
 
 ---@return number @ (int)
@@ -202,8 +211,9 @@ end
 function Level:GetStartingRoomIndex()
 end
 
+---@param LevelStateFlag LevelStateFlag @
 ---@return boolean @
-function Level:GetStateFlag()
+function Level:GetStateFlag(LevelStateFlag)
 end
 
 ---@return boolean @
@@ -211,7 +221,8 @@ function Level:HasBossChallenge()
 end
 
 ---@param ForceAngel boolean @
-function Level:InitializeDevilAngelRoom(ForceAngel)
+---@param ForceDevil boolean @
+function Level:InitializeDevilAngelRoom(ForceAngel, ForceDevil)
 end
 
 ---@return boolean @
@@ -229,8 +240,9 @@ end
 ---@param RoomType RoomType @
 ---@param Visited boolean @
 ---@param rng RNG @
+---@param IgnoreGroup boolean @ (default false)
 ---@return number @ (int)
-function Level:QueryRoomTypeIndex(RoomType, Visited, rng)
+function Level:QueryRoomTypeIndex(RoomType, Visited, rng, IgnoreGroup)
 end
 
 function Level:RemoveCompassEffect()
@@ -242,10 +254,12 @@ end
 ---     ```lua
 ---     Game():GetLevel():RemoveCurses(LevelCurse.CURSE_OF_DARKNESS | LevelCurse.CURSE_OF_BLIND)
 ---     ```
-function Level:RemoveCurses()
+---@param Curses LevelCurse @
+function Level:RemoveCurses(Curses)
 end
 
-function Level:SetCanSeeEverything()
+---@param Value boolean @
+function Level:SetCanSeeEverything(Value)
 end
 
 function Level:SetHeartPicked()
@@ -259,21 +273,25 @@ function Level:SetRedHeartDamage()
 end
 --- for SetStage/SetNextStage to have effect, call Init afterward
 ---@param Stage LevelStage @
-function Level:SetStage(Stage)
+---@param StageType StageType @
+function Level:SetStage(Stage, StageType)
 end
 
 ---@param LevelStateFlag LevelStateFlag @
-function Level:SetStateFlag(LevelStateFlag)
+---@param Val boolean @
+function Level:SetStateFlag(LevelStateFlag, Val)
 end
 --- Show's all map (world/sun card effect) except the top secret room.
 function Level:ShowMap()
 end
 
-function Level:ShowName()
+---@param Sticky boolean @
+function Level:ShowName(Sticky)
 end
 --- Uncovers the door on both sides by modifying the saved grid entities for neighboring room.
 ---@param CurrentRoomIdx number @ (int)
-function Level:UncoverHiddenDoor(CurrentRoomIdx)
+---@param Slot DoorSlot @
+function Level:UncoverHiddenDoor(CurrentRoomIdx, Slot)
 end
 
 function Level:Update()

@@ -1,4 +1,4 @@
----@class TemporaryEffect
+---@class TemporaryEffect @
 local TemporaryEffect = {}
 
 --------------------

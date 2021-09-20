@@ -1,4 +1,4 @@
----@class Room
+---@class Room @
 local Room = {}
 
 --------------------
@@ -20,37 +20,43 @@ local Room = {}
 ---     **3** : is a line check that only collides with obstacles that can block projectiles
 ---@param Pos1 Vector @
 ---@param Pos2 Vector @
----@param Mode LinecheckMode @
+---@param Mode number @ (LinecheckMode)
 ---@param GridPathThreshold number @ (int) (default 0)
 ---@param IgnoreWalls boolean @ (default false)
+---@param IgnoreCrushable boolean @ (default false)
 ---@return boolean @
-function Room:CheckLine(Pos1, Pos2, Mode, GridPathThreshold, IgnoreWalls)
+function Room:CheckLine(Pos1, Pos2, Mode, GridPathThreshold, IgnoreWalls, IgnoreCrushable)
 end
 --- Damage Grid Entities currently this concerns [GridEntityPoop](GridEntityPoop.md) and GridEntity_Fire returns true if damageable entity was found (and possibly damaged) return false if not used by tears, bombs, some NPCs, etc
 ---@param Index number @ (int)
+---@param Damage number @ (int)
 ---@return boolean @
-function Room:DamageGrid(Index)
+function Room:DamageGrid(Index, Damage)
 end
 --- calls DamageGrid internally to damage Poop/Fire removes rocks and opens secret doors returns true if something was destroyed returns false if not used for explosions mostly
 ---@param Index number @ (int)
+---@param Immediate boolean @
 ---@return boolean @
-function Room:DestroyGrid(Index)
+function Room:DestroyGrid(Index, Immediate)
 end
 
 ---@param Duration number @ (int)
-function Room:EmitBloodFromWalls(Duration)
+---@param Count number @ (int)
+function Room:EmitBloodFromWalls(Duration, Count)
 end
 --- Starting from Pos, will try to find a free spawn position where a newly spawned pickup item will not collide with already spawned pickup items, or solid grid elements such as rocks, or pits The returned position will be aligned to the grid. If no free position is found, the original position (aligned to the grid) is returned.
 ---@param Pos Vector @
 ---@param InitialStep number @ (float) (default 0)
 ---@param AvoidActiveEntities boolean @ (default false)
+---@param AllowPits boolean @ (default false)
 ---@return Vector @
-function Room:FindFreePickupSpawnPosition(Pos, InitialStep, AvoidActiveEntities)
+function Room:FindFreePickupSpawnPosition(Pos, InitialStep, AvoidActiveEntities, AllowPits)
 end
 --- Finds the nearest free tile based on position Stops immediately if the tile sampled has a squared distance less than DistanceThresholdSQ
 ---@param Pos Vector @
+---@param DistanceThreshold number @ (float)
 ---@return Vector @
-function Room:FindFreeTilePosition(Pos)
+function Room:FindFreeTilePosition(Pos, DistanceThreshold)
 end
 
 ---@return number @ (int)
@@ -123,13 +129,15 @@ end
 function Room:GetCenterPos()
 end
 --- converts float position (x,y) to grid index (similar to ingrid) clamps the values if out of bounds
+---@param Position Vector @
 ---@return number @ (int)
-function Room:GetClampedGridIndex()
+function Room:GetClampedGridIndex(Position)
 end
 --- returns Pos clamped to room borders inside of walls
 ---@param Pos Vector @
+---@param Margin number @ (float)
 ---@return Vector @
-function Room:GetClampedPosition(Pos)
+function Room:GetClampedPosition(Pos, Margin)
 end
 
 ---@return number @ (int)
@@ -145,12 +153,14 @@ function Room:GetDevilRoomChance()
 end
 --- Returns the [GridEntityDoor](GridEntityDoor.md) at the given [DoorSlot](enums/DoorSlot.md) position. Returns nil if no Door is located there.
 ---
+---@param Slot DoorSlot @
 ---@return GridEntityDoor @
-function Room:GetDoor()
+function Room:GetDoor(Slot)
 end
 
+---@param Slot DoorSlot @
 ---@return Vector @
-function Room:GetDoorSlotPosition()
+function Room:GetDoorSlotPosition(Slot)
 end
 
 ---@return number @ (int)
@@ -169,45 +179,53 @@ function Room:GetFrameCount()
 end
 
 --- Returns the [GridCollisionClass](enums/GridCollisionClass.md) of the grid entity at this grid index.
+---@param GridIndex number @ (int)
 ---@return GridCollisionClass @
-function Room:GetGridCollision()
+function Room:GetGridCollision(GridIndex)
 end
 
 --- Returns the [GridCollisionClass](enums/GridCollisionClass.md) of the grid entity at this position in the room.
+---@param Pos Vector @
 ---@return GridCollisionClass @
-function Room:GetGridCollisionAtPos()
+function Room:GetGridCollisionAtPos(Pos)
 end
 
 --- Returns the [GridEntity](GridEntity.md) at this grid index. Returns `nil`, when no [GridEntity](GridEntity.md) is found.
+---@param Index number @ (int)
 ---@return GridEntity @
-function Room:GetGridEntity()
+function Room:GetGridEntity(Index)
 end
 
 --- Returns the [GridEntity](GridEntity.md) at this position in the room. Returns `nil`, when no [GridEntity](GridEntity.md) is found.
+---@param Position Vector @
 ---@return GridEntity @
-function Room:GetGridEntityFromPos()
+function Room:GetGridEntityFromPos(Position)
 end
 
 ---@return number @ (int)
 function Room:GetGridHeight()
 end
 --- converts float position (x,y) to grid index returns -1 for invalid index
+---@param Position Vector @
 ---@return number @ (int)
-function Room:GetGridIndex()
+function Room:GetGridIndex(Position)
 end
 --- Grid path is a property of a grid square that represents the "cost" of traveling over this grid cell. Its used for the path finding algorithms which search the cheapest path to a given location. If a grid cell has a value higher than 0, it can prevent grid entities from being spawned on that square. Thus, you can get around it by resetting the grid path to 0, and then spawning the grid entity.
 --- 
 --- Some enemies set it to 900 when they path over a square. Fireplaces set it to 950. Most grid entities set it to 1000 or higher, in order to prevent enemies to travel through them.
+---@param Index number @ (int)
 ---@return number @ (int)
-function Room:GetGridPath()
+function Room:GetGridPath(Index)
 end
 
+---@param Position Vector @
 ---@return number @ (int)
-function Room:GetGridPathFromPos()
+function Room:GetGridPathFromPos(Position)
 end
 --- converts grid index to float (x,y) position undefined behavior for invalid index
+---@param GridIndex number @ (int)
 ---@return Vector @
-function Room:GetGridPosition()
+function Room:GetGridPosition(GridIndex)
 end
 
 ---@return number @ (int)
@@ -219,8 +237,9 @@ function Room:GetGridWidth()
 end
 --- returns the hit position for a laser beam (Technology, Robo-Baby) usually, the first poop, fire, rock, TNT, or wall encountered on a straight line
 ---@param Pos Vector @
+---@param Dir Vector @
 ---@return Vector @
-function Room:GetLaserTarget(Pos)
+function Room:GetLaserTarget(Pos, Dir)
 end
 
 ---@return number @ (float)
@@ -243,12 +262,14 @@ end
 function Room:GetNextShockwaveId()
 end
 --- returns random non tile aligned position
+---@param Margin number @ (float)
 ---@return Vector @
-function Room:GetRandomPosition()
+function Room:GetRandomPosition(Margin)
 end
 
+---@param Seed number @ (int)
 ---@return number @ (int)
-function Room:GetRandomTileIndex()
+function Room:GetRandomTileIndex(Seed)
 end
 
 ---@return boolean @
@@ -313,8 +334,9 @@ end
 --- + bug "Bug"
 ---     Calling this function crashes the game
 ---
+---@param Seed number @ (int)
 ---@return CollectibleType @
-function Room:GetSeededCollectible()
+function Room:GetSeededCollectible(Seed)
 end
 
 ---@return number @ (int)
@@ -371,8 +393,9 @@ end
 function Room:IsCurrentRoomLastBoss()
 end
 --- Returns whether this room design may have a door at a given position, disregarding whether those doors exist.
+---@param Slot DoorSlot @
 ---@return boolean @
-function Room:IsDoorSlotAllowed()
+function Room:IsDoorSlotAllowed(Slot)
 end
 
 ---@return boolean @
@@ -392,8 +415,9 @@ function Room:IsLShapedRoom()
 end
 
 ---@param Pos Vector @
+---@param Margin number @ (float)
 ---@return boolean @
-function Room:IsPositionInRoom(Pos)
+function Room:IsPositionInRoom(Pos, Margin)
 end
 
 ---@return boolean @
@@ -403,13 +427,15 @@ end
 function Room:KeepDoorsClosed()
 end
 
-function Room:MamaMegaExplosion()
+---@param Position Vector @
+function Room:MamaMegaExplosion(Position)
 end
 
 function Room:PlayMusic()
 end
 
-function Room:RemoveDoor()
+---@param Slot DoorSlot @
+function Room:RemoveDoor(Slot)
 end
 
 --- - `GridIndex` is the location of the grid as shown with the `debug 11` console command.
@@ -417,7 +443,8 @@ end
 ---
 ---@param GridIndex number @ (int)
 ---@param PathTrail number @ (int)
-function Room:RemoveGridEntity(GridIndex, PathTrail)
+---@param KeepDecoration boolean @
+function Room:RemoveGridEntity(GridIndex, PathTrail, KeepDecoration)
 end
 
 function Room:Render()
@@ -431,23 +458,28 @@ end
 --- - note "Notes"
 ---      This only wraps the point once, so if it has crossed multiple wrapping planes it will only wrap on the one it's closest to. For wrapping a position that has crossed two planes (outside a room in the top left for instance) call this function iteratively.
 ---@param Pos Vector @
+---@param Margin number @ (float)
 ---@return Vector @
-function Room:ScreenWrapPosition(Pos)
+function Room:ScreenWrapPosition(Pos, Margin)
 end
 
-function Room:SetAmbushDone()
+---@param Value boolean @
+function Room:SetAmbushDone(Value)
 end
 
-function Room:SetBrokenWatchState()
+---@param State number @ (int)
+function Room:SetBrokenWatchState(State)
 end
 
 function Room:SetCardAgainstHumanity()
 end
 --- Needed for angel room, so the clear flag can be set to false when the angel spawns
-function Room:SetClear()
+---@param Clear boolean @
+function Room:SetClear(Clear)
 end
 
-function Room:SetFirstEnemyDead()
+---@param Value boolean @
+function Room:SetFirstEnemyDead(Value)
 end
 
 --- Allows you to apply a color modifier to the floor texture of the current room.
@@ -458,27 +490,32 @@ end
 ---     Game():GetRoom():SetFloorColor(Color(1,1,1,1,255,0,0))
 ---     ```
 ---
-function Room:SetFloorColor()
+---@param FloorColor Color @
+function Room:SetFloorColor(FloorColor)
 end
 --- Grid path is a property of a grid square that represents the "cost" of traveling over this grid cell. Its used for the path finding algorithms which search the cheapest path to a given location. If a grid cell has a value higher than 0, it can prevent grid entities from being spawned on that square. Thus, you can get around it by resetting the grid path to 0, and then spawning the grid entity.
 --- 
 --- Some enemies set it to 900 when they path over a square. Fireplaces set it to 950. Most grid entities set it to 1000 or higher, in order to prevent enemies to travel through them.
 ---@param Index number @ (int)
+---@param Value number @ (int)
 ---@return boolean @
-function Room:SetGridPath(Index)
+function Room:SetGridPath(Index, Value)
 end
 
 function Room:SetRedHeartDamage()
 end
 
-function Room:SetSacrificeDone()
+---@param Done boolean @
+function Room:SetSacrificeDone(Done)
 end
 
 ---@param ShockwaveId number @ (int)
-function Room:SetShockwaveParam(ShockwaveId)
+---@param Params ShockwaveParams @
+function Room:SetShockwaveParam(ShockwaveId, Params)
 end
 
-function Room:SetSlowDown()
+---@param Duration number @ (int)
+function Room:SetSlowDown(Duration)
 end
 
 --- Allows you to apply a color modifier to the wall texture of the current room.
@@ -489,11 +526,13 @@ end
 ---     Game():GetRoom():SetWallColor(Color(1,1,1,1,255,0,0))
 ---     ```
 ---
-function Room:SetWallColor()
+---@param WallColor Color @
+function Room:SetWallColor(WallColor)
 end
 
 ---@param KeepCollectibleIdx boolean @
-function Room:ShopReshuffle(KeepCollectibleIdx)
+---@param ReselectSaleItem boolean @
+function Room:ShopReshuffle(KeepCollectibleIdx, ReselectSaleItem)
 end
 
 function Room:ShopRestockFull()
@@ -509,32 +548,38 @@ end
 ---@param Type GridEntityType @
 ---@param Variant number @ (int)
 ---@param Seed number @ (int)
+---@param VarData number @ (int)
 ---@return boolean @
-function Room:SpawnGridEntity(GridIndex, Type, Variant, Seed)
+function Room:SpawnGridEntity(GridIndex, Type, Variant, Seed, VarData)
 end
 --- Tries to create a bridge over a given pit. Returns true if the creation was successful. Returns false otherwise.
 ---
 ---@param pit GridEntity @
+---@param rock GridEntity @
 ---@return boolean @
-function Room:TryMakeBridge(pit)
+function Room:TryMakeBridge(pit, rock)
 end
 
 ---@param PlayerPos Vector @
 ---@param PlayerVelocity Vector @
-function Room:TryPlaceLadder(PlayerPos, PlayerVelocity)
+---@param Ladder Entity @
+function Room:TryPlaceLadder(PlayerPos, PlayerVelocity, Ladder)
 end
 
 ---@param FirstTime boolean @
+---@param IgnoreTime boolean @
 ---@return boolean @
-function Room:TrySpawnBlueWombDoor(FirstTime)
+function Room:TrySpawnBlueWombDoor(FirstTime, IgnoreTime)
 end
 
+---@param IgnoreTime boolean @
 ---@return boolean @
-function Room:TrySpawnBossRushDoor()
+function Room:TrySpawnBossRushDoor(IgnoreTime)
 end
 
+---@param Animate boolean @
 ---@return boolean @
-function Room:TrySpawnDevilRoomDoor()
+function Room:TrySpawnDevilRoomDoor(Animate)
 end
 
 ---@return boolean @
@@ -556,6 +601,7 @@ end
 function Room:Update()
 end
 --- Converts an entity position to one that can be used to render to the screen.
+---@param WorldPos Vector @
 ---@return Vector @
-function Room:WorldToScreenPosition()
+function Room:WorldToScreenPosition(WorldPos)
 end

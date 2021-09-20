@@ -1,29 +1,32 @@
----@class EntityLaser:Entity
+---@class EntityLaser:Entity @
 local EntityLaser = {}
 
 --------------------
 -- Functions
 --------------------
 
-function EntityLaser:AddTearFlags()
+---@param Flags TearFlags @
+function EntityLaser:AddTearFlags(Flags)
 end
 
 ---@param Start Vector @
 ---@param Dir Vector @
 ---@param PositionOffset Vector @
 ---@param Parent Entity @
+---@param Margin number @ (float)
 ---@return Vector @
-function EntityLaser.CalculateEndPoint(Start, Dir, PositionOffset, Parent)
+function EntityLaser.CalculateEndPoint(Start, Dir, PositionOffset, Parent, Margin)
 end
 
-function EntityLaser:ClearTearFlags()
+---@param Flags TearFlags @
+function EntityLaser:ClearTearFlags(Flags)
 end
 
 ---@return Vector @ (const)
 function EntityLaser:GetEndPoint()
 end
 
----@return HomingLaser::SampleList @ (const)
+---@return HomingLaser.SampleList @ (const)
 function EntityLaser:GetNonOptimizedSamples()
 end
 
@@ -31,12 +34,13 @@ end
 function EntityLaser:GetRenderZ()
 end
 
----@return HomingLaser::SampleList @ (const)
+---@return HomingLaser.SampleList @ (const)
 function EntityLaser:GetSamples()
 end
 
+---@param Flags TearFlags @
 ---@return boolean @
-function EntityLaser:HasTearFlags()
+function EntityLaser:HasTearFlags(Flags)
 end
 
 ---@return boolean @
@@ -50,25 +54,32 @@ end
 ---@param Delay number @ (int)
 ---@param AngleDegrees number @ (float)
 ---@param RotationSpd number @ (float)
-function EntityLaser:SetActiveRotation(Delay, AngleDegrees, RotationSpd)
+---@param TimeoutComplete boolean @
+function EntityLaser:SetActiveRotation(Delay, AngleDegrees, RotationSpd, TimeoutComplete)
 end
 
-function EntityLaser:SetBlackHpDropChance()
+---@param Chance number @ (float)
+function EntityLaser:SetBlackHpDropChance(Chance)
 end
 
-function EntityLaser:SetHomingType()
+---@param Type LaserHomingType @
+function EntityLaser:SetHomingType(Type)
 end
 
-function EntityLaser:SetMaxDistance()
+---@param Distance number @ (float)
+function EntityLaser:SetMaxDistance(Distance)
 end
 
-function EntityLaser:SetMultidimensionalTouched()
+---@param Value boolean @
+function EntityLaser:SetMultidimensionalTouched(Value)
 end
 
-function EntityLaser:SetOneHit()
+---@param Value boolean @
+function EntityLaser:SetOneHit(Value)
 end
 
-function EntityLaser:SetTimeout()
+---@param Value number @ (int)
+function EntityLaser:SetTimeout(Value)
 end
 --- static helper to simplify spawning lasers
 ---@param Variant number @ (int)
@@ -76,8 +87,9 @@ end
 ---@param AngleDegrees number @ (float)
 ---@param Timeout number @ (int)
 ---@param PosOffset Vector @
+---@param Source Entity @
 ---@return EntityLaser @
-function EntityLaser.ShootAngle(Variant, SourcePos, AngleDegrees, Timeout, PosOffset)
+function EntityLaser.ShootAngle(Variant, SourcePos, AngleDegrees, Timeout, PosOffset, Source)
 end
 
 --------------------

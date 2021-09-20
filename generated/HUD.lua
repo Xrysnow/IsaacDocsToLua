@@ -1,4 +1,4 @@
----@class HUD
+---@class HUD @
 local HUD = {}
 
 --------------------
@@ -9,14 +9,17 @@ function HUD:AssignPlayerHUDs()
 end
 --- Chargebar flashes as if item was actually charged.
 ---@param Player EntityPlayer @
-function HUD:FlashChargeBar(Player)
+---@param ActiveSlot ActiveSlot @
+function HUD:FlashChargeBar(Player, ActiveSlot)
 end
 --- 
 ---@param Player EntityPlayer @
-function HUD:InvalidateActiveItem(Player)
+---@param ActiveSlot ActiveSlot @
+function HUD:InvalidateActiveItem(Player, ActiveSlot)
 end
 --- 
-function HUD:InvalidateCraftingItem()
+---@param Player EntityPlayer @
+function HUD:InvalidateCraftingItem(Player)
 end
 --- Returns false if HUD is invisible and true otherwise.
 ---@return boolean @
@@ -25,14 +28,17 @@ end
 --- Allows to display fortune streak with text. Accepts unlimited amount of arguments.
 ---@param MainString string @
 ---@param SecondaryString string @
-function HUD:ShowFortuneText(MainString, SecondaryString)
+---@param ...  @
+function HUD:ShowFortuneText(MainString, SecondaryString, ...)
 end
 --- 
 ---@param MainString string @
 ---@param SecondaryString string @
-function HUD:ShowItemText(MainString, SecondaryString)
+---@param IsCurseDisplay boolean @ (default false)
+function HUD:ShowItemText(MainString, SecondaryString, IsCurseDisplay)
 end
 --- Allows to display an item splash text without picking it up.
 ---@param Player EntityPlayer @
-function HUD:ShowItemText(Player)
+---@param Item Item @
+function HUD:ShowItemText(Player, Item)
 end

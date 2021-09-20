@@ -1,4 +1,4 @@
----@class Input @(static)
+---@class Input @ (static)
 local Input = {}
 
 --------------------
@@ -15,14 +15,16 @@ local Input = {}
 ---     ```
 ---
 ---@param action number @ (int)
+---@param controllerId number @ (int)
 ---@return number @ (float)
-function Input.GetActionValue(action)
+function Input.GetActionValue(action, controllerId)
 end
 
 --- Use "GetActionValue" instead of this function.
 ---@param button number @ (int)
+---@param controllerId number @ (int)
 ---@return number @ (float)
-function Input.GetButtonValue(button)
+function Input.GetButtonValue(button, controllerId)
 end
 
 --- Returns the current mouse position in game coordinates (true) or render coordinates.
@@ -36,8 +38,9 @@ end
 --- 
 ---     ```
 ---
+---@param gameCoords boolean @
 ---@return Vector @
-function Input.GetMousePosition()
+function Input.GetMousePosition(gameCoords)
 end
 
 --- Returns, if an action-button is pressed or not. An Action-button is any button that got a default function assigned to it. This function will return true, as long the button is held down.
@@ -53,8 +56,9 @@ end
 --- 
 ---     ```
 ---@param action number @ (int)
+---@param controllerId number @ (int)
 ---@return boolean @
-function Input.IsActionPressed(action)
+function Input.IsActionPressed(action, controllerId)
 end
 
 --- Returns, if an action-button was pressed some time before or not. An Action-button is any button that got a default function assigned to it. This functions will only return true, if the button was pressed down. It will no longer return true, after you called this function and try to call it in the next update cycle (for example in the next render cycle).
@@ -70,8 +74,9 @@ end
 --- 
 ---     ```
 ---@param action number @ (int)
+---@param controllerId number @ (int)
 ---@return boolean @
-function Input.IsActionTriggered(action)
+function Input.IsActionTriggered(action, controllerId)
 end
 
 --- Returns, if a button is pressed or not. This function will return true, as long the button is held down.
@@ -87,8 +92,9 @@ end
 --- 
 ---     ```
 ---@param button number @ (int)
+---@param controllerId number @ (int)
 ---@return boolean @
-function Input.IsButtonPressed(button)
+function Input.IsButtonPressed(button, controllerId)
 end
 
 --- Returns, if a button was pressed some time before or not. This functions will only return true, if the button was pressed down. It will no longer return true, after you called this function and try to call it in the next update cycle (for example in the next render cycle).
@@ -104,8 +110,9 @@ end
 --- 
 ---     ```
 ---@param button number @ (int)
+---@param controllerId number @ (int)
 ---@return boolean @
-function Input.IsButtonTriggered(button)
+function Input.IsButtonTriggered(button, controllerId)
 end
 
 --- Returns, if a mousebutton is pressed or not.
@@ -120,6 +127,7 @@ end
 --- 
 ---     ```
 ---
+---@param button number @ (int)
 ---@return boolean @
-function Input.IsMouseBtnPressed()
+function Input.IsMouseBtnPressed(button)
 end

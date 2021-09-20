@@ -1,4 +1,4 @@
----@class PlayerTypes.ActiveItemDesc
+---@class PlayerTypes.ActiveItemDesc @
 local ActiveItemDesc = {}
 
 --------------------

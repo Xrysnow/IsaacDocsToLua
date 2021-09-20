@@ -1,17 +1,19 @@
----@class PathFinder
+---@class PathFinder @
 local PathFinder = {}
 
 --------------------
 -- Functions
 --------------------
 
-function PathFinder:EvadeTarget()
+---@param TargetPos Vector @
+function PathFinder:EvadeTarget(TargetPos)
 end
 
 ---@param Pos Vector @
 ---@param Speed number @ (float)
 ---@param PathMarker number @ (int)
-function PathFinder:FindGridPath(Pos, Speed, PathMarker)
+---@param UseDirectPath boolean @
+function PathFinder:FindGridPath(Pos, Speed, PathMarker, UseDirectPath)
 end
 
 ---@return number @ (int)
@@ -27,19 +29,23 @@ function PathFinder:HasDirectPath()
 end
 --- Used for safe check if any NPC is behind rocks/pits, doesn't disturb class members.
 ---@param Pos Vector @
+---@param IgnorePoop boolean @
 ---@return boolean @
-function PathFinder:HasPathToPos(Pos)
+function PathFinder:HasPathToPos(Pos, IgnorePoop)
 end
 
+---@param IgnoreStatusEffects boolean @
 ---@return boolean @
-function PathFinder:MoveRandomly()
+function PathFinder:MoveRandomly(IgnoreStatusEffects)
 end
 
 ---@param Speed number @ (float)
-function PathFinder:MoveRandomlyAxisAligned(Speed)
+---@param IgnoreStatusEffects boolean @
+function PathFinder:MoveRandomlyAxisAligned(Speed, IgnoreStatusEffects)
 end
 
-function PathFinder:MoveRandomlyBoss()
+---@param IgnoreStatusEffects boolean @
+function PathFinder:MoveRandomlyBoss(IgnoreStatusEffects)
 end
 
 function PathFinder:Reset()
@@ -48,7 +54,8 @@ end
 function PathFinder:ResetMovementTarget()
 end
 
-function PathFinder:SetCanCrushRocks()
+---@param value boolean @
+function PathFinder:SetCanCrushRocks(value)
 end
 
 function PathFinder:UpdateGridIndex()

@@ -1,4 +1,4 @@
----@class CppContainer.ArrayProxy.RoomConfigEntries
+---@class CppContainer.ArrayProxy.RoomConfigEntries @
 local RoomConfigEntries = {}
 
 --------------------
@@ -15,8 +15,9 @@ end
 -- Functions
 --------------------
 
+---@param idx number @ (int)
 ---@return userdata @
-function RoomConfigEntries:Get()
+function RoomConfigEntries:Get(idx)
 end
 
 --------------------

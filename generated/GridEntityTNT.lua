@@ -1,4 +1,4 @@
----@class GridEntityTNT:GridEntity
+---@class GridEntityTNT:GridEntity @
 local GridEntityTNT = {}
 
 --------------------

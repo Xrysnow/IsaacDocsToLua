@@ -1,17 +1,20 @@
----@class EntityFamiliar:Entity
+---@class EntityFamiliar:Entity @
 local EntityFamiliar = {}
 
 --------------------
 -- Functions
 --------------------
 
-function EntityFamiliar:AddCoins()
+---@param Value number @ (int)
+function EntityFamiliar:AddCoins(Value)
 end
 
-function EntityFamiliar:AddHearts()
+---@param Hearts number @ (int)
+function EntityFamiliar:AddHearts(Hearts)
 end
 
-function EntityFamiliar:AddKeys()
+---@param Keys number @ (int)
+function EntityFamiliar:AddKeys(Keys)
 end
 --- Adds to delayed. This doesn't remove other flags!
 function EntityFamiliar:AddToDelayed()
@@ -20,36 +23,43 @@ end
 function EntityFamiliar:AddToFollowers()
 end
 --- Adds to orbitals. This doesn't remove other flags!
-function EntityFamiliar:AddToOrbit()
+---@param Layer number @ (int)
+function EntityFamiliar:AddToOrbit(Layer)
 end
 
 --- Shoots a projectile from the center of the familiar in the direction you defined.
 --- If used on a familiar that shoots multiple projectiles (example: harlequin baby), this function will only return the left most projectile based on the direction. If used on familiars with special tears (example: Lil Brimstone,...), this will just shoot a regular tear.
 --- This function will not play the shoot animation of the familiar.
+---@param Dir Vector @
 ---@return EntityTear @
-function EntityFamiliar:FireProjectile()
+function EntityFamiliar:FireProjectile(Dir)
 end
 
 function EntityFamiliar:FollowParent()
 end
 
-function EntityFamiliar:FollowPosition()
+---@param Pos Vector @
+function EntityFamiliar:FollowPosition(Pos)
 end
 
+---@param Layer number @ (int)
 ---@return Vector @
-function EntityFamiliar.GetOrbitDistance()
+function EntityFamiliar.GetOrbitDistance(Layer)
 end
 
 --- Returns the position of an orbiting familiar relative to the player's position. Returns `Vector(0,0) if its a normal familiar.`
 --- The "pos" argument is used as an offset.
+---@param Pos Vector @
 ---@return Vector @
-function EntityFamiliar:GetOrbitPosition()
+function EntityFamiliar:GetOrbitPosition(Pos)
 end
 
-function EntityFamiliar:MoveDelayed()
+---@param NumFrames number @ (int)
+function EntityFamiliar:MoveDelayed(NumFrames)
 end
 
-function EntityFamiliar:MoveDiagonally()
+---@param Speed number @ (float)
+function EntityFamiliar:MoveDiagonally(Speed)
 end
 --- **Flags**: A combination of the following flags (none of these are set by default)
 --- 
@@ -66,21 +76,26 @@ end
 ---@param FrameInterval number @ (int) (default 13)
 ---@param Flags number @ (int) (default 0)
 ---@param ConeDir Vector @ (default Vector.Zero)
-function EntityFamiliar:PickEnemyTarget(MaxDistance, FrameInterval, Flags, ConeDir)
+---@param ConeAngle number @ (float) (default 15)
+function EntityFamiliar:PickEnemyTarget(MaxDistance, FrameInterval, Flags, ConeDir, ConeAngle)
 end
 
-function EntityFamiliar:PlayChargeAnim()
+---@param Dir Direction @
+function EntityFamiliar:PlayChargeAnim(Dir)
 end
 
-function EntityFamiliar:PlayFloatAnim()
+---@param Dir Direction @
+function EntityFamiliar:PlayFloatAnim(Dir)
 end
 
-function EntityFamiliar:PlayShootAnim()
+---@param Dir Direction @
+function EntityFamiliar:PlayShootAnim(Dir)
 end
 --- Returns the number of familiars in that layer.
 ---@param Layer number @ (int)
+---@param Add boolean @
 ---@return number @ (int)
-function EntityFamiliar:RecalculateOrbitOffset(Layer)
+function EntityFamiliar:RecalculateOrbitOffset(Layer, Add)
 end
 
 function EntityFamiliar:RemoveFromDelayed()

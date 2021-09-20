@@ -1,4 +1,4 @@
----@class CppContainer.Vector.CardConfigList
+---@class CppContainer.Vector.CardConfigList @
 local CardConfigList = {}
 
 --------------------
@@ -20,8 +20,9 @@ end
 --- + bug "Bugs"
 ---     This function does not return usable userdata, rendering it useless.
 ---
+---@param idx number @ (int)
 ---@return userdata @
-function CardConfigList:Get()
+function CardConfigList:Get(idx)
 end
 
 --------------------

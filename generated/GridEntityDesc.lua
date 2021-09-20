@@ -1,4 +1,4 @@
----@class GridEntityDesc
+---@class GridEntityDesc @
 local GridEntityDesc = {}
 
 --------------------

@@ -1,4 +1,4 @@
----@class ItemConfig.Card
+---@class ItemConfig.Card @
 local Card = {}
 
 --------------------

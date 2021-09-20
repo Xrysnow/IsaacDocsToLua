@@ -1,4 +1,4 @@
----@class PlayerTypes.PosVel
+---@class PlayerTypes.PosVel @
 local PosVel = {}
 
 --------------------

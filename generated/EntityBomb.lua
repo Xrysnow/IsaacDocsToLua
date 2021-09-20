@@ -1,21 +1,25 @@
----@class EntityBomb
+---@class EntityBomb @
 local EntityBomb = {}
 
 --------------------
 -- Functions
 --------------------
 
-function EntityBomb:AddTearFlags()
+---@param Flags TearFlags @
+function EntityBomb:AddTearFlags(Flags)
 end
 
-function EntityBomb:ClearTearFlags()
+---@param Flags TearFlags @
+function EntityBomb:ClearTearFlags(Flags)
 end
 
+---@param Flags TearFlags @
 ---@return boolean @
-function EntityBomb:HasTearFlags()
+function EntityBomb:HasTearFlags(Flags)
 end
 
-function EntityBomb:SetExplosionCountdown()
+---@param Countdown number @ (int)
+function EntityBomb:SetExplosionCountdown(Countdown)
 end
 
 --------------------

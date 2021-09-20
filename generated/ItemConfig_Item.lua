@@ -1,12 +1,13 @@
----@class ItemConfig.Item
+---@class ItemConfig.Item @
 local Item = {}
 
 --------------------
 -- Functions
 --------------------
 
+---@param Tags number @ (int)
 ---@return boolean @
-function Item:HasTags()
+function Item:HasTags(Tags)
 end
 
 ---@return boolean @

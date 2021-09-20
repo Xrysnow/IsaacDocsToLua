@@ -1,25 +1,30 @@
----@class EntityEffect:Entity
+---@class EntityEffect:Entity @
 local EntityEffect = {}
 
 --------------------
 -- Functions
 --------------------
 
-function EntityEffect:FollowParent()
+---@param Parent Entity @
+function EntityEffect:FollowParent(Parent)
 end
 
+---@param Variant number @ (int)
 ---@return boolean @
-function EntityEffect.IsPlayerCreep()
+function EntityEffect.IsPlayerCreep(Variant)
 end
 
-function EntityEffect:SetDamageSource()
+---@param DamageSource EntityType @
+function EntityEffect:SetDamageSource(DamageSource)
 end
 --- For shockwaves.
 ---@param min number @ (float)
-function EntityEffect:SetRadii(min)
+---@param max number @ (float)
+function EntityEffect:SetRadii(min, max)
 end
 
-function EntityEffect:SetTimeout()
+---@param Timeout number @ (int)
+function EntityEffect:SetTimeout(Timeout)
 end
 
 --------------------

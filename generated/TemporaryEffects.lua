@@ -1,4 +1,4 @@
----@class TemporaryEffects
+---@class TemporaryEffects @
 local TemporaryEffects = {}
 
 --------------------
@@ -18,70 +18,85 @@ local TemporaryEffects = {}
 ---     ```
 ---@param CollectibleType CollectibleType @
 ---@param AddCostume boolean @ (default true)
-function TemporaryEffects:AddCollectibleEffect(CollectibleType, AddCostume)
+---@param Count number @ (int) (default 1)
+function TemporaryEffects:AddCollectibleEffect(CollectibleType, AddCostume, Count)
 end
 
----@param NullId ItemConfig::NullItemID @
+---@param NullId ItemConfig.NullItemID @
 ---@param AddCostume boolean @ (default true)
-function TemporaryEffects:AddNullEffect(NullId, AddCostume)
+---@param Count number @ (int) (default 1)
+function TemporaryEffects:AddNullEffect(NullId, AddCostume, Count)
 end
 
 ---@param TrinketType TrinketType @
 ---@param AddCostume boolean @ (default true)
-function TemporaryEffects:AddTrinketEffect(TrinketType, AddCostume)
+---@param Count number @ (int) (default 1)
+function TemporaryEffects:AddTrinketEffect(TrinketType, AddCostume, Count)
 end
 
 function TemporaryEffects:ClearEffects()
 end
 
+---@param CollectibleType CollectibleType @
 ---@return TemporaryEffect @ (const)
-function TemporaryEffects:GetCollectibleEffect()
+function TemporaryEffects:GetCollectibleEffect(CollectibleType)
 end
 
+---@param CollectibleType CollectibleType @
 ---@return number @ (int)
-function TemporaryEffects:GetCollectibleEffectNum()
+function TemporaryEffects:GetCollectibleEffectNum(CollectibleType)
 end
 
 ---@return EffectList @ (const)
 function TemporaryEffects:GetEffectsList()
 end
 
+---@param NullId ItemConfig.NullItemID @
 ---@return TemporaryEffect @ (const)
-function TemporaryEffects:GetNullEffect()
+function TemporaryEffects:GetNullEffect(NullId)
 end
 
+---@param NullId ItemConfig.NullItemID @
 ---@return number @ (int)
-function TemporaryEffects:GetNullEffectNum()
+function TemporaryEffects:GetNullEffectNum(NullId)
 end
 
+---@param TrinketType TrinketType @
 ---@return TemporaryEffect @ (const)
-function TemporaryEffects:GetTrinketEffect()
+function TemporaryEffects:GetTrinketEffect(TrinketType)
 end
 
+---@param TrinketType TrinketType @
 ---@return number @ (int)
-function TemporaryEffects:GetTrinketEffectNum()
+function TemporaryEffects:GetTrinketEffectNum(TrinketType)
 end
 
+---@param CollectibleType CollectibleType @
 ---@return boolean @
-function TemporaryEffects:HasCollectibleEffect()
+function TemporaryEffects:HasCollectibleEffect(CollectibleType)
 end
 
+---@param NullId ItemConfig.NullItemID @
 ---@return boolean @
-function TemporaryEffects:HasNullEffect()
+function TemporaryEffects:HasNullEffect(NullId)
 end
 
+---@param TrinketType TrinketType @
 ---@return boolean @
-function TemporaryEffects:HasTrinketEffect()
+function TemporaryEffects:HasTrinketEffect(TrinketType)
 end
 --- Count = -1 removes all instances of the effect
 ---@param CollectibleType CollectibleType @
-function TemporaryEffects:RemoveCollectibleEffect(CollectibleType)
+---@param Count number @ (int) (default 1)
+function TemporaryEffects:RemoveCollectibleEffect(CollectibleType, Count)
 end
 --- Count = -1 removes all instances of the effect
----@param NullId ItemConfig::NullItemID @
-function TemporaryEffects:RemoveNullEffect(NullId)
+---@param NullId ItemConfig.NullItemID @
+---@param Count number @ (int) (default 1)
+function TemporaryEffects:RemoveNullEffect(NullId, Count)
 end
 --- Count = -1 removes all instances of the effect
 ---@param TrinketType TrinketType @
-function TemporaryEffects:RemoveTrinketEffect(TrinketType)
+---@param Count number @ (int) (default 1)
+function TemporaryEffects:RemoveTrinketEffect(TrinketType, Count)
 end

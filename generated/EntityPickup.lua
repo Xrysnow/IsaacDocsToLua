@@ -1,4 +1,4 @@
----@class EntityPickup:Entity
+---@class EntityPickup:Entity @
 local EntityPickup = {}
 
 --------------------
@@ -27,7 +27,8 @@ end
 ---@param SubType number @ (int)
 ---@param KeepPrice boolean @ (default false)
 ---@param KeepSeed boolean @ (default false)
-function EntityPickup:Morph(Type, Variant, SubType, KeepPrice, KeepSeed)
+---@param IgnoreModifiers boolean @ (default false)
+function EntityPickup:Morph(Type, Variant, SubType, KeepPrice, KeepSeed, IgnoreModifiers)
 end
 
 function EntityPickup:PlayDropSound()
@@ -36,8 +37,9 @@ end
 function EntityPickup:PlayPickupSound()
 end
 --- **Player**: The player that opened this chest
+---@param Player EntityPlayer @ (default nil)
 ---@return boolean @
-function EntityPickup:TryOpenChest()
+function EntityPickup:TryOpenChest(Player)
 end
 
 --------------------

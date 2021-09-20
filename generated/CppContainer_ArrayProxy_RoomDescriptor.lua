@@ -1,4 +1,4 @@
----@class CppContainer.ArrayProxy.RoomDescriptor
+---@class RoomDescriptor.List @ (CppContainer.ArrayProxy.RoomDescriptor)
 local RoomDescriptor = {}
 
 --------------------
@@ -17,8 +17,9 @@ end
 
 --- Returns a [RoomDescriptor](RoomDescriptor.md) at the index of the list provided.
 ---
+---@param idx number @ (int)
 ---@return RoomDescriptor @
-function RoomDescriptor:Get()
+function RoomDescriptor:Get(idx)
 end
 
 --------------------

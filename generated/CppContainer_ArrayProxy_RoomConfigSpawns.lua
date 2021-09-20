@@ -1,4 +1,4 @@
----@class CppContainer.ArrayProxy.RoomConfigSpawns
+---@class CppContainer.ArrayProxy.RoomConfigSpawns @
 local RoomConfigSpawns = {}
 
 --------------------
@@ -17,8 +17,9 @@ end
 
 --- Returns a [RoomConfig Spawn](RoomConfig_Spawn.md) at the index of the list provided.
 ---
+---@param idx number @ (int)
 ---@return RoomConfig.Spawn @
-function RoomConfigSpawns:Get()
+function RoomConfigSpawns:Get(idx)
 end
 
 --------------------

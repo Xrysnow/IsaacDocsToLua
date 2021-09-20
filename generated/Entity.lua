@@ -1,4 +1,4 @@
----@class Entity
+---@class Entity @
 local Entity = {}
 
 --------------------
@@ -34,7 +34,8 @@ local Entity = {}
 ---
 ---@param Source EntityRef @
 ---@param Duration number @ (int)
-function Entity:AddBurn(Source, Duration)
+---@param Damage number @ (float)
+function Entity:AddBurn(Source, Duration, Damage)
 end
 
 --- Adds a charmed-effect to an enemy. Duration is in Number of Frames. Charmed enemies are friendly towards isaac and attack other enemies.
@@ -52,7 +53,8 @@ end
 ---     ```
 ---
 ---@param sourceEntity EntityRef @
-function Entity:AddCharmed(sourceEntity)
+---@param Duration number @ (int)
+function Entity:AddCharmed(sourceEntity, Duration)
 end
 
 --- Adds a confusion effect to an entity.
@@ -72,7 +74,8 @@ end
 ---
 ---@param Source EntityRef @
 ---@param Duration number @ (int)
-function Entity:AddConfusion(Source, Duration)
+---@param IgnoreBosses boolean @
+function Entity:AddConfusion(Source, Duration, IgnoreBosses)
 end
 
 --- Add [EntityFlags](enums/EntityFlag.md) to the entity. Flags are used to add specific effects like poisoning or freeze. You can add multiple flags at the same time by bitwise-concatenating them.
@@ -86,7 +89,8 @@ end
 ---     	entity:AddEntityFlags(EntityFlag.FLAG_SLOW | EntityFlag.FLAG_CONFUSION)
 ---     end
 ---     ```
-function Entity:AddEntityFlags()
+---@param Flags number @ (int)
+function Entity:AddEntityFlags(Flags)
 end
 
 --- Adds a fear-effect to an entity.
@@ -105,7 +109,8 @@ end
 ---     ```
 ---
 ---@param Source EntityRef @
-function Entity:AddFear(Source)
+---@param Duration number @ (int)
+function Entity:AddFear(Source, Duration)
 end
 
 --- Freezes an entity, making it unable to move and attack.
@@ -124,10 +129,12 @@ end
 ---     ```
 ---
 ---@param Source EntityRef @
-function Entity:AddFreeze(Source)
+---@param Duration number @ (int)
+function Entity:AddFreeze(Source, Duration)
 end
 --- Heals an entity.
-function Entity:AddHealth()
+---@param HitPoints number @ (float)
+function Entity:AddHealth(HitPoints)
 end
 --- Turns the entity into a gold statue (can't move, can't attack, drops coins when killed)
 --- 
@@ -147,7 +154,8 @@ end
 ---     end
 ---     ```
 ---@param Source EntityRef @
-function Entity:AddMidasFreeze(Source)
+---@param Duration number @ (int)
+function Entity:AddMidasFreeze(Source, Duration)
 end
 
 --- Adds a poison effect to the entity.
@@ -178,7 +186,8 @@ end
 ---     ```
 ---@param Source EntityRef @
 ---@param Duration number @ (int)
-function Entity:AddPoison(Source, Duration)
+---@param Damage number @ (float)
+function Entity:AddPoison(Source, Duration, Damage)
 end
 
 --- Adds a shrink effect to the entity.
@@ -196,7 +205,8 @@ end
 ---     end
 ---     ```
 ---@param Source EntityRef @
-function Entity:AddShrink(Source)
+---@param Duration number @ (int)
+function Entity:AddShrink(Source, Duration)
 end
 --- Makes the friction higher effectively slowing down the entity.
 --- 
@@ -213,11 +223,13 @@ end
 ---@param Source EntityRef @
 ---@param Duration number @ (int)
 ---@param SlowValue number @ (float)
-function Entity:AddSlowing(Source, Duration, SlowValue)
+---@param SlowColor Color @
+function Entity:AddSlowing(Source, Duration, SlowValue, SlowColor)
 end
 
 --- Adds velocity to the entity. This can be used to move him in a certain direktion (for example as a result of collision)
-function Entity:AddVelocity()
+---@param Velocity Vector @
+function Entity:AddVelocity(Velocity)
 end
 --- Explodes with gibs and blood.
 function Entity:BloodExplode()
@@ -228,7 +240,8 @@ function Entity:CanShutDoors()
 end
 
 --- Removes all [EntityFlags](enums/EntityFlag.md) from the entity.
-function Entity:ClearEntityFlags()
+---@param Flags number @ (int)
+function Entity:ClearEntityFlags(Flags)
 end
 
 --- Returns true, if the entity is able to collide with the grid.
@@ -316,8 +329,9 @@ end
 function Entity:GetSprite()
 end
 
+---@param Other Entity @
 ---@return boolean @
-function Entity:HasCommonParentWithEntity()
+function Entity:HasCommonParentWithEntity(Other)
 end
 
 --- Returns true, if the entity has all named [EntityFlags](enums/EntityFlag.md) set.
@@ -330,8 +344,9 @@ end
 ---         print("This entity is confused!")
 ---     end
 ---     ```
+---@param Flags number @ (int)
 ---@return boolean @
-function Entity:HasEntityFlags()
+function Entity:HasEntityFlags(Flags)
 end
 
 ---@return boolean @
@@ -346,8 +361,9 @@ end
 function Entity:HasMortalDamage()
 end
 --- return true for non background NPCs (ex: every enemy except fire and shopkeepers)
+---@param includeDead boolean @
 ---@return boolean @
-function Entity:IsActiveEnemy()
+function Entity:IsActiveEnemy(includeDead)
 end
 --- bosses display health bar
 ---@return boolean @
@@ -367,8 +383,9 @@ function Entity:IsFlying()
 end
 --- true every X frames
 ---@param Frame number @ (int)
+---@param Offset number @ (int)
 ---@return boolean @
-function Entity:IsFrame(Frame)
+function Entity:IsFrame(Frame, Offset)
 end
 
 ---@return boolean @
@@ -386,7 +403,8 @@ end
 function Entity:Kill()
 end
 
-function Entity:MultiplyFriction()
+---@param Value number @ (float)
+function Entity:MultiplyFriction(Value)
 end
 
 function Entity:PostRender()
@@ -399,12 +417,14 @@ end
 function Entity:RemoveStatusEffects()
 end
 --- Render the current sprite of the Entity at the current entity position + offset.
-function Entity:Render()
+---@param Offset Vector @
+function Entity:Render(Offset)
 end
 
 --- Render the shadow / shadow layer again.
+---@param Offset Vector @
 ---@return boolean @
-function Entity:RenderShadowLayer()
+function Entity:RenderShadowLayer(Offset)
 end
 
 --- Set the colormask for the entity. This can be used to tint the sprites in different colors.
@@ -420,21 +440,25 @@ end
 ---@param Duration number @ (int)
 ---@param Priority number @ (int)
 ---@param Fadeout boolean @
-function Entity:SetColor(Color, Duration, Priority, Fadeout)
+---@param Share boolean @
+function Entity:SetColor(Color, Duration, Priority, Fadeout, Share)
 end
 
 --- Set the size of the entity.
 ---@param Size number @ (float)
 ---@param SizeMulti Vector @
-function Entity:SetSize(Size, SizeMulti)
+---@param NumGridCollisionPoints number @ (int)
+function Entity:SetSize(Size, SizeMulti, NumGridCollisionPoints)
 end
 
 ---@param AnimationName string @
-function Entity:SetSpriteFrame(AnimationName)
+---@param FrameNum number @ (int)
+function Entity:SetSpriteFrame(AnimationName, FrameNum)
 end
 
 ---@param AnimationName string @
-function Entity:SetSpriteOverlayFrame(AnimationName)
+---@param FrameNum number @ (int)
+function Entity:SetSpriteOverlayFrame(AnimationName, FrameNum)
 end
 
 --- 
@@ -443,8 +467,9 @@ end
 ---@param Damage number @ (float)
 ---@param Flags number @ (int)
 ---@param Source EntityRef @
+---@param DamageCountdown number @ (int)
 ---@return boolean @
-function Entity:TakeDamage(Damage, Flags, Source)
+function Entity:TakeDamage(Damage, Flags, Source, DamageCountdown)
 end
 --- Used to cast an [Entity](Entity.md) object to an [EntityBomb](EntityBomb.md) object.
 --- 

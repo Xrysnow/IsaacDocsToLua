@@ -1,4 +1,4 @@
----@class Game
+---@class Game @
 local Game = {}
 
 --------------------
@@ -26,11 +26,13 @@ function Game:AddDevilRoomDeal()
 end
 
 ---@param Boss EntityType @
-function Game:AddEncounteredBoss(Boss)
+---@param Variant number @ (int)
+function Game:AddEncounteredBoss(Boss, Variant)
 end
 
 --- Triggers the effect of the "retro vision" pill.
-function Game:AddPixelation()
+---@param Duration number @ (int)
+function Game:AddPixelation(Duration)
 end
 
 --- Increases the ingame counter, that keeps track of the stages you cleared without taking damage. (useful for Devil deal manipulations)
@@ -51,7 +53,8 @@ end
 ---@param Source Entity @ (default nil)
 ---@param TearFlags TearFlags @ (default [TearFlags](enums/TearFlags.md.TEAR_NORMAL)
 ---@param DamageFlags number @ (int) (default [DamageFlags](enums/DamageFlag.md.DAMAGE_EXPLOSION)
-function Game:BombDamage(Position, Damage, Radius, LineCheck, Source, TearFlags, DamageFlags)
+---@param DamageSource boolean @ (default false)
+function Game:BombDamage(Position, Damage, Radius, LineCheck, Source, TearFlags, DamageFlags, DamageSource)
 end
 --- The complete bomb explosion package: Do damage, spawn boomgraphics, and apply tearflag-based effects.
 ---@param Position Vector @
@@ -62,21 +65,24 @@ end
 ---@param RadiusMult number @ (float) (default 1)
 ---@param LineCheck boolean @ (default true)
 ---@param DamageSource boolean @ (default false)
-function Game:BombExplosionEffects(Position, Damage, TearFlags, Color, Source, RadiusMult, LineCheck, DamageSource)
+---@param DamageFlags number @ (int) (default [DamageFlags](enums/DamageFlag.md.DAMAGE_EXPLOSION)
+function Game:BombExplosionEffects(Position, Damage, TearFlags, Color, Source, RadiusMult, LineCheck, DamageSource, DamageFlags)
 end
 --- Does bomb-exclusive special effects.
 ---@param Position Vector @
 ---@param Radius number @ (float)
 ---@param TearFlags TearFlags @
 ---@param Source Entity @ (default nil)
-function Game:BombTearflagEffects(Position, Radius, TearFlags, Source)
+---@param RadiusMult number @ (float) (default 1)
+function Game:BombTearflagEffects(Position, Radius, TearFlags, Source, RadiusMult)
 end
 
 ---@param Position Vector @
 ---@param Radius number @ (float)
 ---@param Source Entity @
 ---@param ShowEffect boolean @
-function Game:ButterBeanFart(Position, Radius, Source, ShowEffect)
+---@param DoSuperKnockback boolean @
+function Game:ButterBeanFart(Position, Radius, Source, ShowEffect, DoSuperKnockback)
 end
 
 --- - info "Dimension Info"
@@ -87,12 +93,14 @@ end
 --- 		* 1: Secondary dimension, used by Downpour mirror dimension and Mines escape sequence
 --- 		* 2: Death Certificate dimension
 ---@param RoomIndex number @ (int)
-function Game:ChangeRoom(RoomIndex)
+---@param Dimension number @ (int) (default -1)
+function Game:ChangeRoom(RoomIndex, Dimension)
 end
 
 ---@param Position Vector @
 ---@param Radius number @ (float)
-function Game:CharmFart(Position, Radius)
+---@param Source Entity @
+function Game:CharmFart(Position, Radius, Source)
 end
 
 function Game:ClearDonationModAngel()
@@ -110,19 +118,24 @@ function Game:ClearStagesWithoutHeartsPicked()
 end
 
 ---@param Darkness number @ (float)
-function Game:Darken(Darkness)
+---@param Timeout number @ (int)
+function Game:Darken(Darkness, Timeout)
 end
 
-function Game:DonateAngel()
+---@param Donate number @ (int)
+function Game:DonateAngel(Donate)
 end
 
-function Game:DonateGreed()
+---@param Donate number @ (int)
+function Game:DonateGreed(Donate)
 end
 
-function Game:End()
+---@param Ending Ending @
+function Game:End(Ending)
 end
 
-function Game:Fadein()
+---@param Speed number @ (float)
+function Game:Fadein(Speed)
 end
 --- + note "Notes"
 --- 	FadeoutTarget types:
@@ -138,7 +151,8 @@ end
 --- 	4: Victory lap
 ---
 ---@param Speed number @ (float)
-function Game:Fadeout(Speed)
+---@param Target FadeoutTarget @
+function Game:Fadeout(Speed, Target)
 end
 
 ---@param Position Vector @
@@ -146,7 +160,8 @@ end
 ---@param Source Entity @ (default nil)
 ---@param FartScale number @ (float) (default 1)
 ---@param FartSubType number @ (int) (default 0)
-function Game:Fart(Position, Radius, Source, FartScale, FartSubType)
+---@param FartColor Color @ (default Color.Default)
+function Game:Fart(Position, Radius, Source, FartScale, FartSubType, FartColor)
 end
 
 function Game:FinishChallenge()
@@ -241,8 +256,9 @@ end
 function Game:GetLevel()
 end
 
+---@param Pos Vector @
 ---@return EntityPlayer @
-function Game:GetNearestPlayer()
+function Game:GetNearestPlayer(Pos)
 end
 
 ---@return number @ (int)
@@ -255,13 +271,15 @@ end
 --- Returns the [EntityPlayer](EntityPlayer.md) with the given index. This function can return `nil` if the function is called before any player is initialized. If an index is given, that is not used, it will return the last player in the list.
 --- 
 --- This function is the same as [`Isaac.GetPlayer()`](Isaac.md#getplayer).
+---@param Index number @ (int)
 ---@return EntityPlayer @
-function Game:GetPlayer()
+function Game:GetPlayer(Index)
 end
 
 ---@param Pos Vector @
+---@param Radius number @ (float)
 ---@return EntityPlayer @
-function Game:GetRandomPlayer(Pos)
+function Game:GetRandomPlayer(Pos, Radius)
 end
 
 ---@return Room @
@@ -284,8 +302,9 @@ end
 function Game:GetStagesWithoutHeartsPicked()
 end
 
+---@param GameStateFlag GameStateFlag @
 ---@return boolean @
-function Game:GetStateFlag()
+function Game:GetStateFlag(GameStateFlag)
 end
 
 ---@return number @ (float)
@@ -301,8 +320,9 @@ function Game:GetVictoryLap()
 end
 
 ---@param Boss EntityType @
+---@param Variant number @ (int)
 ---@return boolean @
-function Game:HasEncounteredBoss(Boss)
+function Game:HasEncounteredBoss(Boss, Variant)
 end
 
 ---@return number @ (int)
@@ -319,7 +339,8 @@ function Game:IsPaused()
 end
 
 ---@param IAmErrorRoom boolean @
-function Game:MoveToRandomRoom(IAmErrorRoom)
+---@param Seed number @ (int)
+function Game:MoveToRandomRoom(IAmErrorRoom, Seed)
 end
 
 function Game:NextVictoryLap()
@@ -328,30 +349,37 @@ end
 function Game:Render()
 end
 
+---@param e Entity @
 ---@return boolean @
-function Game:RerollEnemy()
+function Game:RerollEnemy(e)
 end
 
 function Game:RerollLevelCollectibles()
 end
 
-function Game:RerollLevelPickups()
+---@param Seed number @ (int)
+function Game:RerollLevelPickups(Seed)
 end
 
-function Game:SetLastDevilRoomStage()
+---@param Stage LevelStage @
+function Game:SetLastDevilRoomStage(Stage)
 end
 
-function Game:SetLastLevelWithDamage()
+---@param Stage LevelStage @
+function Game:SetLastLevelWithDamage(Stage)
 end
 
-function Game:SetLastLevelWithoutHalfHp()
+---@param Stage LevelStage @
+function Game:SetLastLevelWithoutHalfHp(Stage)
 end
 
 ---@param GameStateFlag GameStateFlag @
-function Game:SetStateFlag(GameStateFlag)
+---@param Val boolean @
+function Game:SetStateFlag(GameStateFlag, Val)
 end
 
-function Game:ShakeScreen()
+---@param Timeout number @ (int)
+function Game:ShakeScreen(Timeout)
 end
 
 function Game:ShowFortune()
@@ -384,7 +412,8 @@ end
 --- 
 ---     ```
 ---@param FrameCount number @ (int)
-function Game:ShowHallucination(FrameCount)
+---@param Backdrop BackdropType @ (default BackdropType.NUM_BACKDROPS)
+function Game:ShowHallucination(FrameCount, Backdrop)
 end
 
 function Game:ShowRule()
@@ -412,14 +441,16 @@ end
 ---@param Velocity Vector @
 ---@param Spawner Entity @
 ---@param SubType number @ (int)
+---@param Seed number @ (int)
 ---@return Entity @
-function Game:Spawn(Type, Variant, Position, Velocity, Spawner, SubType)
+function Game:Spawn(Type, Variant, Position, Velocity, Spawner, SubType, Seed)
 end
 
 ---@param desc EntityDesc @
 ---@param Position Vector @
+---@param Spawner Entity @
 ---@return EntityNPC @
-function Game:SpawnEntityDesc(desc, Position)
+function Game:SpawnEntityDesc(desc, Position, Spawner)
 end
 
 ---@param Pos Vector @
@@ -428,7 +459,8 @@ end
 ---@param Speed number @ (float)
 ---@param Color Color @ (default Color.Default)
 ---@param Height number @ (float) (default 100000)
-function Game:SpawnParticles(Pos, ParticleType, NumParticles, Speed, Color, Height)
+---@param SubType number @ (int) (default 0)
+function Game:SpawnParticles(Pos, ParticleType, NumParticles, Speed, Color, Height, SubType)
 end
 
 --- - info "Dimension Info"
@@ -474,7 +506,8 @@ end
 ---@param Direction Direction @
 ---@param Animation RoomTransitionAnim @ (default RoomTransitionAnim.WALK)
 ---@param Player EntityPlayer @ (default nil)
-function Game:StartRoomTransition(RoomIndex, Direction, Animation, Player)
+---@param Dimension number @ (int) (default -1)
+function Game:StartRoomTransition(RoomIndex, Direction, Animation, Player, Dimension)
 end
 
 --- Starts a transition animation like it`s playing when entering a trapdoor to switch between stages.
@@ -485,7 +518,8 @@ end
 --- * &gt;2: Same as 0
 ---
 ---@param SameStage boolean @
-function Game:StartStageTransition(SameStage)
+---@param Animation StageTransition.Animation @
+function Game:StartStageTransition(SameStage, Animation)
 end
 
 function Game:Update()
@@ -493,7 +527,8 @@ end
 
 ---@param Position Vector @
 ---@param Force number @ (float) (default 10)
-function Game:UpdateStrangeAttractor(Position, Force)
+---@param Radius number @ (float) (default 250)
+function Game:UpdateStrangeAttractor(Position, Force, Radius)
 end
 
 --------------------

@@ -1,4 +1,4 @@
----@class EntityNPC:Entity
+---@class EntityNPC:Entity @
 local EntityNPC = {}
 
 --------------------
@@ -7,15 +7,18 @@ local EntityNPC = {}
 
 ---@param HorizontalAnim string @
 ---@param VerticalAnim string @
-function EntityNPC:AnimWalkFrame(HorizontalAnim, VerticalAnim)
+---@param SpeedThreshold number @ (float)
+function EntityNPC:AnimWalkFrame(HorizontalAnim, VerticalAnim, SpeedThreshold)
 end
 
+---@param DistanceLimit number @ (float)
 ---@return Vector @
-function EntityNPC:CalcTargetPosition()
+function EntityNPC:CalcTargetPosition(DistanceLimit)
 end
 
+---@param Velocity Vector @
 ---@return boolean @
-function EntityNPC:CanBeDamagedFromVelocity()
+function EntityNPC:CanBeDamagedFromVelocity(Velocity)
 end
 
 ---@return boolean @
@@ -25,8 +28,9 @@ end
 ---@param NumProjectiles number @ (int)
 ---@param TargetPos Vector @
 ---@param TrajectoryModifier number @ (float)
+---@param Params ProjectileParams @
 ---@return EntityProjectile @
-function EntityNPC:FireBossProjectiles(NumProjectiles, TargetPos, TrajectoryModifier)
+function EntityNPC:FireBossProjectiles(NumProjectiles, TargetPos, TrajectoryModifier, Params)
 end
 
 --- - info "ProjectilesMode"
@@ -43,7 +47,8 @@ end
 ---@param Pos Vector @
 ---@param Velocity Vector @
 ---@param Mode ProjectilesMode @
-function EntityNPC:FireProjectiles(Pos, Velocity, Mode)
+---@param Params ProjectileParams @
+function EntityNPC:FireProjectiles(Pos, Velocity, Mode, Params)
 end
 --- Used to redirect close door enemies to any enemies for friendly npcs.
 ---@return number @ (int)
@@ -85,11 +90,13 @@ end
 --- **Init**: Set to true when called while initializing the enemy, false otherwise
 ---@param Seed number @ (int)
 ---@param ChampionColorIdx ChampionColor @ (default -1)
-function EntityNPC:MakeChampion(Seed, ChampionColorIdx)
+---@param Init boolean @ (default false)
+function EntityNPC:MakeChampion(Seed, ChampionColorIdx, Init)
 end
 
+---@param Size number @ (float)
 ---@return EntityEffect @
-function EntityNPC:MakeSplat()
+function EntityNPC:MakeSplat(Size)
 end
 
 --- Morph the current entity into another one. [ChampionColorIdx](https://bindingofisaacrebirth.gamepedia.com/Monsters#Champions) can be used to turn the entity into a champion. Use `-1` to turn it into a regular entity.
@@ -103,30 +110,35 @@ end
 ---@param type EntityType @
 ---@param Variant number @ (int)
 ---@param SubType number @ (int)
+---@param ChampionColorIdx number @ (int)
 ---@return boolean @
-function EntityNPC:Morph(type, Variant, SubType)
+function EntityNPC:Morph(type, Variant, SubType, ChampionColorIdx)
 end
 
 ---@param ID SoundEffect @
 ---@param Volume number @ (float)
 ---@param FrameDelay number @ (int)
 ---@param Loop boolean @
-function EntityNPC:PlaySound(ID, Volume, FrameDelay, Loop)
+---@param Pitch number @ (float)
+function EntityNPC:PlaySound(ID, Volume, FrameDelay, Loop, Pitch)
 end
 
+---@param GroupIdx number @ (int)
 ---@return EntityList @
-function EntityNPC:QueryNPCsGroup()
+function EntityNPC:QueryNPCsGroup(GroupIdx)
 end
 
 ---@param SpawnerType EntityType @
 ---@param Type EntityType @
+---@param OnlyEnemies boolean @
 ---@return EntityList @
-function EntityNPC:QueryNPCsSpawnerType(SpawnerType, Type)
+function EntityNPC:QueryNPCsSpawnerType(SpawnerType, Type, OnlyEnemies)
 end
 
 ---@param Type EntityType @
+---@param Variant number @ (int)
 ---@return EntityList @
-function EntityNPC:QueryNPCsType(Type)
+function EntityNPC:QueryNPCsType(Type, Variant)
 end
 
 function EntityNPC:ResetPathFinderTarget()
@@ -136,8 +148,9 @@ end
 ---@param Spawner Entity @
 ---@param TargetPos Vector @
 ---@param Big boolean @
+---@param YOffset number @ (float)
 ---@return EntityNPC @
-function EntityNPC.ThrowSpider(Position, Spawner, TargetPos, Big)
+function EntityNPC.ThrowSpider(Position, Spawner, TargetPos, Big, YOffset)
 end
 
 --------------------

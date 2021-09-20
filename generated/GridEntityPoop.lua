@@ -1,4 +1,4 @@
----@class GridEntityPoop:GridEntity
+---@class GridEntityPoop:GridEntity @
 local GridEntityPoop = {}
 
 --------------------

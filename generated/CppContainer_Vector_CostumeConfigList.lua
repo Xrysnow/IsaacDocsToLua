@@ -1,4 +1,4 @@
----@class CppContainer.Vector.CostumeConfigList
+---@class CppContainer.Vector.CostumeConfigList @
 local CostumeConfigList = {}
 
 --------------------
@@ -20,8 +20,9 @@ end
 --- + bug "Bugs"
 ---     This function does not return usable userdata, rendering it useless.
 ---
+---@param idx number @ (int)
 ---@return userdata @
-function CostumeConfigList:Get()
+function CostumeConfigList:Get(idx)
 end
 
 --------------------

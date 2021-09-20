@@ -1,4 +1,4 @@
----@class GridEntitySpikes:GridEntity
+---@class GridEntitySpikes:GridEntity @
 local GridEntitySpikes = {}
 
 --------------------

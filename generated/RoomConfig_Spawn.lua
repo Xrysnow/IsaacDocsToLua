@@ -1,12 +1,13 @@
----@class RoomConfig.Spawn
+---@class RoomConfig.Spawn @
 local Spawn = {}
 
 --------------------
 -- Functions
 --------------------
 --- r is a value between 0 and 1
+---@param r number @ (float)
 ---@return RoomConfig.Entry @ (const)
-function Spawn:PickEntry()
+function Spawn:PickEntry(r)
 end
 
 --------------------

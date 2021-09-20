@@ -1,14 +1,16 @@
----@class GridEntityPit:GridEntity
+---@class GridEntityPit:GridEntity @
 local GridEntityPit = {}
 
 --------------------
 -- Functions
 --------------------
 --- parentEntity can be `nil` to use the default texture as the bridge
-function GridEntityPit:MakeBridge()
+---@param parentEntity GridEntity @
+function GridEntityPit:MakeBridge(parentEntity)
 end
 
-function GridEntityPit:SetLadder()
+---@param Value boolean @
+function GridEntityPit:SetLadder(Value)
 end
 
 function GridEntityPit:UpdateCollision()

@@ -1,4 +1,4 @@
----@class ItemConfig.PillEffect
+---@class ItemConfig.PillEffect @
 local PillEffect = {}
 
 --------------------

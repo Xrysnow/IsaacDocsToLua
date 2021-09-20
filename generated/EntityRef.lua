@@ -1,12 +1,13 @@
----@class EntityRef
+---@class EntityRef @
 local EntityRef = {}
 
 --------------------
 -- Constructors
 --------------------
 
+---@param [Entity](Entity.md  @
 ---@return EntityRef @
-function EntityRef:EntityRef()
+function EntityRef:EntityRef([Entity](Entity.md)
 end
 
 --------------------

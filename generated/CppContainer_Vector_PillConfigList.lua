@@ -1,4 +1,4 @@
----@class CppContainer.Vector.PillConfigList
+---@class CppContainer.Vector.PillConfigList @
 local PillConfigList = {}
 
 --------------------
@@ -20,8 +20,9 @@ end
 --- + bug "Bugs"
 ---     This function does not return usable userdata, rendering it useless.
 ---
+---@param idx number @ (int)
 ---@return userdata @
-function PillConfigList:Get()
+function PillConfigList:Get(idx)
 end
 
 --------------------

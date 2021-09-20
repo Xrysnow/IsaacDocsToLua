@@ -1,4 +1,4 @@
----@class ProjectileParams
+---@class ProjectileParams @
 local ProjectileParams = {}
 
 --------------------

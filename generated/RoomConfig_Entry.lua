@@ -1,4 +1,4 @@
----@class RoomConfig.Entry
+---@class RoomConfig.Entry @
 local Entry = {}
 
 --------------------

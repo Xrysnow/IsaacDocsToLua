@@ -1,19 +1,21 @@
----@class EntityPtr
+---@class EntityPtr @
 local EntityPtr = {}
 
 --------------------
 -- Constructors
 --------------------
 
+---@param [Entity](Entity.md  @
 ---@return EntityPtr @ (const)
-function EntityPtr:EntityPtr()
+function EntityPtr:EntityPtr([Entity](Entity.md)
 end
 
 --------------------
 -- Functions
 --------------------
 
-function EntityPtr:SetReference()
+---@param ref Entity @
+function EntityPtr:SetReference(ref)
 end
 
 --------------------

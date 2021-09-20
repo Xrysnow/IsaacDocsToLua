@@ -1,4 +1,4 @@
----@class ShockwaveParams
+---@class ShockwaveParams @
 local ShockwaveParams = {}
 
 --------------------

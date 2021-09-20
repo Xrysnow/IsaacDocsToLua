@@ -1,4 +1,4 @@
----@class ItemConfig.Costume
+---@class ItemConfig.Costume @
 local Costume = {}
 
 --------------------

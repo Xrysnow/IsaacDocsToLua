@@ -1,4 +1,4 @@
----@class QueueItemData
+---@class QueueItemData @
 local QueueItemData = {}
 
 --------------------

@@ -1,4 +1,4 @@
----@class Mod.Reference
+---@class Mod.Reference @
 local Mod_Reference = {}
 
 --------------------
@@ -7,7 +7,8 @@ local Mod_Reference = {}
 
 ---@param callbackId number @ (int)
 ---@param callbackFn function @
-function Mod_Reference:AddCallback(callbackId, callbackFn)
+---@param entityId number @ (int)
+function Mod_Reference:AddCallback(callbackId, callbackFn, entityId)
 end
 
 --- Returns "true" if your mod has Data stored using the "SaveData()" function. Aka. if there is a "saveX.dat" file in your mod folder. There are 3 "saveX.dat" files, one per Savegame. They are stored in the mod's folder next to the "main.lua" file. The number indicates the savegame it corresponds to. The number will be determined automatically by the game.
@@ -40,7 +41,8 @@ function Mod_Reference:LoadData()
 end
 
 ---@param callbackId number @ (int)
-function Mod_Reference:RemoveCallback(callbackId)
+---@param callbackFn function @
+function Mod_Reference:RemoveCallback(callbackId, callbackFn)
 end
 
 --- Deletes the stored "saveX.dat" file if it exists.
@@ -65,7 +67,8 @@ end
 ---     yourMod:AddCallback(ModCallbacks.MC_PRE_GAME_EXIT, yourMod.SaveGame)
 --- 
 ---     ```
-function Mod_Reference:SaveData()
+---@param data string @
+function Mod_Reference:SaveData(data)
 end
 
 --------------------

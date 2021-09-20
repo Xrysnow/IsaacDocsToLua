@@ -1,36 +1,44 @@
----@class EntityTear:Entity
+---@class EntityTear:Entity @
 local EntityTear = {}
 
 --------------------
 -- Functions
 --------------------
 
-function EntityTear:AddTearFlags()
+---@param Flags TearFlags @
+function EntityTear:AddTearFlags(Flags)
 end
 
-function EntityTear:ChangeVariant()
+---@param NewVariant number @ (int)
+function EntityTear:ChangeVariant(NewVariant)
 end
 
-function EntityTear:ClearTearFlags()
+---@param Flags TearFlags @
+function EntityTear:ClearTearFlags(Flags)
 end
 
+---@param Flags TearFlags @
 ---@return boolean @
-function EntityTear:HasTearFlags()
+function EntityTear:HasTearFlags(Flags)
 end
 --- Resets the tear sprite animation depending on scale.
 function EntityTear:ResetSpriteScale()
 end
 
-function EntityTear:SetDeadEyeIntensity()
+---@param Intensity number @ (float)
+function EntityTear:SetDeadEyeIntensity(Intensity)
 end
 
-function EntityTear:SetKnockbackMultiplier()
+---@param Multiplier number @ (float)
+function EntityTear:SetKnockbackMultiplier(Multiplier)
 end
 
-function EntityTear:SetParentOffset()
+---@param Offset Vector @
+function EntityTear:SetParentOffset(Offset)
 end
 
-function EntityTear:SetWaitFrames()
+---@param Value number @ (int)
+function EntityTear:SetWaitFrames(Value)
 end
 
 --------------------

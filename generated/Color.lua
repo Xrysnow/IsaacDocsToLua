@@ -1,4 +1,4 @@
----@class Color
+---@class Color @
 local Color = {}
 
 --------------------
@@ -18,8 +18,9 @@ local Color = {}
 ---@param A number @ (float) (default 1)
 ---@param RO number @ (float) (default 0)
 ---@param GO number @ (float) (default 0)
+---@param BO number @ (float) (default 0)
 ---@return Color @
-function Color:Color(R, G, B, A, RO, GO)
+function Color:Color(R, G, B, A, RO, GO, BO)
 end
 
 --------------------
@@ -27,8 +28,9 @@ end
 --------------------
 
 --- Defines the multiplication of two [Color](Color.md) objects using the `*` operator.
+---@param right Color @
 ---@return Color @
-function Color:__mul()
+function Color:__mul(right)
 end
 
 --------------------
@@ -45,8 +47,9 @@ Color.Default = nil
 --- Linear Interpolation between two colors. `t` is the "progress" of the interpolation. Setting `t = 0.5` means that the color in the middle of m1 and m2 will be returned.
 ---@param m1 Color @
 ---@param m2 Color @
+---@param t number @ (float)
 ---@return Color @
-function Color.Lerp(m1, m2)
+function Color.Lerp(m1, m2, t)
 end
 
 function Color:Reset()
@@ -80,20 +83,23 @@ end
 ---@param Red number @ (float)
 ---@param Green number @ (float)
 ---@param Blue number @ (float)
-function Color:SetColorize(Red, Green, Blue)
+---@param Amount number @ (float)
+function Color:SetColorize(Red, Green, Blue, Amount)
 end
 
 --- Offset is a color that gets added to the sprite after the Tint was applied.
 ---@param RedOffset number @ (float)
 ---@param GreenOffset number @ (float)
-function Color:SetOffset(RedOffset, GreenOffset)
+---@param BlueOffset number @ (float)
+function Color:SetOffset(RedOffset, GreenOffset, BlueOffset)
 end
 
 --- Tint acts like a color multiplicator.
 ---@param RedTint number @ (float)
 ---@param GreenTint number @ (float)
 ---@param BlueTint number @ (float)
-function Color:SetTint(RedTint, GreenTint, BlueTint)
+---@param AlphaTint number @ (float)
+function Color:SetTint(RedTint, GreenTint, BlueTint, AlphaTint)
 end
 
 --------------------

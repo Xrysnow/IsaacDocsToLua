@@ -1,4 +1,4 @@
----@class GridEntityDoor:GridEntity
+---@class GridEntityDoor:GridEntity @
 local GridEntityDoor = {}
 
 --------------------
@@ -12,7 +12,8 @@ end
 function GridEntityDoor:CanBlowOpen()
 end
 
-function GridEntityDoor:Close()
+---@param Force boolean @
+function GridEntityDoor:Close(Force)
 end
 
 ---@return Vector @ (const)
@@ -35,8 +36,9 @@ end
 function GridEntityDoor:IsOpen()
 end
 
+---@param Type RoomType @
 ---@return boolean @
-function GridEntityDoor:IsRoomType()
+function GridEntityDoor:IsRoomType(Type)
 end
 
 ---@return boolean @
@@ -46,24 +48,28 @@ end
 function GridEntityDoor:Open()
 end
 
-function GridEntityDoor:SetLocked()
+---@param Locked boolean @
+function GridEntityDoor:SetLocked(Locked)
 end
 
 ---@param CurrentRoomType RoomType @
-function GridEntityDoor:SetRoomTypes(CurrentRoomType)
+---@param TargetRoomType RoomType @
+function GridEntityDoor:SetRoomTypes(CurrentRoomType, TargetRoomType)
 end
 
 function GridEntityDoor:SpawnDust()
 end
 --- try to open the door by explosive force, true for success
 ---@param FromExplosion boolean @
+---@param source Entity @
 ---@return boolean @
-function GridEntityDoor:TryBlowOpen(FromExplosion)
+function GridEntityDoor:TryBlowOpen(FromExplosion, source)
 end
 --- try to unlock the door using a key, true for success
 ---@param player boolean_TryUnlock_([EntityPlayer](EntityPlayer.md @
+---@param Force boolean @
 ---@return boolean_TryUnlock_([EntityPlayer](EntityPlayer.md)_player,_boolean_Force @
-function GridEntityDoor:TryUnlock(player)
+function GridEntityDoor:TryUnlock(player, Force)
 end
 
 --------------------

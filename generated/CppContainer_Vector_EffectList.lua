@@ -1,4 +1,4 @@
----@class CppContainer.Vector.EffectList
+---@class EffectList @ (CppContainer.Vector.EffectList)
 local EffectList = {}
 
 --------------------
@@ -17,8 +17,9 @@ end
 
 --- Returns the [TemporaryEffect](TemporaryEffect.md) at the index of the list provided.
 ---
+---@param idx number @ (int)
 ---@return TemporaryEffect @
-function EffectList:Get()
+function EffectList:Get(idx)
 end
 
 --------------------

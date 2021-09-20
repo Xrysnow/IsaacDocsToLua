@@ -1,4 +1,4 @@
----@class CppContainer.Vector.VectorList
+---@class CppContainer.Vector.VectorList @
 local VectorList = {}
 
 --------------------
@@ -15,8 +15,9 @@ end
 -- Functions
 --------------------
 
+---@param idx number @ (int)
 ---@return Vector @
-function VectorList:Get()
+function VectorList:Get(idx)
 end
 
 --------------------

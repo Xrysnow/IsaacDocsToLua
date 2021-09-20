@@ -1,4 +1,4 @@
----@class TearParams
+---@class TearParams @
 local TearParams = {}
 
 --------------------

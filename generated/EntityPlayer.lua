@@ -1,4 +1,4 @@
----@class EntityPlayer:Entity
+---@class EntityPlayer:Entity @
 local EntityPlayer = {}
 
 --------------------
@@ -13,22 +13,26 @@ local EntityPlayer = {}
 ---     Isaac.GetPlayer(0):AddBlackHearts(2)
 ---     ```
 ---
-function EntityPlayer:AddBlackHearts()
+---@param BlackHearts number @ (int)
+function EntityPlayer:AddBlackHearts(BlackHearts)
 end
 
 --- Only works on Tainted Bethany.
 ---
-function EntityPlayer:AddBloodCharge()
+---@param Amount number @ (int)
+function EntityPlayer:AddBloodCharge(Amount)
 end
 
 ---@param Amount number @ (int)
 ---@param Position Vector @
+---@param Target Entity @
 ---@return Entity @
-function EntityPlayer:AddBlueFlies(Amount, Position)
+function EntityPlayer:AddBlueFlies(Amount, Position, Target)
 end
 
+---@param Position Vector @
 ---@return Entity @
-function EntityPlayer:AddBlueSpider()
+function EntityPlayer:AddBlueSpider(Position)
 end
 
 --- Adds bombs to the player. Remove them with negative numbers.
@@ -39,7 +43,8 @@ end
 ---     Isaac.GetPlayer(0):AddBombs(-1)
 ---     ```
 ---
-function EntityPlayer:AddBombs()
+---@param Amount number @ (int)
+function EntityPlayer:AddBombs(Amount)
 end
 
 --- Adds bone hearts to the player. 1 unit is a single bone heart. Remove them with negative numbers.
@@ -50,10 +55,12 @@ end
 ---     Isaac.GetPlayer(0):AddBoneHearts(1)
 ---     ```
 ---
-function EntityPlayer:AddBoneHearts()
+---@param Hearts number @ (int)
+function EntityPlayer:AddBoneHearts(Hearts)
 end
 
-function EntityPlayer:AddBrokenHearts()
+---@param BrokenHearts number @ (int)
+function EntityPlayer:AddBrokenHearts(BrokenHearts)
 end
 --- Will reevaluate the cache flags provided in the next cache reevaluation.
 --- 
@@ -62,10 +69,12 @@ end
 ---     ```lua
 ---     Isaac.GetPlayer(0):AddCacheFlags(CacheFlag.CACHE_DAMAGE | CacheFlag.CACHE_FIREDELAY | CacheFlag.CACHE_LUCK)
 ---     ```
-function EntityPlayer:AddCacheFlags()
+---@param CacheFlag CacheFlag @
+function EntityPlayer:AddCacheFlags(CacheFlag)
 end
 
-function EntityPlayer:AddCard()
+---@param ID Card @
+function EntityPlayer:AddCard(ID)
 end
 
 --- Adds coins to the player. Remove them with negative numbers.
@@ -76,7 +85,8 @@ end
 ---     Isaac.GetPlayer(0):AddCoins(1)
 ---     ```
 ---
-function EntityPlayer:AddCoins()
+---@param Amount number @ (int)
+function EntityPlayer:AddCoins(Amount)
 end
 
 --- Setting **FirstTimePickingUp** to false will not add the consumables (keys, bombs,...) of the item and will cause it to not count towards transformations.
@@ -114,14 +124,17 @@ end
 ---@param Charge number @ (int) (default 0)
 ---@param FirstTimePickingUp boolean @ (default true)
 ---@param Slot ActiveSlot @ (default ActiveSlot.SLOT_PRIMARY)
-function EntityPlayer:AddCollectible(Type, Charge, FirstTimePickingUp, Slot)
+---@param VarData number @ (int) (default 0)
+function EntityPlayer:AddCollectible(Type, Charge, FirstTimePickingUp, Slot, VarData)
 end
 
-function EntityPlayer:AddControlsCooldown()
+---@param Cooldown number @ (int)
+function EntityPlayer:AddControlsCooldown(Cooldown)
 end
 
----@param Item ItemConfig::Item @
-function EntityPlayer:AddCostume(Item)
+---@param Item ItemConfig.Item @
+---@param ItemStateOnly boolean @
+function EntityPlayer:AddCostume(Item, ItemStateOnly)
 end
 
 function EntityPlayer:AddCurseMistEffect()
@@ -143,7 +156,8 @@ end
 ---     Isaac.GetPlayer(0):AddEternalHearts(1)
 ---     ```
 ---
-function EntityPlayer:AddEternalHearts()
+---@param EternalHearts number @ (int)
+function EntityPlayer:AddEternalHearts(EternalHearts)
 end
 
 --- - note "Dip Subtypes"
@@ -161,14 +175,16 @@ end
 ---     20: brownie
 ---     ```
 ---@param Subtype number @ (int)
-function EntityPlayer:AddFriendlyDip(Subtype)
+---@param Position Vector @
+function EntityPlayer:AddFriendlyDip(Subtype, Position)
 end
 
 --- - note "Notes"
 --- 	Giga bombs do not add to the bomb counter, make sure to increase the bomb count beforehand!
 --- 	You can't add more giga bombs than player's current bomb count.
 ---
-function EntityPlayer:AddGigaBombs()
+---@param GigaBombs number @ (int)
+function EntityPlayer:AddGigaBombs(GigaBombs)
 end
 
 function EntityPlayer:AddGoldenBomb()
@@ -182,7 +198,8 @@ end
 ---     Isaac.GetPlayer(0):AddGoldenHearts(1)
 ---     ```
 ---
-function EntityPlayer:AddGoldenHearts()
+---@param Hearts number @ (int)
+function EntityPlayer:AddGoldenHearts(Hearts)
 end
 
 function EntityPlayer:AddGoldenKey()
@@ -196,19 +213,23 @@ end
 ---     Isaac.GetPlayer(0):AddHearts(2)
 ---     ```
 ---
-function EntityPlayer:AddHearts()
+---@param Hearts number @ (int)
+function EntityPlayer:AddHearts(Hearts)
 end
 
 ---@param Collectible CollectibleType @
 ---@param Position Vector @
+---@param AdjustOrbitLayer boolean @ (default false)
 ---@return EntityFamiliar @
-function EntityPlayer:AddItemWisp(Collectible, Position)
+function EntityPlayer:AddItemWisp(Collectible, Position, AdjustOrbitLayer)
 end
 
-function EntityPlayer:AddJarFlies()
+---@param Flies number @ (int)
+function EntityPlayer:AddJarFlies(Flies)
 end
 
-function EntityPlayer:AddJarHearts()
+---@param Hearts number @ (int)
+function EntityPlayer:AddJarHearts(Hearts)
 end
 
 --- Adds keys to the player. Remove them with negative numbers.
@@ -219,7 +240,8 @@ end
 ---     Isaac.GetPlayer(0):AddKeys(1)
 ---     ```
 ---
-function EntityPlayer:AddKeys()
+---@param Amount number @ (int)
+function EntityPlayer:AddKeys(Amount)
 end
 
 --- Adds heart containers to the player. 2 units is a full heart container. Remove them with negative numbers.
@@ -242,22 +264,27 @@ end
 ---     If Keeper has Greed's Gullet and this boolean is set to true, Max hearts can be added or removed from Keeper normally.
 ---
 ---@param MaxHearts number @ (int)
-function EntityPlayer:AddMaxHearts(MaxHearts)
+---@param IgnoreKeeper boolean @
+function EntityPlayer:AddMaxHearts(MaxHearts, IgnoreKeeper)
 end
 
 ---@param Position Vector @
+---@param PlayAnim boolean @ (default true)
 ---@return EntityFamiliar @
-function EntityPlayer:AddMinisaac(Position)
+function EntityPlayer:AddMinisaac(Position, PlayAnim)
 end
 --- for Lua
-function EntityPlayer:AddNullCostume()
+---@param NullId NullItemID @
+function EntityPlayer:AddNullCostume(NullId)
 end
 
-function EntityPlayer:AddPill()
+---@param Pill PillColor @
+function EntityPlayer:AddPill(Pill)
 end
 --- Adds the costume of the given transformation.
 ---
-function EntityPlayer:AddPlayerFormCostume()
+---@param Form PlayerForm @
+function EntityPlayer:AddPlayerFormCostume(Form)
 end
 
 function EntityPlayer:AddPrettyFly()
@@ -270,12 +297,14 @@ end
 ---     Isaac.GetPlayer(0):AddRottenHearts(2)
 ---     ```
 ---
-function EntityPlayer:AddRottenHearts()
+---@param RottenHearts number @ (int)
+function EntityPlayer:AddRottenHearts(RottenHearts)
 end
 
 --- Only works on Bethany.
 ---
-function EntityPlayer:AddSoulCharge()
+---@param Amount number @ (int)
+function EntityPlayer:AddSoulCharge(Amount)
 end
 
 --- Adds soul hearts to the player. 1 unit is half a heart. Remove them with negative numbers.
@@ -285,11 +314,13 @@ end
 ---     ```lua
 ---     Isaac.GetPlayer(0):AddSoulHearts(2)
 ---     ```
-function EntityPlayer:AddSoulHearts()
+---@param SoulHearts number @ (int)
+function EntityPlayer:AddSoulHearts(SoulHearts)
 end
 
+---@param Position Vector @
 ---@return EntityFamiliar @
-function EntityPlayer:AddSwarmFlyOrbital()
+function EntityPlayer:AddSwarmFlyOrbital(Position)
 end
 
 --- - If the player does not have any open trinket slots, this function will do nothing.
@@ -297,7 +328,8 @@ end
 --- - If you provide an argument of 0 or an otherwise invalid trinket ID, the game will crash.
 --- - Setting **FirstTimePickingUp** to false will not spawn or add pickups for the item and will not cause it to count towards transformations.
 ---@param Type TrinketType @
-function EntityPlayer:AddTrinket(Type)
+---@param FirstTimePickingUp boolean @ (default true)
+function EntityPlayer:AddTrinket(Type, FirstTimePickingUp)
 end
 --- The type of Wisp can be defined with the Collectible. If the ID is not corresponding to an active item with a special wisp, it will default to the regular blue wisp.
 --- 
@@ -306,20 +338,23 @@ end
 ---@param Collectible CollectibleType @
 ---@param Position Vector @
 ---@param AdjustOrbitLayer boolean @ (default false)
+---@param DontUpdate boolean @ (default false)
 ---@return EntityFamiliar @
-function EntityPlayer:AddWisp(Collectible, Position, AdjustOrbitLayer)
+function EntityPlayer:AddWisp(Collectible, Position, AdjustOrbitLayer, DontUpdate)
 end
 --- Play the animation that is normally played at the beginning of a stage.
 function EntityPlayer:AnimateAppear()
 end
 
 ---@param ID Card @
-function EntityPlayer:AnimateCard(ID)
+---@param AnimName string @ (default "Pickup")
+function EntityPlayer:AnimateCard(ID, AnimName)
 end
 
 ---@param Collectible CollectibleType @
 ---@param AnimName string @ (default "Pickup")
-function EntityPlayer:AnimateCollectible(Collectible, AnimName)
+---@param SpriteAnimName string @ (default "PlayerPickupSparkle")
+function EntityPlayer:AnimateCollectible(Collectible, AnimName, SpriteAnimName)
 end
 --- thumbs up
 function EntityPlayer:AnimateHappy()
@@ -329,7 +364,8 @@ function EntityPlayer:AnimateLightTravel()
 end
 
 ---@param Pill PillColor @
-function EntityPlayer:AnimatePill(Pill)
+---@param AnimName string @ (default "Pickup")
+function EntityPlayer:AnimatePill(Pill, AnimName)
 end
 --- Fall into pitfall.
 function EntityPlayer:AnimatePitfallIn()
@@ -341,7 +377,8 @@ end
 function EntityPlayer:AnimateSad()
 end
 --- teleport to another room
-function EntityPlayer:AnimateTeleport()
+---@param Up boolean @
+function EntityPlayer:AnimateTeleport(Up)
 end
 --- end of a stage
 function EntityPlayer:AnimateTrapdoor()
@@ -349,7 +386,8 @@ end
 
 ---@param Trinket TrinketType @
 ---@param AnimName string @ (default "Pickup")
-function EntityPlayer:AnimateTrinket(Trinket, AnimName)
+---@param SpriteAnimName string @ (default "PlayerPickupSparkle")
+function EntityPlayer:AnimateTrinket(Trinket, AnimName, SpriteAnimName)
 end
 
 ---@return boolean @
@@ -360,8 +398,9 @@ end
 function EntityPlayer:AreOpposingShootDirectionsPressed()
 end
 
+---@param Type CollectibleType @ (default CollectibleType.COLLECTIBLE_NULL)
 ---@return boolean @
-function EntityPlayer:CanAddCollectible()
+function EntityPlayer:CanAddCollectible(Type)
 end
 --- returns true if player has room for more black hearts
 ---@return boolean @
@@ -404,7 +443,8 @@ end
 --- 	Changing to Tainted Forgotten will result in no Tainted Soul appearing
 --- 	Changing to Tainted Lazarus will result in player only having one form
 ---
-function EntityPlayer:ChangePlayerType()
+---@param PlayerType PlayerType @
+function EntityPlayer:ChangePlayerType(PlayerType)
 end
 --- **SourceItem**: The item this type of familiar was created by
 --- 
@@ -412,8 +452,9 @@ end
 ---@param FamiliarVariant number @ (int)
 ---@param TargetCount number @ (int)
 ---@param rng RNG @
----@param SourceItem ItemConfig::Item @ (default nil)
-function EntityPlayer:CheckFamiliar(FamiliarVariant, TargetCount, rng, SourceItem)
+---@param SourceItem ItemConfig.Item @ (default nil)
+---@param FamiliarSubType number @ (int) (default -1)
+function EntityPlayer:CheckFamiliar(FamiliarVariant, TargetCount, rng, SourceItem, FamiliarSubType)
 end
 --- Removes all costumes.
 function EntityPlayer:ClearCostumes()
@@ -426,22 +467,27 @@ function EntityPlayer:ClearTemporaryEffects()
 end
 
 --- Sets the charge of your active item to 0 without triggering the active item effect.
-function EntityPlayer:DischargeActiveItem()
+---@param ActiveSlot ActiveSlot @ (default ActiveSlot.SLOT_PRIMARY)
+function EntityPlayer:DischargeActiveItem(ActiveSlot)
 end
 
-function EntityPlayer:DonateLuck()
+---@param Luck number @ (int)
+function EntityPlayer:DonateLuck(Luck)
 end
 
-function EntityPlayer:DoZitEffect()
+---@param Direction Vector @
+function EntityPlayer:DoZitEffect(Direction)
 end
 
 --- Drops a held pocketitem (Card, Pill, Rune... from the given itemslot at the given position. Possible pocketnumbers are [0, 1, 2, 3].  Dropping pocket active items or dice bag dices does not work.
 ---@param PocketNum number @ (int)
-function EntityPlayer:DropPocketItem(PocketNum)
+---@param Pos Vector @
+function EntityPlayer:DropPocketItem(PocketNum, Pos)
 end
 
 ---@param DropPos Vector @
-function EntityPlayer:DropTrinket(DropPos)
+---@param ReplaceTick boolean @
+function EntityPlayer:DropTrinket(DropPos, ReplaceTick)
 end
 --- Triggers a cache reevaluation. Will trigger the MC_EVALUATE_CACHE callback.
 --- 
@@ -460,27 +506,31 @@ end
 
 ---@param Position Vector @
 ---@param Velocity Vector @
+---@param Source Entity @ (default nil)
 ---@return EntityBomb @
-function EntityPlayer:FireBomb(Position, Velocity)
+function EntityPlayer:FireBomb(Position, Velocity, Source)
 end
 
 ---@param Direction Vector @
 ---@param Source Entity @ (default nil)
+---@param DamageMultiplier number @ (float) (default 1)
 ---@return EntityLaser @
-function EntityPlayer:FireBrimstone(Direction, Source)
+function EntityPlayer:FireBrimstone(Direction, Source, DamageMultiplier)
 end
 
 ---@param Angle number @ (float)
+---@param Parent Entity @
 ---@return EntityLaser @
-function EntityPlayer:FireDelayedBrimstone(Angle)
+function EntityPlayer:FireDelayedBrimstone(Angle, Parent)
 end
 
 ---@param Parent Entity @
 ---@param RotationOffset number @ (float) (default 0)
 ---@param CantOverwrite boolean @ (default false)
 ---@param SubType number @ (int) (default 0)
+---@param Variant number @ (int) (default 0)
 ---@return EntityKnife @
-function EntityPlayer:FireKnife(Parent, RotationOffset, CantOverwrite, SubType)
+function EntityPlayer:FireKnife(Parent, RotationOffset, CantOverwrite, SubType, Variant)
 end
 --- This replaces the protected fire_tear() to allow other entities (Such as bombs) to easily shoot tears in the same manner and with all the effects the player does. (Ex. Sad Bombs)
 ---@param Position Vector @
@@ -489,8 +539,9 @@ end
 ---@param NoTractorBeam boolean @ (default false)
 ---@param CanTriggerStreakEnd boolean @ (default true)
 ---@param Source Entity @ (default nil)
+---@param DamageMultiplier number @ (float) (default 1)
 ---@return EntityTear @
-function EntityPlayer:FireTear(Position, Velocity, CanBeEye, NoTractorBeam, CanTriggerStreakEnd, Source)
+function EntityPlayer:FireTear(Position, Velocity, CanBeEye, NoTractorBeam, CanTriggerStreakEnd, Source, DamageMultiplier)
 end
 
 ---@param Position Vector @
@@ -499,16 +550,18 @@ end
 ---@param LeftEye boolean @
 ---@param OneHit boolean @ (default false)
 ---@param Source Entity @ (default nil)
+---@param DamageMultiplier number @ (float) (default 1)
 ---@return EntityLaser @
-function EntityPlayer:FireTechLaser(Position, OffsetID, Direction, LeftEye, OneHit, Source)
+function EntityPlayer:FireTechLaser(Position, OffsetID, Direction, LeftEye, OneHit, Source, DamageMultiplier)
 end
 
 ---@param Position Vector @
 ---@param Direction Vector @
 ---@param Radius number @ (float)
 ---@param Source Entity @ (default nil)
+---@param DamageMultiplier number @ (float) (default 1)
 ---@return EntityLaser @
-function EntityPlayer:FireTechXLaser(Position, Direction, Radius, Source)
+function EntityPlayer:FireTechXLaser(Position, Direction, Radius, Source, DamageMultiplier)
 end
 --- called after animation is finished, or on special occasions to prevent bugs
 ---@return boolean @
@@ -518,23 +571,27 @@ end
 --- 
 --- **Force**: If set, items will always be charged even if they normally cannot be recharged by batteries
 ---@param ActiveSlot ActiveSlot @ (default ActiveSlot.SLOT_PRIMARY)
+---@param Force number @ (int) (default false)
 ---@return boolean @
-function EntityPlayer:FullCharge(ActiveSlot)
+function EntityPlayer:FullCharge(ActiveSlot, Force)
 end
 
 --- Get the current charge of your active item.
+---@param ActiveSlot ActiveSlot @ (default ActiveSlot.SLOT_PRIMARY)
 ---@return number @ (int)
-function EntityPlayer:GetActiveCharge()
+function EntityPlayer:GetActiveCharge(ActiveSlot)
 end
 --- Returns the currently held item. Returns `0` when no item is held.
 ---
+---@param ActiveSlot ActiveSlot @ (default ActiveSlot.SLOT_PRIMARY)
 ---@return CollectibleType @
-function EntityPlayer:GetActiveItem()
+function EntityPlayer:GetActiveItem(ActiveSlot)
 end
 
 --- Get the current items subcharge. (Useful for items that charge up over time.)
+---@param ActiveSlot ActiveSlot @ (default ActiveSlot.SLOT_PRIMARY)
 ---@return number @ (int)
-function EntityPlayer:GetActiveSubCharge()
+function EntityPlayer:GetActiveSubCharge(ActiveSlot)
 end
 
 ---@return Entity @
@@ -550,8 +607,9 @@ function EntityPlayer:GetBabySkin()
 end
 
 --- Get the current charge progress of the second charge of your current active item. This bar is only active, when you have the Collectible "The Battery"
+---@param ActiveSlot ActiveSlot @ (default ActiveSlot.SLOT_PRIMARY)
 ---@return number @ (int)
-function EntityPlayer:GetBatteryCharge()
+function EntityPlayer:GetBatteryCharge(ActiveSlot)
 end
 --- This does not return the # of black hearts, this returns the bit mask for which soul hearts are black hearts.
 ---
@@ -568,8 +626,9 @@ function EntityPlayer:GetBombFlags()
 end
 --- Pass tear flags to add extra effects to the bomb visual like burn -> hot bombs, even if player doesn't have Hot Bombs collectible. ForceSmallBomb will override large bomb variants for TEAR_PERSISTENT.
 ---@param TearFlags TearFlags @
+---@param ForceSmallBomb boolean @
 ---@return BombVariant @
-function EntityPlayer:GetBombVariant(TearFlags)
+function EntityPlayer:GetBombVariant(TearFlags, ForceSmallBomb)
 end
 --- Returns the number of bone hearts as an integer value. 1 Boneheart = 1.
 --- 
@@ -590,12 +649,14 @@ function EntityPlayer:GetBrokenHearts()
 end
 
 --- Gets the ID of the card the player is holding in the given itemslot (0 = Main slot, 1 = secondary slot, 2 or 3). Returns `0` when no card is held in the slot.
+---@param SlotId number @ (int)
 ---@return Card @
-function EntityPlayer:GetCard()
+function EntityPlayer:GetCard(SlotId)
 end
 
+---@param ID Card @
 ---@return RNG @
-function EntityPlayer:GetCardRNG()
+function EntityPlayer:GetCardRNG(ID)
 end
 
 ---@return number @ (int)
@@ -603,18 +664,21 @@ function EntityPlayer:GetCollectibleCount()
 end
 --- **IgnoreModifiers**: If set to true, only counts collectibles the player actually owns and ignores effects granted by items like Zodiac, 3 Dollar Bill and Lemegeton
 ---@param Type CollectibleType @
+---@param IgnoreModifiers boolean @ (default false)
 ---@return number @ (int)
-function EntityPlayer:GetCollectibleNum(Type)
+function EntityPlayer:GetCollectibleNum(Type, IgnoreModifiers)
 end
 
+---@param ID CollectibleType @
 ---@return RNG @
-function EntityPlayer:GetCollectibleRNG()
+function EntityPlayer:GetCollectibleRNG(ID)
 end
 
 ---@param NullFrameName string @
 ---@param HeadScale boolean @
+---@param Direction Vector @
 ---@return Vector @
-function EntityPlayer:GetCostumeNullPos(NullFrameName, HeadScale)
+function EntityPlayer:GetCostumeNullPos(NullFrameName, HeadScale, Direction)
 end
 
 ---@return number @ (int)
@@ -692,8 +756,9 @@ function EntityPlayer:GetJarHearts()
 end
 
 ---@param ID LaserOffset @
+---@param Direction Vector @
 ---@return Vector @
-function EntityPlayer:GetLaserOffset(ID)
+function EntityPlayer:GetLaserOffset(ID, Direction)
 end
 
 ---@return number @ (int)
@@ -761,16 +826,18 @@ function EntityPlayer:GetMovementVector()
 end
 --- + bug "Bug"
 ---     Since it returns UserData, this function is unusable and therefore broken.
+---@param WeaponType WeaponType @ (default WeaponType.WEAPON_TEARS)
 ---@return MultiShotParams @
-function EntityPlayer:GetMultiShotParams()
+function EntityPlayer:GetMultiShotParams(WeaponType)
 end
 --- Call this function in a loop with values from 0 to MultiShotParams.NumProjectiles-1 (inclusive)
 ---@param LoopIndex number @ (int)
 ---@param Weapon WeaponType @
 ---@param ShotDirection Vector @
 ---@param ShotSpeed number @ (float)
----@return PosVel @
-function EntityPlayer:GetMultiShotPositionVelocity(LoopIndex, Weapon, ShotDirection, ShotSpeed)
+---@param params MultiShotParams @
+---@return PlayerTypes.PosVel @ (PosVel)
+function EntityPlayer:GetMultiShotPositionVelocity(LoopIndex, Weapon, ShotDirection, ShotSpeed, params)
 end
 
 --- Returns the name of the player. (Isaac, Cain, Azazel,...)
@@ -819,12 +886,14 @@ function EntityPlayer:GetOtherTwin()
 end
 
 --- Gets the ID of the pill the player is holding in the given itemslot (0 = Main slot, 1 = secondary slot, 2 or 3) Returns `0` when no pill is held in the given slot.
+---@param SlotId number @ (int)
 ---@return PillColor @
-function EntityPlayer:GetPill()
+function EntityPlayer:GetPill(SlotId)
 end
 
+---@param ID PillEffect @
 ---@return RNG @
-function EntityPlayer:GetPillRNG()
+function EntityPlayer:GetPillRNG(ID)
 end
 
 ---@return PlayerType @
@@ -835,8 +904,9 @@ end
 --- 
 --- + bug "Bugs"
 ---     This function returns userdata, which can't be processed. It is therefore broken and should not be used!
+---@param SlotId number @ (int)
 ---@return PlayerPocketItem @ (const)
-function EntityPlayer:GetPocketItem()
+function EntityPlayer:GetPocketItem(SlotId)
 end
 --- Returns the joystick direction that drives player movement, taking into account certain modifiers like disabled controls and seed effects.
 ---
@@ -891,12 +961,14 @@ end
 ---@param WeaponType WeaponType @
 ---@param DamageScale number @ (float) (default 1)
 ---@param TearDisplacement number @ (int) (default 1)
+---@param Source Entity @ (default nil)
 ---@return TearParams @
-function EntityPlayer:GetTearHitParams(WeaponType, DamageScale, TearDisplacement)
+function EntityPlayer:GetTearHitParams(WeaponType, DamageScale, TearDisplacement, Source)
 end
 
+---@param ShotDirection Vector @
 ---@return Vector @
-function EntityPlayer:GetTearMovementInheritance()
+function EntityPlayer:GetTearMovementInheritance(ShotDirection)
 end
 
 ---@return number @ (float)
@@ -916,8 +988,9 @@ function EntityPlayer:GetTractorBeam()
 end
 
 --- Gets the ID of the trinket the player is holding in the given trinketslot (0 or 1). Returns `0` when no trinket is held in the given slot.
+---@param TrinketIndex number @ (int)
 ---@return TrinketType @
-function EntityPlayer:GetTrinket()
+function EntityPlayer:GetTrinket(TrinketIndex)
 end
 --- Gets the multiplier of a given Trinket effect. This is analog to the number of times the trinket effect is applied.
 --- 
@@ -925,12 +998,14 @@ end
 ---     * Per normal trinket of this type equipped / gulped : +1
 ---     * Per golden trinket of this type equipped / gulped : +2
 ---     * Mom's Box equipped : +1 (does not stack)
+---@param TrinketID TrinketType @
 ---@return number @ (int)
-function EntityPlayer:GetTrinketMultiplier()
+function EntityPlayer:GetTrinketMultiplier(TrinketID)
 end
 
+---@param TrinketID TrinketType @
 ---@return RNG @
-function EntityPlayer:GetTrinketRNG()
+function EntityPlayer:GetTrinketRNG(TrinketID)
 end
 
 ---@return Vector @ (const)
@@ -943,8 +1018,9 @@ end
 --- **IgnoreModifiers**: If set to true, only counts collectibles the player actually owns and ignores effects granted by items like Zodiac, 3 Dollar Bill and Lemegeton
 ---
 ---@param Type CollectibleType @
+---@param IgnoreModifiers boolean @ (default false)
 ---@return boolean @
-function EntityPlayer:HasCollectible(Type)
+function EntityPlayer:HasCollectible(Type, IgnoreModifiers)
 end
 
 ---@return boolean @
@@ -967,12 +1043,14 @@ end
 function EntityPlayer:HasGoldenKey()
 end
 --- returns true when player is in an invincibility state
+---@param Flags DamageFlag @ (default 0)
 ---@return boolean @
-function EntityPlayer:HasInvincibility()
+function EntityPlayer:HasInvincibility(Flags)
 end
 
+---@param Form PlayerForm @
 ---@return boolean @
-function EntityPlayer:HasPlayerForm()
+function EntityPlayer:HasPlayerForm(Form)
 end
 --- Kept for avoiding modding issues.
 ---@return boolean @
@@ -980,23 +1058,27 @@ function EntityPlayer:HasTimedItem()
 end
 --- **IgnoreModifiers**: If set to true, only counts trinkets the player actually holds and ignores effects granted by other items
 ---@param Type TrinketType @
+---@param IgnoreModifiers boolean @ (default false)
 ---@return boolean @
-function EntityPlayer:HasTrinket(Type)
+function EntityPlayer:HasTrinket(Type, IgnoreModifiers)
 end
 
+---@param WeaponType WeaponType @
 ---@return boolean @
-function EntityPlayer:HasWeaponType()
+function EntityPlayer:HasWeaponType(WeaponType)
 end
 
 function EntityPlayer:InitBabySkin()
 end
 
+---@param Heart number @ (int)
 ---@return boolean @
-function EntityPlayer:IsBlackHeart()
+function EntityPlayer:IsBlackHeart(Heart)
 end
 
+---@param heart number @ (int)
 ---@return boolean @
-function EntityPlayer:IsBoneHeart()
+function EntityPlayer:IsBoneHeart(heart)
 end
 --- In a multiplayer game, if a player dies, they will return as a tiny ghost. This method returns true if the player is a co-op ghost.
 ---
@@ -1028,34 +1110,40 @@ end
 function EntityPlayer:IsP2Appearing()
 end
 
+---@param Position Vector @
 ---@return boolean @
-function EntityPlayer:IsPosInSpotLight()
+function EntityPlayer:IsPosInSpotLight(Position)
 end
 --- Returns true for The Soul. Otherwise, returns false. (This method is not related to multiplayer.)
 ---@return boolean @
 function EntityPlayer:IsSubPlayer()
 end
 
+---@param ActiveSlot ActiveSlot @ (default ActiveSlot.SLOT_PRIMARY)
 ---@return boolean @
-function EntityPlayer:NeedsCharge()
+function EntityPlayer:NeedsCharge(ActiveSlot)
 end
 
-function EntityPlayer:PlayExtraAnimation()
+---@param Animation string @
+function EntityPlayer:PlayExtraAnimation(Animation)
 end
 
-function EntityPlayer:QueueExtraAnimation()
+---@param Animation string @
+function EntityPlayer:QueueExtraAnimation(Animation)
 end
 --- When the player touches a collectible or trinket, they are not granted it immediately. Instead, the item is queued for the duration of the animation where the player holds the item above their head. When the animation is finished, the item in the queue will be granted. This method adds a new item to the item queue. If the player is not currently playing an animation, then the queued item will simply be awarded instantly.
 --- 
 --- Also see `FlushQueueItem()`, `IsItemQueueEmpty()`, and `QueuedItem`.
----@param Item ItemConfig::Item @
+---@param Item ItemConfig.Item @
 ---@param Charge number @ (int) (default 0)
 ---@param Touched boolean @ (default false)
----@param Golden bool @ (default false)
-function EntityPlayer:QueueItem(Item, Charge, Touched, Golden)
+---@param Golden boolean @ (bool) (default false)
+---@param VarData number @ (int) (default 0)
+function EntityPlayer:QueueItem(Item, Charge, Touched, Golden, VarData)
 end
 
-function EntityPlayer:RemoveBlackHeart()
+---@param BlackHeart number @ (int)
+function EntityPlayer:RemoveBlackHeart(BlackHeart)
 end
 
 function EntityPlayer:RemoveBlueFly()
@@ -1071,7 +1159,8 @@ end
 ---@param Type CollectibleType @
 ---@param IgnoreModifiers boolean @ (default false)
 ---@param ActiveSlot ActiveSlot @ (default ActiveSlot.SLOT_PRIMARY)
-function EntityPlayer:RemoveCollectible(Type, IgnoreModifiers, ActiveSlot)
+---@param RemoveFromPlayerForm boolean @ (default true)
+function EntityPlayer:RemoveCollectible(Type, IgnoreModifiers, ActiveSlot, RemoveFromPlayerForm)
 end
 --- Removes a given costume based on its item config entry.
 --- 
@@ -1083,7 +1172,8 @@ end
 ---     player:RemoveCostume(itemConfig)
 ---     ```
 ---
-function EntityPlayer:RemoveCostume()
+---@param Item ItemConfig.Item @
+function EntityPlayer:RemoveCostume(Item)
 end
 
 function EntityPlayer:RemoveCurseMistEffect()
@@ -1099,21 +1189,26 @@ end
 function EntityPlayer:RemoveSkinCostume()
 end
 
-function EntityPlayer:RenderBody()
+---@param position Vector @
+function EntityPlayer:RenderBody(position)
 end
 
-function EntityPlayer:RenderGlow()
+---@param position Vector @
+function EntityPlayer:RenderGlow(position)
 end
 
-function EntityPlayer:RenderHead()
+---@param position Vector @
+function EntityPlayer:RenderHead(position)
 end
 
-function EntityPlayer:RenderTop()
+---@param position Vector @
+function EntityPlayer:RenderTop(position)
 end
 
----@param Item ItemConfig::Item @
+---@param Item ItemConfig.Item @
 ---@param SpritePath string @
-function EntityPlayer:ReplaceCostumeSprite(Item, SpritePath)
+---@param SpriteId number @ (int)
+function EntityPlayer:ReplaceCostumeSprite(Item, SpritePath, SpriteId)
 end
 
 function EntityPlayer:ResetDamageCooldown()
@@ -1129,29 +1224,34 @@ function EntityPlayer:Revive()
 end
 
 ---@param Charge number @ (int)
-function EntityPlayer:SetActiveCharge(Charge)
+---@param ActiveSlot ActiveSlot @ (default ActiveSlot.SLOT_PRIMARY)
+function EntityPlayer:SetActiveCharge(Charge, ActiveSlot)
 end
 
 --- Only works on Tainted Bethany.
 ---
-function EntityPlayer:SetBloodCharge()
+---@param Amount number @ (int)
+function EntityPlayer:SetBloodCharge(Amount)
 end
 
 --- Change the card/rune the player is holding in the given itemslot (0 or 1).
 ---@param SlotId number @ (int)
-function EntityPlayer:SetCard(SlotId)
+---@param ID Card @
+function EntityPlayer:SetCard(SlotId, ID)
 end
 
 function EntityPlayer:SetFullHearts()
 end
 
-function EntityPlayer:SetMinDamageCooldown()
+---@param DamageCooldown number @ (int)
+function EntityPlayer:SetMinDamageCooldown(DamageCooldown)
 end
 
 --- Change the pill the player is holding in the given itemslot (0 or 1).
 ---
 ---@param SlotId number @ (int)
-function EntityPlayer:SetPill(SlotId)
+---@param Pill PillColor @
+function EntityPlayer:SetPill(SlotId, Pill)
 end
 
 --- Sets the player's pocket active item to the given active item.
@@ -1161,25 +1261,31 @@ end
 --- Use this to let the player start with a custom active item in their pocket active slot right away.
 ---@param Type CollectibleType @
 ---@param Slot ActiveSlot @
-function EntityPlayer:SetPocketActiveItem(Type, Slot)
+---@param KeepInPools boolean @
+function EntityPlayer:SetPocketActiveItem(Type, Slot, KeepInPools)
 end
 
-function EntityPlayer:SetShootingCooldown()
+---@param Cooldown number @ (int)
+function EntityPlayer:SetShootingCooldown(Cooldown)
 end
 
 --- Only works on Bethany.
 ---
-function EntityPlayer:SetSoulCharge()
+---@param Amount number @ (int)
+function EntityPlayer:SetSoulCharge(Amount)
 end
 
-function EntityPlayer:SetTargetTrapDoor()
+---@param TrapDoor GridEntity @
+function EntityPlayer:SetTargetTrapDoor(TrapDoor)
 end
 --- for ghost pepper item + poop and farts
-function EntityPlayer:ShootRedCandle()
+---@param Direction Vector @
+function EntityPlayer:ShootRedCandle(Direction)
 end
 
+---@param Timeout number @ (int)
 ---@return EntityLaser @
-function EntityPlayer:SpawnMawOfVoid()
+function EntityPlayer:SpawnMawOfVoid(Timeout)
 end
 
 function EntityPlayer:StopExtraAnimation()
@@ -1189,8 +1295,9 @@ function EntityPlayer:SwapActiveItems()
 end
 
 ---@param Position Vector @
+---@param Target Vector @
 ---@return Entity @
-function EntityPlayer:ThrowBlueSpider(Position)
+function EntityPlayer:ThrowBlueSpider(Position, Target)
 end
 
 --- - note "Dip Subtypes"
@@ -1209,23 +1316,28 @@ end
 ---     ```
 ---@param Subtype number @ (int)
 ---@param Position Vector @
+---@param Target Vector @ (default Vector.Zero)
 ---@return EntityFamiliar @
-function EntityPlayer:ThrowFriendlyDip(Subtype, Position)
+function EntityPlayer:ThrowFriendlyDip(Subtype, Position, Target)
 end
 
+---@param Velocity Vector @
 ---@return Entity @
-function EntityPlayer:ThrowHeldEntity()
+function EntityPlayer:ThrowHeldEntity(Velocity)
 end
 
-function EntityPlayer:TriggerBookOfVirtues()
+---@param Type CollectibleType @ (default CollectibleType.COLLECTIBLE_NULL)
+function EntityPlayer:TriggerBookOfVirtues(Type)
 end
 
+---@param Entity Entity @
 ---@return boolean @
-function EntityPlayer:TryHoldEntity()
+function EntityPlayer:TryHoldEntity(Entity)
 end
 --- Returns true if an active item pickup cooldown is over. returns true if trinket can be added, else false
+---@param Type TrinketType @
 ---@return boolean @
-function EntityPlayer:TryHoldTrinket()
+function EntityPlayer:TryHoldTrinket(Type)
 end
 --- Tries to remove a costume of the given collectible. `KeepPersistent` is used to define if persistent costumes should be removed. If its set to `false`, it will only remove temporary costumes.
 --- 
@@ -1236,17 +1348,21 @@ end
 ---     player:TryRemoveCollectibleCostume(CollectibleType.COLLECTIBLE_SPOON_BENDER, false)
 ---     ```
 ---@param Collectible CollectibleType @
-function EntityPlayer:TryRemoveCollectibleCostume(Collectible)
+---@param KeepPersistent boolean @
+function EntityPlayer:TryRemoveCollectibleCostume(Collectible, KeepPersistent)
 end
 
-function EntityPlayer:TryRemoveNullCostume()
+---@param NullId NullItemID @
+function EntityPlayer:TryRemoveNullCostume(NullId)
 end
 
+---@param Type TrinketType @
 ---@return boolean @
-function EntityPlayer:TryRemoveTrinket()
+function EntityPlayer:TryRemoveTrinket(Type)
 end
 --- Tries to remove a trinket costume
-function EntityPlayer:TryRemoveTrinketCostume()
+---@param Trinket TrinketType @
+function EntityPlayer:TryRemoveTrinketCostume(Trinket)
 end
 
 ---@return boolean @
@@ -1266,16 +1382,19 @@ end
 ---@param KeepActiveItem boolean @ (default false)
 ---@param AllowNonMainPlayer boolean @ (default true)
 ---@param ToAddCostume boolean @ (default false)
-function EntityPlayer:UseActiveItem(Item, ShowAnim, KeepActiveItem, AllowNonMainPlayer, ToAddCostume)
+---@param Slot ActiveSlot @ (default -1)
+function EntityPlayer:UseActiveItem(Item, ShowAnim, KeepActiveItem, AllowNonMainPlayer, ToAddCostume, Slot)
 end
 
 ---@param ID Card @
-function EntityPlayer:UseCard(ID)
+---@param UseFlags number @ (UseFlags) (default 0)
+function EntityPlayer:UseCard(ID, UseFlags)
 end
 
 ---@param ID PillEffect @
 ---@param PillColor PillColor @
-function EntityPlayer:UsePill(ID, PillColor)
+---@param UseFlags number @ (UseFlags) (default 0)
+function EntityPlayer:UsePill(ID, PillColor, UseFlags)
 end
 
 ---@return boolean @
@@ -1345,7 +1464,7 @@ EntityPlayer.QueuedItem = nil
 
 --- + bug "Bug"
 ---     This function does not exist anymore in Repentance. As of right now, there is no other function to get the [ActiveItemDesc](PlayerTypes_ActiveItemDesc.md) of any active item the player holds. Until this is fixed, this info will stay here.
----@type ActiveItemDesc @(member)
+---@type PlayerTypes.ActiveItemDesc @(member) (ActiveItemDesc)
 EntityPlayer.SecondaryActiveItem = nil
 --- Player stat - Only change this in a callback to MC_EVALUATE_CACHE.  **This is equal to the ShotSpeed Stat.**
 --- 

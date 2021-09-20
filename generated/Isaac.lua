@@ -1,4 +1,4 @@
----@class Isaac @(static)
+---@class Isaac @ (static)
 local Isaac = {}
 
 --------------------
@@ -10,11 +10,13 @@ local Isaac = {}
 ---@param modRef table @
 ---@param callbackId function @
 ---@param callbackFn table @
-function Isaac.AddCallback(modRef, callbackId, callbackFn)
+---@param entityId number @ (int)
+function Isaac.AddCallback(modRef, callbackId, callbackFn, entityId)
 end
 --- returns pill color
+---@param pillEffect number @ (int)
 ---@return number @ (int)
-function Isaac.AddPillEffectToPool()
+function Isaac.AddPillEffectToPool(pillEffect)
 end
 
 --- Prints a string into the Debug Console
@@ -31,7 +33,8 @@ end
 --- 
 ---     ```
 ---
-function Isaac.ConsoleOutput()
+---@param text string @
+function Isaac.ConsoleOutput(text)
 end
 
 --- Returns the number of bosses in the current room.
@@ -55,8 +58,9 @@ end
 ---@param Spawner Entity @
 ---@param Type EntityType @ (default EntityType.ENTITY_NULL)
 ---@param Variant number @ (int) (default -1)
+---@param SubType number @ (int) (default -1)
 ---@return number @ (int)
-function Isaac.CountEntities(Spawner, Type, Variant)
+function Isaac.CountEntities(Spawner, Type, Variant, SubType)
 end
 
 --- Prints a string into the log file. You can find this file here `%systemdrive%\Users\%username%\Documents\My Games\Binding of Isaac Repentance\log.txt`
@@ -69,35 +73,40 @@ end
 --- 
 ---     ```
 ---
-function Isaac.DebugString()
+---@param str string @
+function Isaac.DebugString(str)
 end
 
 --- This function executes a debug console command. see the
 --- [Debug Console Tutorial](tutorials/DebugConsole.md) for informations on how to use commands.
+---@param command string @
 ---@return string @
-function Isaac.ExecuteCommand()
+function Isaac.ExecuteCommand(command)
 end
 
 --- Spawn an explosion on a specified location.
 ---@param pos Vector @
 ---@param source Entity @
-function Isaac.Explode(pos, source)
+---@param damage number @ (float)
+function Isaac.Explode(pos, source, damage)
 end
 --- Returns entities based on Type, Variant, Subtype. If Variant and/or Subtype is -1 then everything is includedUse Cache flag for multiple calls per frame.
 ---@param Type EntityType @
 ---@param Variant number @ (int) (default -1)
 ---@param SubType number @ (int) (default -1)
 ---@param Cache boolean @ (default false)
+---@param IgnoreFriendly boolean @ (default false)
 ---@return table @
-function Isaac.FindByType(Type, Variant, SubType, Cache)
+function Isaac.FindByType(Type, Variant, SubType, Cache, IgnoreFriendly)
 end
 --- Returns entities in range of Radius from Position filtered by Partitions mask (see [EntityPartition enum](enums/EntityPartition.md)) (include all = 0xffffffff)
 --- 
 --- This function does not return the entities sorted by nearest first, but based on the order they were loaded.
 ---@param Position Vector @
 ---@param Radius number @ (float)
+---@param Partitions number @ (int) (default 0xFFFFFFFF)
 ---@return table @
-function Isaac.FindInRadius(Position, Radius)
+function Isaac.FindInRadius(Position, Radius, Partitions)
 end
 
 --- Returns the CardID based on its hud value. (File: pocketitems.xml) Returns `-1` if no card with that name could be found.
@@ -113,8 +122,9 @@ end
 --- 
 ---     ```
 ---
+---@param cardHudName string @
 ---@return number @ (int)
-function Isaac.GetCardIdByName()
+function Isaac.GetCardIdByName(cardHudName)
 end
 --- Returns the ID of a challenge the player is currently in. Returns 0 if the player is not playing any challenge.
 ---@return number @ (int)
@@ -131,8 +141,9 @@ end
 --- 
 ---     ```
 ---
+---@param challengeName string @
 ---@return number @ (int)
-function Isaac.GetChallengeIdByName()
+function Isaac.GetChallengeIdByName(challengeName)
 end
 
 --- Returns the CostumeID of a costume based on its file path. (File: costumes2.xml) Returns `-1` if no costume with that path could be found.
@@ -145,8 +156,9 @@ end
 --- 
 ---     ```
 ---
+---@param path string @
 ---@return number @ (int)
-function Isaac.GetCostumeIdByPath()
+function Isaac.GetCostumeIdByPath(path)
 end
 
 --- Returns the CurseID of a curse based on its name. (File: curses.xml) Returns `-1` if no curse with that name could be found.
@@ -159,8 +171,9 @@ end
 --- 
 ---     ```
 ---
+---@param curseName string @
 ---@return number @ (int)
-function Isaac.GetCurseIdByName()
+function Isaac.GetCurseIdByName(curseName)
 end
 
 --- Returns the EntityType of an entity based on its name. (File: entities2.xml) Returns `0` if no entity with that name could be found.
@@ -176,8 +189,9 @@ end
 --- 
 ---     ```
 ---
+---@param entityName string @
 ---@return number @ (int)
-function Isaac.GetEntityTypeByName()
+function Isaac.GetEntityTypeByName(entityName)
 end
 
 --- Returns the variant of an entity based on its name. (File: entities2.xml) Returns `-1` if no entity with that name could be found.
@@ -193,8 +207,9 @@ end
 --- 
 ---     ```
 ---
+---@param entityName string @
 ---@return number @ (int)
-function Isaac.GetEntityVariantByName()
+function Isaac.GetEntityVariantByName(entityName)
 end
 
 --- Returns the amount of frames the game as a whole is running. The counter increases even when the game is paused or when you are in the main menu!
@@ -205,8 +220,9 @@ function Isaac.GetFrameCount()
 end
 
 ---@param pos Vector @
+---@param step number @ (float)
 ---@return Vector @
-function Isaac.GetFreeNearPosition(pos)
+function Isaac.GetFreeNearPosition(pos, step)
 end
 --- Returns the [ItemConfig::Config](ItemConfig.md) object.
 ---@return Config @
@@ -223,8 +239,9 @@ end
 --- 
 ---     ```
 ---
+---@param itemName string @
 ---@return number @ (int)
-function Isaac.GetItemIdByName()
+function Isaac.GetItemIdByName(itemName)
 end
 
 --- Returns the MusicID of a music track. (File: music.xml) Returns `-1` if no music with that name could be found.
@@ -237,8 +254,9 @@ end
 --- 
 ---     ```
 ---
+---@param musicName string @
 ---@return number @ (int)
-function Isaac.GetMusicIdByName()
+function Isaac.GetMusicIdByName(musicName)
 end
 
 --- Returns the PillEffectID based on its name. (File: pocketitems.xml) Returns `-1` if no pill with that name could be found.
@@ -251,8 +269,9 @@ end
 --- 
 ---     ```
 ---
+---@param pillEffect string @
 ---@return number @ (int)
-function Isaac.GetPillEffectByName()
+function Isaac.GetPillEffectByName(pillEffect)
 end
 
 --- Returns the EntityPlayer which the user is controlling. 0 = Main player. Higher numbers refer to coop players or babies. If an index is given, that is not used, it will return the last player in the list.
@@ -267,8 +286,9 @@ end
 --- 
 ---     ```
 ---
+---@param playerId number @ (int) (default 0)
 ---@return EntityPlayer @
-function Isaac.GetPlayer()
+function Isaac.GetPlayer(playerId)
 end
 
 --- Returns the PlayerType (ID) of a character based on its name. (File: players.xml) Returns `-1` if no player with that name could be found.
@@ -282,8 +302,9 @@ end
 ---     ```
 ---
 ---@param playerName string @
+---@param Tainted boolean @ (default false)
 ---@return PlayerType @
-function Isaac.GetPlayerTypeByName(playerName)
+function Isaac.GetPlayerTypeByName(playerName, Tainted)
 end
 
 --- Returns a random position inside the current room. The Return value is a Vector containing the position in world coordinates.
@@ -304,13 +325,15 @@ end
 --- 
 ---     ```
 ---
+---@param soundName string @
 ---@return number @ (int)
-function Isaac.GetSoundIdByName()
+function Isaac.GetSoundIdByName(soundName)
 end
 
 --- Returns the width of the given string in pixels based on the "terminus8" font (same font as used in Isaac.RenderText())
+---@param str string @
 ---@return number @ (int)
-function Isaac.GetTextWidth()
+function Isaac.GetTextWidth(str)
 end
 
 --- Returns the current game time in milliseconds. This includes pauses!
@@ -329,8 +352,9 @@ end
 --- 
 ---     ```
 ---
+---@param trinketName string @
 ---@return number @ (int)
-function Isaac.GetTrinketIdByName()
+function Isaac.GetTrinketIdByName(trinketName)
 end
 
 --- Spawn a [GridEntity](GridEntity.md) at the given position (world coordinates).
@@ -340,8 +364,9 @@ end
 ---@param gridEntityType GridEntity @
 ---@param Variant number @ (int)
 ---@param position Vector @
+---@param forced boolean @
 ---@return GridEntity @
-function Isaac.GridSpawn(gridEntityType, Variant, position)
+function Isaac.GridSpawn(gridEntityType, Variant, position, forced)
 end
 
 --- Returns "true" if your mod has Data stored using the "SaveModData()" function. Aka. if there is a "saveX.dat" file in your mod folder.
@@ -353,8 +378,9 @@ end
 --- For Repentance, They are stored in the "data" folder next to the "mods" folder inside the game files.
 --- 
 --- It is recommended to use the [HasData](ModReference.md#hasdata) function on a [Mod Reference](ModReference.md) instead.
+---@param modRef table @
 ---@return boolean @
-function Isaac.HasModData()
+function Isaac.HasModData(modRef)
 end
 
 --- Returns a string that was stored in a "saveX.dat" file using the "SaveModData()" function. If there is no "saveX.dat" file in your mod, this function will return an empty string.
@@ -367,8 +393,9 @@ end
 --- For Repentance, They are stored in the "data" folder next to the "mods" folder inside the game files.
 --- 
 --- It is recommended to use the [LoadData](ModReference.md#loaddata) function on a [Mod Reference](ModReference.md) instead.
+---@param modRef table @
 ---@return string @
-function Isaac.LoadModData()
+function Isaac.LoadModData(modRef)
 end
 
 --- Registers a table with the game to use as a [Mod Reference](ModReference.md).
@@ -377,21 +404,24 @@ end
 ---
 ---@param modRef table @
 ---@param modName string @
-function Isaac.RegisterMod(modRef, modName)
+---@param apiVersion number @ (int)
+function Isaac.RegisterMod(modRef, modName, apiVersion)
 end
 
 --- It is recommended to use the [RemoveCallback](ModReference.md#removecallback) function on a [Mod Reference](ModReference.md) instead.
 ---
 ---@param modRef table @
 ---@param callbackId function @
-function Isaac.RemoveCallback(modRef, callbackId)
+---@param callbackFn table @
+function Isaac.RemoveCallback(modRef, callbackId, callbackFn)
 end
 
 --- Deletes the stored "saveX.dat" file if it exists.
 --- There are 3 "saveX.dat" files, one per Savegame. They are stored in the mod's folder next to the "main.lua" file. The number indicates the savegame it corresponds to. The number will be determined automatically by the game.
 --- 
 --- It is recommended to use the [RemoveData](ModReference.md#removedata) function on a [Mod Reference](ModReference.md) instead.
-function Isaac.RemoveModData()
+---@param modRef table @
+function Isaac.RemoveModData(modRef)
 end
 
 --- Renders a scaled text on the Screen. X and Y coordinates need to be in screen coordinates ( x[0,~500) y [0,~350) ). ScaleX, ScaleY, R ,G ,B and A need to be between [0,1]. Some scale values can cause the font to display deformed and pixelated.
@@ -413,7 +443,8 @@ end
 ---@param R number @ (float)
 ---@param G number @ (float)
 ---@param B number @ (float)
-function Isaac.RenderScaledText(str, X, Y, ScaleX, ScaleY, R, G, B)
+---@param A number @ (float)
+function Isaac.RenderScaledText(str, X, Y, ScaleX, ScaleY, R, G, B, A)
 end
 
 --- Renders a text with the default size on the Screen. X and Y coordinates need to be in screen coordinates ( x[0,~500) y [0,~350) ). R,G,B and A need to be between [0,1].
@@ -433,7 +464,8 @@ end
 ---@param R number @ (float)
 ---@param G number @ (float)
 ---@param B number @ (float)
-function Isaac.RenderText(str, X, Y, R, G, B)
+---@param A number @ (float)
+function Isaac.RenderText(str, X, Y, R, G, B, A)
 end
 
 --- Stores a string in a "saveX.dat" file. The stored Data persists thruout resets and game restart, so its perfect to store persistent data.
@@ -446,16 +478,19 @@ end
 --- 
 --- It is recommended to use the [SaveData](ModReference.md#savedata) function on a [Mod Reference](ModReference.md) instead.
 ---@param modRef table @
-function Isaac.SaveModData(modRef)
+---@param data string @
+function Isaac.SaveModData(modRef, data)
 end
 
 --- Transfers Screen (aka. Window coordinates) into Worldcoordinates. This can be used to get a specific location in the room in World coordnates The World coordinate system is x[0,inf) y[0,inf).
+---@param pos Vector @
 ---@return Vector @
-function Isaac.ScreenToWorld()
+function Isaac.ScreenToWorld(pos)
 end
 
+---@param pos Vector @
 ---@return Vector @
-function Isaac.ScreenToWorldDistance()
+function Isaac.ScreenToWorldDistance(pos)
 end
 
 --- Spawns the defined entity at the given location. If the position is not free, it spawns it in the nearest free position.
@@ -472,8 +507,9 @@ end
 ---@param entitySubtype number @ (int)
 ---@param position Vector @
 ---@param velocity Vector @
+---@param Spawner Entity @
 ---@return Entity @
-function Isaac.Spawn(entityType, entityVariant, entitySubtype, position, velocity)
+function Isaac.Spawn(entityType, entityVariant, entitySubtype, position, velocity, Spawner)
 end
 
 --- Transfers world (aka. game coordinates) into Rendercoordinates. This can be used to render things at fixed positions in a room. The Render coordinate system is x[0,inf) y[0,inf). It defines the Position on the rendering-plane in the current room.
@@ -486,8 +522,9 @@ end
 ---     Isaac.RenderText("test", renderpos.X, renderpos.Y, 1 ,1 ,1 ,1 )
 ---     ```
 ---
+---@param pos Vector @
 ---@return Vector @
-function Isaac.WorldToRenderPosition()
+function Isaac.WorldToRenderPosition(pos)
 end
 
 --- Transfers world (aka. game coordinates) into Screen (aka. Window) coordinates. This can be used to render things next to an entity. The Screen coordinate system is x[0,inf) y[0,inf). Normally, it goes till ~500x ~300y. The return vector contains integer values or numbers ending with .5
@@ -501,10 +538,12 @@ end
 --- 
 ---     ```
 ---
+---@param pos Vector @
 ---@return Vector @
-function Isaac.WorldToScreen()
+function Isaac.WorldToScreen(pos)
 end
 
+---@param pos Vector @
 ---@return Vector @
-function Isaac.WorldToScreenDistance()
+function Isaac.WorldToScreenDistance(pos)
 end

@@ -1,4 +1,4 @@
----@class GridEntityPressurePlate:GridEntity
+---@class GridEntityPressurePlate:GridEntity @
 local GridEntityPressurePlate = {}
 
 --------------------

@@ -1,12 +1,13 @@
----@class GridEntity
+---@class GridEntity @
 local GridEntity = {}
 
 --------------------
 -- Functions
 --------------------
 
+---@param Immediate boolean @
 ---@return boolean @
-function GridEntity:Destroy()
+function GridEntity:Destroy(Immediate)
 end
 
 ---@return number @ (int)
@@ -33,23 +34,28 @@ end
 function GridEntity:GetVariant()
 end
 
+---@param Damage number @ (int)
 ---@return boolean @
-function GridEntity:Hurt()
+function GridEntity:Hurt(Damage)
 end
 
-function GridEntity:Init()
+---@param Seed number @ (int)
+function GridEntity:Init(Seed)
 end
 
 function GridEntity:PostInit()
 end
 
-function GridEntity:Render()
+---@param Offset Vector @
+function GridEntity:Render(Offset)
 end
 
-function GridEntity:SetType()
+---@param Type GridEntityType @
+function GridEntity:SetType(Type)
 end
 
-function GridEntity:SetVariant()
+---@param Variant number @ (int)
+function GridEntity:SetVariant(Variant)
 end
 
 --- + note "Return behavior"

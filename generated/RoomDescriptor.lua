@@ -1,4 +1,4 @@
----@class RoomDescriptor
+---@class RoomDescriptor @
 local RoomDescriptor = {}
 
 --------------------

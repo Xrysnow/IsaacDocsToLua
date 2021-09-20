@@ -1,14 +1,16 @@
----@class EntityKnife:Entity
+---@class EntityKnife:Entity @
 local EntityKnife = {}
 
 --------------------
 -- Functions
 --------------------
 
-function EntityKnife:AddTearFlags()
+---@param Flags TearFlags @
+function EntityKnife:AddTearFlags(Flags)
 end
 
-function EntityKnife:ClearTearFlags()
+---@param Flags TearFlags @
+function EntityKnife:ClearTearFlags(Flags)
 end
 
 ---@return number @ (float)
@@ -23,8 +25,9 @@ end
 function EntityKnife:GetRenderZ()
 end
 
+---@param Flags TearFlags @
 ---@return boolean @
-function EntityKnife:HasTearFlags()
+function EntityKnife:HasTearFlags(Flags)
 end
 
 ---@return boolean @
@@ -34,11 +37,13 @@ end
 function EntityKnife:Reset()
 end
 
-function EntityKnife:SetPathFollowSpeed()
+---@param Speed number @ (float)
+function EntityKnife:SetPathFollowSpeed(Speed)
 end
 
 ---@param Charge number @ (float)
-function EntityKnife:Shoot(Charge)
+---@param Range number @ (float)
+function EntityKnife:Shoot(Charge, Range)
 end
 
 --------------------
