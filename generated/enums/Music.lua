@@ -1,0 +1,302 @@
+---@class Music @enum
+local Music = {}
+
+---
+--- 0
+Music.MUSIC_NULL = 0
+---
+--- 1
+Music.MUSIC_BASEMENT = 1
+---
+--- 2
+Music.MUSIC_CAVES = 2
+---
+--- 3
+Music.MUSIC_DEPTHS = 3
+---
+--- 4
+Music.MUSIC_CELLAR = 4
+---
+--- 5
+Music.MUSIC_CATACOMBS = 5
+---
+--- 6
+Music.MUSIC_NECROPOLIS = 6
+---
+--- 7
+Music.MUSIC_WOMB_UTERO = 7
+---
+--- 8
+Music.MUSIC_GAME_OVER = 8
+---
+--- 9
+Music.MUSIC_BOSS = 9
+---
+--- 10
+Music.MUSIC_CATHEDRAL = 10
+---
+--- 11
+Music.MUSIC_SHEOL = 11
+---
+--- 12
+Music.MUSIC_DARK_ROOM = 12
+---
+--- 13
+Music.MUSIC_CHEST = 13
+---
+--- 14
+Music.MUSIC_BURNING_BASEMENT = 14
+---
+--- 15
+Music.MUSIC_FLOODED_CAVES = 15
+---
+--- 16
+Music.MUSIC_DANK_DEPTHS = 16
+---
+--- 17
+Music.MUSIC_SCARRED_WOMB = 17
+---
+--- 18
+Music.MUSIC_BLUE_WOMB = 18
+---
+--- 19
+Music.MUSIC_UTERO = 19
+---
+--- 20
+Music.MUSIC_MOM_BOSS = 20
+---
+--- 21
+Music.MUSIC_MOMS_HEART_BOSS = 21
+---
+--- 22
+Music.MUSIC_ISAAC_BOSS = 22
+---
+--- 23
+Music.MUSIC_SATAN_BOSS = 23
+---
+--- 24
+Music.MUSIC_DARKROOM_BOSS = 24
+---
+--- 25
+Music.MUSIC_BLUEBABY_BOSS = 25
+---
+--- 26
+Music.MUSIC_BOSS2 = 26
+---
+--- 27
+Music.MUSIC_HUSH_BOSS = 27
+---
+--- 28
+Music.MUSIC_ULTRAGREED_BOSS = 28
+---
+--- 30
+Music.MUSIC_LIBRARY_ROOM = 30
+---
+--- 31
+Music.MUSIC_SECRET_ROOM = 31
+---
+--- 32
+Music.MUSIC_SECRET_ROOM2 = 32
+---
+--- 33
+Music.MUSIC_DEVIL_ROOM = 33
+---
+--- 34
+Music.MUSIC_ANGEL_ROOM = 34
+---
+--- 35
+Music.MUSIC_SHOP_ROOM = 35
+---
+--- 36
+Music.MUSIC_ARCADE_ROOM = 36
+---
+--- 37
+Music.MUSIC_BOSS_OVER = 37
+---
+--- 38
+Music.MUSIC_CHALLENGE_FIGHT = 38
+---
+--- 39
+Music.MUSIC_BOSS_RUSH = 39
+---
+--- 40
+Music.MUSIC_JINGLE_BOSS_RUSH_OUTRO = 40
+---
+--- 41
+Music.MUSIC_BOSS3 = 41
+---
+--- 42
+Music.MUSIC_JINGLE_BOSS_OVER3 = 42
+---
+--- 43
+Music.MUSIC_MOTHER_BOSS = 43
+---
+--- 44
+Music.MUSIC_DOGMA_BOSS = 44
+---
+--- 45
+Music.MUSIC_BEAST_BOSS = 45
+---
+--- 47
+Music.MUSIC_JINGLE_MOTHER_OVER = 47
+---
+--- 48
+Music.MUSIC_JINGLE_DOGMA_OVER = 48
+---
+--- 49
+Music.MUSIC_JINGLE_BEAST_OVER = 49
+---
+--- 50
+Music.MUSIC_PLANETARIUM = 50
+---
+--- 51
+Music.MUSIC_SECRET_ROOM_ALT_ALT = 51
+---
+--- 52
+Music.MUSIC_BOSS_OVER_TWISTED = 52
+---
+--- 60
+Music.MUSIC_CREDITS = 60
+---
+--- 61
+Music.MUSIC_TITLE = 61
+---
+--- 62
+Music.MUSIC_TITLE_AFTERBIRTH = 62
+---
+--- 63
+Music.MUSIC_TITLE_REPENTANCE = 63
+---
+--- 64
+Music.MUSIC_JINGLE_GAME_START_ALT = 64
+---
+--- 65
+Music.MUSIC_JINGLE_NIGHTMARE_ALT = 65
+---
+--- 66
+Music.MUSIC_MOTHERS_SHADOW_INTRO = 66
+---
+--- 67
+Music.MUSIC_DOGMA_INTRO = 67
+---
+--- 68
+Music.MUSIC_STRANGE_DOOR_JINGLE = 68
+---
+--- 69
+Music.MUSIC_DARK_CLOSET = 69
+---
+--- 70
+Music.MUSIC_CREDITS_ALT = 70
+---
+--- 71
+Music.MUSIC_CREDITS_ALT_FINAL = 71
+---
+--- 81
+Music.MUSIC_JINGLE_BOSS = 81
+---
+--- 83
+Music.MUSIC_JINGLE_BOSS_OVER = 83
+---
+--- 84
+Music.MUSIC_JINGLE_HOLYROOM_FIND = 84
+---
+--- 85
+Music.MUSIC_JINGLE_SECRETROOM_FIND = 85
+---
+--- 87
+Music.MUSIC_JINGLE_TREASUREROOM_ENTRY_0 = 87
+---
+--- 88
+Music.MUSIC_JINGLE_TREASUREROOM_ENTRY_1 = 88
+---
+--- 89
+Music.MUSIC_JINGLE_TREASUREROOM_ENTRY_2 = 89
+---
+--- 90
+Music.MUSIC_JINGLE_TREASUREROOM_ENTRY_3 = 90
+---
+--- 91
+Music.MUSIC_JINGLE_CHALLENGE_ENTRY = 91
+---
+--- 92
+Music.MUSIC_JINGLE_CHALLENGE_OUTRO = 92
+---
+--- 93
+Music.MUSIC_JINGLE_GAME_OVER = 93
+---
+--- 94
+Music.MUSIC_JINGLE_DEVILROOM_FIND = 94
+---
+--- 95
+Music.MUSIC_JINGLE_GAME_START = 95
+---
+--- 96
+Music.MUSIC_JINGLE_NIGHTMARE = 96
+---
+--- 97
+Music.MUSIC_JINGLE_BOSS_OVER2 = 97
+---
+--- 98
+Music.MUSIC_JINGLE_HUSH_OVER = 98
+---
+--- 100
+Music.MUSIC_INTRO_VOICEOVER = 100
+---
+--- 101
+Music.MUSIC_EPILOGUE_VOICEOVER = 101
+---
+--- 102
+Music.MUSIC_VOID = 102
+---
+--- 103
+Music.MUSIC_VOID_BOSS = 103
+---
+--- 104
+Music.MUSIC_DOWNPOUR = 104
+---
+--- 105
+Music.MUSIC_MINES = 105
+---
+--- 106
+Music.MUSIC_MAUSOLEUM = 106
+---
+--- 107
+Music.MUSIC_CORPSE = 107
+---
+--- 108
+Music.MUSIC_DROSS = 108
+---
+--- 109
+Music.MUSIC_ASHPIT = 109
+---
+--- 110
+Music.MUSIC_GEHENNA = 110
+---
+--- 111
+Music.MUSIC_MORTIS = 111
+---
+--- 112
+Music.MUSIC_ISAACS_HOUSE = 112
+---
+--- 113
+Music.MUSIC_FINAL_VOICEOVER = 113
+---
+--- 114
+Music.MUSIC_DOWNPOUR_REVERSE = 114
+---
+--- 115
+Music.MUSIC_DROSS_REVERSE = 115
+---
+--- 116
+Music.MUSIC_MINESHAFT_AMBIENT = 116
+---
+--- 117
+Music.MUSIC_MINESHAFT_ESCAPE = 117
+---
+--- 118
+Music.MUSIC_REVERSE_GENESIS = 118
+---
+--- 119
+Music.NUM_MUSIC = 119
+
+return Music
