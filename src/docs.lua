@@ -6,19 +6,31 @@ require('strings')
 local function extractCName(s)
     if s:sub(1, 1) == '[' then
         local t = s:gsub('%].*$', ''):gsub('%[', '')
-        return t:gsub(' ', '.')
+        return t:gsub(' ', '.'):gsub('::', '.')
     end
-    return s:gsub(' ', '_')
+    return s:gsub(' ', '_'):gsub('::', '.')
 end
 
 local TypeMap = {
-    void  = 'nil',
-    float = 'number',
-    int   = 'number',
+    void           = 'nil',
+    float          = 'number',
+    int            = 'number',
+    bool           = 'boolean', -- workaround
+    UseFlags       = 'number',
+    LinecheckMode  = 'number',
+    PosVel         = 'PlayerTypes.PosVel',
+    ActiveItemDesc = 'PlayerTypes.ActiveItemDesc',
 }
 local StaticClass = {
     Isaac = true,
     Input = true,
+}
+local ClassNameMap = {
+    ['CppContainer.ArrayProxy.RoomDescriptor'] = 'RoomDescriptor.List',
+    ['CppContainer.EntityList']                = 'EntityList',
+    ['CppContainer.Vector.EffectList']         = 'EffectList',
+    --['PlayerTypes.PosVel']                     = 'PosVel',
+    --['PlayerTypes.ActiveItemDesc']             = 'ActiveItemDesc',
 }
 
 local function procType(s)
@@ -76,7 +88,9 @@ local function procMember(t, cname)
             end
             table.insert(ret, rdoc)
         end
-        if t.static then
+        if cname == 'Global_Functions' then
+            table.insert(ret, ('function %s(%s)'):format(t.name, params))
+        elseif t.static then
             table.insert(ret, ('function %s.%s(%s)'):format(cname, t.name, params))
         else
             table.insert(ret, ('function %s:%s(%s)'):format(cname, t.name, params))
@@ -134,18 +148,25 @@ local function proc(content)
             -- flush
             if cls.name == 'Global_Functions' then
                 append('--')
-                append('local Global_Functions = _G')
+                --append('local Global_Functions = _G')
             else
                 local cname = cls.decl:gsub('::', '.'):gsub(' ', '.')
+                local cname_origin = cname
+                if ClassNameMap[cname] then
+                    cname = ClassNameMap[cname]
+                end
                 local cls_doc
                 if cls.parent then
                     local pname = cls.parent:gsub('::', '.'):gsub(' ', '.')
-                    cls_doc = ('---@class %s:%s'):format(cname, pname)
+                    cls_doc = ('---@class %s:%s @'):format(cname, pname)
                 else
-                    cls_doc = ('---@class %s'):format(cname)
+                    cls_doc = ('---@class %s @'):format(cname)
                 end
                 if StaticClass[cls.name] then
-                    cls_doc = cls_doc .. ' @(static)'
+                    cls_doc = cls_doc .. ' (static)'
+                end
+                if cname_origin ~= cname then
+                    cls_doc = ('%s (%s)'):format(cls_doc, cname_origin)
                 end
                 append(cls_doc)
                 append(('local %s = {}'):format(cls.name))
@@ -213,9 +234,11 @@ local function proc(content)
                 words1[#words1] = nil
                 local proto2 = s:gsub('^.* %( ', ''):gsub('%)', ''):trim()
                 local words2 = proto2:split(',')
-                words2[#words2] = nil
                 for i = 1, #words2 do
                     words2[i] = words2[i]:trim()
+                end
+                if #words2 == 1 and words2[1] == '' then
+                    words2 = {}
                 end
                 --
                 local is_altreturn_nil = proto_ex:find("data-altreturn='nil'")
@@ -240,6 +263,7 @@ local function proc(content)
                         pwords[#pwords] = nil
                     end
                     local pname = pwords[#pwords]
+                    assert(pname ~= '')
                     pwords[#pwords] = nil
                     local ptype = extractCName(table.concat(pwords, ' '))
                     table.insert(cur_mem.params, { ptype, pname, default })
