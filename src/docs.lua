@@ -16,6 +16,10 @@ local TypeMap = {
     float = 'number',
     int   = 'number',
 }
+local StaticClass = {
+    Isaac = true,
+    Input = true,
+}
 
 local function procType(s)
     if TypeMap[s] then
@@ -133,12 +137,17 @@ local function proc(content)
                 append('local Global_Functions = _G')
             else
                 local cname = cls.decl:gsub('::', '.'):gsub(' ', '.')
+                local cls_doc
                 if cls.parent then
                     local pname = cls.parent:gsub('::', '.'):gsub(' ', '.')
-                    append(('---@class %s:%s'):format(cname, pname))
+                    cls_doc = ('---@class %s:%s'):format(cname, pname)
                 else
-                    append(('---@class %s'):format(cname))
+                    cls_doc = ('---@class %s'):format(cname)
                 end
+                if StaticClass[cls.name] then
+                    cls_doc = cls_doc .. ' @(static)'
+                end
+                append(cls_doc)
                 append(('local %s = {}'):format(cls.name))
             end
             cls_flushed = true
@@ -190,6 +199,9 @@ local function proc(content)
             end
             cur_mem.name = cur_mem.name:gsub('·', '')
             cur_mem.type = cur_mode
+            if StaticClass[cls.name] then
+                cur_mem.static = true
+            end
         elseif is_proto then
             local s = line:sub(5)
             s = s:gsub('{.*$', '')
