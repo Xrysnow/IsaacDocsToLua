@@ -1,6 +1,6 @@
 -- This script reads *.md files in INPUT_PATH and writes lua docs into OUTPUT_PATH
 local INPUT_PATH = './docs'
-local OUTPUT_PATH = './output'
+local OUTPUT_PATH = './generated'
 require('strings')
 
 local lfs = require('lfs')
@@ -26,7 +26,7 @@ local function iter(dir, out)
 end
 
 local function extractCName(s)
-    if s:sub(1, 1)=='[' then
+    if s:sub(1, 1) == '[' then
         local t = s:gsub('%].*$', ''):gsub('%[', '')
         return t:gsub(' ', '.')
     end
@@ -34,9 +34,9 @@ local function extractCName(s)
 end
 
 local TypeMap = {
-    void='nil',
-    float='number',
-    int='number',
+    void  = 'nil',
+    float = 'number',
+    int   = 'number',
 }
 
 local function procType(s)
@@ -49,48 +49,48 @@ end
 local function procMember(t, cname)
     local ret = {}
     local desc = table.concat(t.desc, '\n--- '):rtrim()
-    if t.desc[1]~='' then
-        desc='--- '..desc
+    if t.desc[1] ~= '' then
+        desc = '--- ' .. desc
     end
     table.insert(ret, desc)
-    if t.type=='func' then
+    if t.type == 'func' then
         -- workaround
-        if cname=='Vector' and t.name=='Vector' then
-            t.params={{'float','x'}, {'float','y'}}
+        if cname == 'Vector' and t.name == 'Vector' then
+            t.params = { { 'float', 'x' }, { 'float', 'y' } }
         end
         --
         local params_doc = {}
         local params = {}
         for _, p in ipairs(t.params) do
-            local ltype= procType(p[1])
-            local pdoc=('---@param %s %s @'):format(p[2], ltype)
-            if ltype~=p[1] then
-                pdoc=('%s (%s)'):format(pdoc, p[1])
+            local ltype = procType(p[1])
+            local pdoc = ('---@param %s %s @'):format(p[2], ltype)
+            if ltype ~= p[1] then
+                pdoc = ('%s (%s)'):format(pdoc, p[1])
             end
             if p[3] then
                 -- default value
-                pdoc=('%s (default %s)'):format(pdoc, p[3])
+                pdoc = ('%s (default %s)'):format(pdoc, p[3])
             end
             table.insert(params_doc, pdoc)
             table.insert(params, p[2])
         end
         params_doc = table.concat(params_doc, '\n'):rtrim()
-        if params_doc~='' then
+        if params_doc ~= '' then
             table.insert(ret, params_doc)
         end
-        params=table.concat(params, ', ')
-        local r=t.ret
-        if r~='void' then
-            local rtype= procType(r)
-            local rdoc=('---@return %s @'):format(rtype)
-            if rtype~=r then
-                rdoc=('%s (%s)'):format(rdoc, r)
+        params = table.concat(params, ', ')
+        local r = t.ret
+        if r ~= 'void' then
+            local rtype = procType(r)
+            local rdoc = ('---@return %s @'):format(rtype)
+            if rtype ~= r then
+                rdoc = ('%s (%s)'):format(rdoc, r)
             end
             if t.return_const then
-                rdoc=rdoc..' (const)'
+                rdoc = rdoc .. ' (const)'
             end
             if t.altreturn_nil then
-                rdoc=rdoc..' (nilable)'
+                rdoc = rdoc .. ' (nilable)'
             end
             table.insert(ret, rdoc)
         end
@@ -101,16 +101,16 @@ local function procMember(t, cname)
         end
         table.insert(ret, 'end')
     elseif t.type == 'var' then
-        local r=t.ret
-        local rtype= procType(r)
-        local rdoc=('---@type %s @(member)'):format(rtype)
-        if rtype~=r then
-            rdoc=('%s (%s)'):format(rdoc, r)
+        local r = t.ret
+        local rtype = procType(r)
+        local rdoc = ('---@type %s @(member)'):format(rtype)
+        if rtype ~= r then
+            rdoc = ('%s (%s)'):format(rdoc, r)
         end
         table.insert(ret, rdoc)
         table.insert(ret, ('%s.%s = nil'):format(cname, t.name))
     elseif t.type == 'const' then
-        local rdoc=('---@type %s @(constant)'):format(cname)
+        local rdoc = ('---@type %s @(constant)'):format(cname)
         table.insert(ret, rdoc)
         table.insert(ret, ('%s.%s = nil'):format(cname, t.name))
     end
@@ -127,7 +127,7 @@ local function proc(content)
     local cls = nil
     local cls_flushed = false
     ---@type string[]
-    local lines = string.split(content,'\n')
+    local lines = string.split(content, '\n')
     for iline, line in ipairs(lines) do
         local cls_decl = line:match('^# Class "(.*)"$')
         local mem_type_decl = line:match('^## (.*)$')
@@ -142,15 +142,15 @@ local function proc(content)
             local s = line:sub(5)
             s = s:gsub('{.*$', '')
             s = s:trim()
-            if s=='Children Classes' then
+            if s == 'Children Classes' then
             elseif s:starts_with('Inherits from') then
-                local next=lines[iline+1]
+                local next = lines[iline + 1]
                 cls.parent = procType(extractCName(next))
             end
         end
         if not cls_decl and not cls_flushed then
             -- flush
-            if cls.name=='Global_Functions' then
+            if cls.name == 'Global_Functions' then
                 append('--')
                 append('local Global_Functions = _G')
             else
@@ -183,7 +183,7 @@ local function proc(content)
         elseif mem_type_decl then
             if mem_type_decl == 'Constants' then
                 cur_mode = 'const'
-            elseif mem_type_decl=='Variables' then
+            elseif mem_type_decl == 'Variables' then
                 cur_mode = 'var'
             else
                 cur_mode = 'func'
@@ -204,7 +204,7 @@ local function proc(content)
             cur_mem = {}
             cur_mem.desc = {}
             if cur_mode == 'func' then
-                cur_mem.name = s:gsub('%(.*',''):trim()
+                cur_mem.name = s:gsub('%(.*', ''):trim()
             elseif cur_mode == 'var' then
                 cur_mem.name = s
             elseif cur_mode == 'const' then
@@ -225,15 +225,15 @@ local function proc(content)
                 local words2 = proto2:split(',')
                 words2[#words2] = nil
                 for i = 1, #words2 do
-                    words2[i]=words2[i]:trim()
+                    words2[i] = words2[i]:trim()
                 end
                 --
                 local is_altreturn_nil = proto_ex:find("data-altreturn='nil'")
                 cur_mem.altreturn_nil = is_altreturn_nil
-                if words1[1]=='const' then
+                if words1[1] == 'const' then
                     cur_mem.return_const = true
                     table.remove(words1, 1)
-                elseif words1[1]=='static' then
+                elseif words1[1] == 'static' then
                     cur_mem.static = true
                     table.remove(words1, 1)
                 end
@@ -241,23 +241,23 @@ local function proc(content)
                 --
                 cur_mem.params = {}
                 for _, word in ipairs(words2) do
-                    local pwords=word:split(' ')
+                    local pwords = word:split(' ')
                     local default = nil
-                    if pwords[#pwords-1]=='=' then
+                    if pwords[#pwords - 1] == '=' then
                         -- default value
-                        default=pwords[#pwords]
-                        pwords[#pwords]=nil
-                        pwords[#pwords]=nil
+                        default = pwords[#pwords]
+                        pwords[#pwords] = nil
+                        pwords[#pwords] = nil
                     end
-                    local pname=pwords[#pwords]
-                    pwords[#pwords]=nil
-                    local ptype=extractCName(table.concat(pwords, ' '))
-                    table.insert(cur_mem.params, {ptype, pname, default})
+                    local pname = pwords[#pwords]
+                    pwords[#pwords] = nil
+                    local ptype = extractCName(table.concat(pwords, ' '))
+                    table.insert(cur_mem.params, { ptype, pname, default })
                 end
             elseif cur_mode == 'var' then
                 local words = s:split(' ')
                 words[#words] = nil
-                if words[1]=='const' then
+                if words[1] == 'const' then
                     cur_mem.const = true
                     table.remove(words, 1)
                 end
@@ -280,10 +280,10 @@ local function proc(content)
             -- desc
             if cur_mem then
                 local s = line
-                if s:sub(1, 3)=='???' then
-                    s=s:sub(4)
+                if s:sub(1, 3) == '???' then
+                    s = s:sub(4)
                 end
-                s=s:gsub('`:::lua ','`')
+                s = s:gsub('`:::lua ', '`')
                 table.insert(cur_mem.desc, s)
             end
         end
@@ -292,9 +292,9 @@ local function proc(content)
     return table.concat(results, '\n')
 end
 
-local BlackList={
-    index=true,
-    PLACEHOLDER=true
+local BlackList = {
+    index       = true,
+    PLACEHOLDER = true
 }
 
 local function run(dir)
