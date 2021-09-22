@@ -293,12 +293,7 @@ local function proc(content)
         else
             -- desc
             if cur_mem then
-                local s = line
-                if s:sub(1, 3) == '???' then
-                    s = s:sub(4)
-                end
-                s = s:gsub('`:::lua ', '`')
-                table.insert(cur_mem.desc, s)
+                table.insert(cur_mem.desc, utils.procDescLine(line))
             end
         end
     end
