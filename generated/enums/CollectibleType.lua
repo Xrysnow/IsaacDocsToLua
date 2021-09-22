@@ -1,5 +1,5 @@
 ---@class CollectibleType @enum
-local CollectibleType = {}
+CollectibleType = {}
 
 ---
 --- 0

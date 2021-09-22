@@ -1,5 +1,5 @@
 ---@class BackdropType @enum
-local BackdropType = {}
+BackdropType = {}
 
 ---
 --- 0

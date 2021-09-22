@@ -1,5 +1,5 @@
 ---@class GridRooms @enum
-local GridRooms = {}
+GridRooms = {}
 
 ---
 --- -99999

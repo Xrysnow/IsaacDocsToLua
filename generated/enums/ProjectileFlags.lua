@@ -1,5 +1,5 @@
 ---@class ProjectileFlags @enum
-local ProjectileFlags = {}
+ProjectileFlags = {}
 
 --- follow player
 ---

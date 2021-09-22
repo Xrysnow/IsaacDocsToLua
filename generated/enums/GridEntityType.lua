@@ -1,5 +1,5 @@
 ---@class GridEntityType @enum
-local GridEntityType = {}
+GridEntityType = {}
 
 ---
 --- 0

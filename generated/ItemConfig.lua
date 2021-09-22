@@ -11,8 +11,8 @@ local ItemConfig = {}
 function ItemConfig:GetCard(ID)
 end
 
---- + bug "Bugs"
----     Calling Get() in this list does not return usable userdata, rendering it useless for that purpose.
+--- - Bug
+--- >    Calling Get() in this list does not return usable userdata, rendering it useless for that purpose.
 ---
 ---@return CardList @ (const)
 function ItemConfig:GetCards()
@@ -21,10 +21,10 @@ end
 --- Returns the Itemobject of a given CollectibleID. Returns nil of nothing was found.
 --- 
 --- - example "Example Code"
----     This function gets the item config of sad onion.
+--- >    This function gets the item config of sad onion.
 --- 
 ---     ```lua
----         Isaac.GetItemConfig():GetCollectible(1)
+--- >        Isaac.GetItemConfig():GetCollectible(1)
 ---     ```
 ---@param ID number @ (int)
 ---@return ItemConfig.Item @ (const)
@@ -33,29 +33,29 @@ end
 
 --- Returns the List of all Collectibles.
 --- 
---- + bug "Bug"
----     This function is broken and returns userdata.
+--- - Bug
+--- >    This function is broken and returns userdata.
 --- 
 --- - example "Example Code"
----     This Code gets the highest possible collectible id including modded items.
+--- >    This Code gets the highest possible collectible id including modded items.
 --- 
 ---     ```lua
----     function GetMaxCollectibleID()
----         return Isaac.GetItemConfig():GetCollectibles().Size -1
----     end
+--- >    function GetMaxCollectibleID()
+--- >        return Isaac.GetItemConfig():GetCollectibles().Size -1
+--- >    end
 --- 
 ---     ```
 --- 
 --- 
---- + bug "Bugs"
----     Calling Get() in this list does not return usable userdata, rendering it useless for that purpose.
+--- - Bug
+--- >    Calling Get() in this list does not return usable userdata, rendering it useless for that purpose.
 ---@return userdata @ (const)
 function ItemConfig:GetCollectibles()
 end
 
 --- 
---- + bug "Bugs"
----     The list returned by this function is always empty, rendering it useless.
+--- - Bug
+--- >    The list returned by this function is always empty, rendering it useless.
 ---@return CostumeList @ (const)
 function ItemConfig:GetCostumes()
 end
@@ -66,8 +66,8 @@ end
 function ItemConfig:GetNullItem(ID)
 end
 
---- + bug "Bugs"
----     Calling Get() in this list does not return usable userdata, rendering it useless for that purpose.
+--- - Bug
+--- >    Calling Get() in this list does not return usable userdata, rendering it useless for that purpose.
 ---
 ---@return ItemList @ (const)
 function ItemConfig:GetNullItems()
@@ -79,8 +79,8 @@ end
 function ItemConfig:GetPillEffect(ID)
 end
 
---- + bug "Bugs"
----     Calling Get() in this list does not return usable userdata, rendering it useless for that purpose.
+--- - Bug
+--- >    Calling Get() in this list does not return usable userdata, rendering it useless for that purpose.
 ---
 ---@return PillList @ (const)
 function ItemConfig:GetPillEffects()
@@ -92,8 +92,8 @@ end
 function ItemConfig:GetTrinket(ID)
 end
 
---- + bug "Bugs"
----     Calling Get() in this list does not return usable userdata, rendering it useless for that purpose.
+--- - Bug
+--- >    Calling Get() in this list does not return usable userdata, rendering it useless for that purpose.
 ---
 ---@return ItemList @ (const)
 function ItemConfig:GetTrinkets()
@@ -104,15 +104,15 @@ end
 --- Since this function is a static function, the usage is a bit different. Take a look at the example code for the correct usage
 --- 
 --- - example "Example Code"
----     This Code checks, if the item "Sad Onion" (ID: 1) exists.
+--- >    This Code checks, if the item "Sad Onion" (ID: 1) exists.
 ---     ```lua
----     ItemConfig.Config.IsValidCollectible(1)
+--- >    ItemConfig.Config.IsValidCollectible(1)
 --- 
 ---     ```
 --- 
 --- 
---- + bug "Bugs"
----     This function returns false for modded items! Use itemConfig:GetCollectible() instead.
+--- - Bug
+--- >    This function returns false for modded items! Use itemConfig:GetCollectible() instead.
 ---@param ID CollectibleType @
 ---@return boolean @
 function ItemConfig.IsValidCollectible(ID)
@@ -123,10 +123,10 @@ end
 --- 
 --- 
 --- - example "Example Code"
----     This Code checks, if the item "Sad Onion" (ID: 1) should add a costume on Pickup.
+--- >    This Code checks, if the item "Sad Onion" (ID: 1) should add a costume on Pickup.
 ---     ```lua
----     local sadOnionItemConfig = Isaac.GetItemConfig():GetCollectible(1)
----     ItemConfig.Config.ShouldAddCostumeOnPickup(sadOnionItemConfig) -- returns true
+--- >    local sadOnionItemConfig = Isaac.GetItemConfig():GetCollectible(1)
+--- >    ItemConfig.Config.ShouldAddCostumeOnPickup(sadOnionItemConfig) -- returns true
 --- 
 ---     ```
 ---@param Config ItemConfig.Item @

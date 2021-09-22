@@ -1,5 +1,5 @@
 ---@class ItemPoolType @enum
-local ItemPoolType = {}
+ItemPoolType = {}
 
 ---
 --- -1

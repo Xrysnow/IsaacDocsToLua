@@ -1,5 +1,5 @@
 ---@class ButtonAction @enum
-local ButtonAction = {}
+ButtonAction = {}
 
 ---
 --- 0

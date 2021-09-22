@@ -1,5 +1,5 @@
 ---@class Direction @enum
-local Direction = {}
+Direction = {}
 
 ---
 --- -1

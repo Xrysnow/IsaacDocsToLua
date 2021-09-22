@@ -1,5 +1,5 @@
 ---@class EntityCollisionClass @enum
-local EntityCollisionClass = {}
+EntityCollisionClass = {}
 
 --- no collision with other entities <br>
 ---

@@ -1,5 +1,5 @@
 ---@class BombSubType @enum
-local BombSubType = {}
+BombSubType = {}
 
 ---
 --- 1

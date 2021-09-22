@@ -1,5 +1,5 @@
 ---@class EntityType @enum
-local EntityType = {}
+EntityType = {}
 
 ---
 --- 0

@@ -6,8 +6,8 @@ local RoomDescriptor = {}
 --------------------
 --- Contains data swapped just on load (in cases like minibosses, or other such events)
 --- 
---- + bug "Bug"
----     This variable contains userdata and is therefore not useable.
+--- - Bug
+--- >    This variable contains userdata and is therefore not useable.
 ---@type DoorSet @(member)
 RoomDescriptor.AllowedDoors = nil
 --- used to spawn clear awards (normal, miniboss, boss rooms) and initialize shop items (shop, devil rooms)
@@ -42,33 +42,33 @@ RoomDescriptor.DeliriumDistance = nil
 --- ```
 --- 
 --- - example "Examples"
----     The flags are hard to interpret, but here are some examples:
+--- >    The flags are hard to interpret, but here are some examples:
 --- 
----     **000** = invisible, this is how most rooms start
+--- >    **000** = invisible, this is how most rooms start
 --- 
----     **101** = standard room visibility, this includes rooms that are adjacent and you haven't actively visited. This will usually show icons.
+--- >    **101** = standard room visibility, this includes rooms that are adjacent and you haven't actively visited. This will usually show icons.
 --- 
----     **011** = secret room, locked rooms, sac rooms pre-entry*
+--- >    **011** = secret room, locked rooms, sac rooms pre-entry*
 --- 
----     **111** = 011 rooms after entry, but also the rooms directly adjacent to them* (applied after entry)
+--- >    **111** = 011 rooms after entry, but also the rooms directly adjacent to them* (applied after entry)
 --- 
----     \* If you have spelunker's hat, bit 1 is completely unused. All special rooms will have the normal behavior of either 000 or 101. iirc this is unique to spelunker's hat, mapping items follow the normal rules.
+--- >    \* If you have spelunker's hat, bit 1 is completely unused. All special rooms will have the normal behavior of either 000 or 101. iirc this is unique to spelunker's hat, mapping items follow the normal rules.
 --- 
 --- + quote "Quote from User 'Budj'"
----     From this my best guess is that bits 1 and 2 are special rendering (display) flags that may have more meaning down below.
+--- >    From this my best guess is that bits 1 and 2 are special rendering (display) flags that may have more meaning down below.
 --- 
----     The important bit for using them is minding that they're used differently mostly for special rooms.
+--- >    The important bit for using them is minding that they're used differently mostly for special rooms.
 --- 
----     As far as I've seen, 001 is completely unused.
----     010, 100, and 110 may be used for compass or blue map, I don't remember. I think they use 100
+--- >    As far as I've seen, 001 is completely unused.
+--- >    010, 100, and 110 may be used for compass or blue map, I don't remember. I think they use 100
 ---@type number @(member) (int)
 RoomDescriptor.DisplayFlags = nil
 --- index in the level grid (always top left)
 --- 
 --- - note "Notes"
----     This will always return the top left coordinate of the room on the levelgrid. Therefore, it will return an index not part of the actual room, when checking this value for J-shaped rooms. (See graphic below)
+--- >    This will always return the top left coordinate of the room on the levelgrid. Therefore, it will return an index not part of the actual room, when checking this value for J-shaped rooms. (See graphic below)
 --- 
----     ![Room Grid indicies](images/infographics/RoomGridIndicies.png)
+--- >    ![Room Grid indicies](images/infographics/RoomGridIndicies.png)
 ---@type number @(member) (int)
 RoomDescriptor.GridIndex = nil
 
@@ -98,9 +98,9 @@ RoomDescriptor.SacrificeDone = nil
 --- index in the level grid (not always top left, but is guaranteed to point to the room. this is important for LTL shapes!)
 --- 
 --- - note "Notes"
----     This will always return the top left coordinate of the room on the levelgrid, except for J-shaped rooms, where it returns the top right index. (see graphic below)
+--- >    This will always return the top left coordinate of the room on the levelgrid, except for J-shaped rooms, where it returns the top right index. (see graphic below)
 --- 
----     ![Room Grid indicies](images/infographics/RoomGridIndicies.png)
+--- >    ![Room Grid indicies](images/infographics/RoomGridIndicies.png)
 ---@type number @(member) (int)
 RoomDescriptor.SafeGridIndex = nil
 

@@ -1,5 +1,5 @@
 ---@class DoorSlot @enum
-local DoorSlot = {}
+DoorSlot = {}
 
 ---
 --- -1

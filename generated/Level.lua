@@ -38,26 +38,26 @@ end
 function Level:CanStageHaveCurseOfLabyrinth(Stage)
 end
 --- - note "Notes"
----     List of technical ids:
----     -1: Deal room
----     -2: Error room
----     -3: used for goto rooms
----     -4: Item dungeon (crawl space)
----     -5: Boss rush
----     -6: Black market
----     -7: Mega Satan
----     -8: Hush entrance
----     -10: Used for alt/backwards path entrances and The Beast room
----     -12: Genesis Room
----     -13: The Stairway room
----     -16: Blue Key rooms
----     -18: Member Card room
+--- >    List of technical ids:
+--- >    -1: Deal room
+--- >    -2: Error room
+--- >    -3: used for goto rooms
+--- >    -4: Item dungeon (crawl space)
+--- >    -5: Boss rush
+--- >    -6: Black market
+--- >    -7: Mega Satan
+--- >    -8: Hush entrance
+--- >    -10: Used for alt/backwards path entrances and The Beast room
+--- >    -12: Genesis Room
+--- >    -13: The Stairway room
+--- >    -16: Blue Key rooms
+--- >    -18: Member Card room
 --- 
----     Most of Repentance out-of-bounds rooms are empty by default but get filled later on so teleporting to them might cause a game crash.
----     Other negative ids are free for you to override, limit is -2147483648
+--- >    Most of Repentance out-of-bounds rooms are empty by default but get filled later on so teleporting to them might cause a game crash.
+--- >    Other negative ids are free for you to override, limit is -2147483648
 --- 
---- - info "Dimension Info"
----     Dimension: ID of the dimension to get the room from
+--- - Dimension Info
+--- >    Dimension: ID of the dimension to get the room from
 --- 
 --- 		* -1: Current dimension
 --- 		* 0: Main dimension
@@ -101,11 +101,11 @@ end
 --- This functions returns a read only version of the [RoomDescriptor](RoomDescriptor.md) of the current room. If you want to edit the [RoomDescriptor](RoomDescriptor.md), use `GetRoomByIdx()` with `GetCurrentRoomIndex()` instead.
 --- 
 --- - example "Example Code"
----     This gets the current rooms [RoomDescriptor](RoomDescriptor.md) class in read only and writeable versions.
+--- >    This gets the current rooms [RoomDescriptor](RoomDescriptor.md) class in read only and writeable versions.
 ---     ```lua
----     local level = Game():GetLevel()
----     local readOnlyRoomDesc = level:GetCurrentRoomDesc()
----     local writeableRoomDesc = level:GetRoomByIdx(level:GetCurrentRoomIndex())
+--- >    local level = Game():GetLevel()
+--- >    local readOnlyRoomDesc = level:GetCurrentRoomDesc()
+--- >    local writeableRoomDesc = level:GetRoomByIdx(level:GetCurrentRoomIndex())
 ---     ```
 ---@return RoomDescriptor @ (const)
 function Level:GetCurrentRoomDesc()
@@ -113,9 +113,9 @@ end
 
 --- 
 --- - note "Notes"
----     This will always return the roomindex on the levelgrid, on which you entered the current room from. (see black entries in graphic below)
+--- >    This will always return the roomindex on the levelgrid, on which you entered the current room from. (see black entries in graphic below)
 --- 
----     ![Room Grid indicies](images/infographics/RoomGridIndicies.png)
+--- >    ![Room Grid indicies](images/infographics/RoomGridIndicies.png)
 ---@return number @ (int)
 function Level:GetCurrentRoomIndex()
 end
@@ -171,14 +171,14 @@ function Level:GetRandomRoomIndex(IAmErrorRoom, Seed)
 end
 
 --- - example "Example Code"
----     This gets the current rooms [RoomDescriptor](RoomDescriptor.md) class.
+--- >    This gets the current rooms [RoomDescriptor](RoomDescriptor.md) class.
 ---     ```lua
----     local level = Game():GetLevel()
----     local curRoomDesc = level:GetRoomByIdx(level:GetCurrentRoomIndex())
+--- >    local level = Game():GetLevel()
+--- >    local curRoomDesc = level:GetRoomByIdx(level:GetCurrentRoomIndex())
 ---     ```
 --- 
---- - info "Dimension Info"
----     Dimension: ID of the dimension to get the room from
+--- - Dimension Info
+--- >    Dimension: ID of the dimension to get the room from
 --- 
 --- 		* -1: Current dimension
 --- 		* 0: Main dimension
@@ -250,9 +250,9 @@ end
 --- Curses: A bitmask of LevelCurse that indicates which curses will be removed
 --- 
 --- - example "Example Code"
----     This example removes curse of darkness and curse of the blind
+--- >    This example removes curse of darkness and curse of the blind
 ---     ```lua
----     Game():GetLevel():RemoveCurses(LevelCurse.CURSE_OF_DARKNESS | LevelCurse.CURSE_OF_BLIND)
+--- >    Game():GetLevel():RemoveCurses(LevelCurse.CURSE_OF_DARKNESS | LevelCurse.CURSE_OF_BLIND)
 ---     ```
 ---@param Curses LevelCurse @
 function Level:RemoveCurses(Curses)
@@ -299,25 +299,25 @@ end
 
 --- 
 --- - note "Notes"
----     Whenever you update the visibility of a room on the minimap, it won't update the map automatically, since it is cached. You have to explicitly call  UpdateVisibility() afterwards to apply any changes.
+--- >    Whenever you update the visibility of a room on the minimap, it won't update the map automatically, since it is cached. You have to explicitly call  UpdateVisibility() afterwards to apply any changes.
 --- 
 --- - example "Example Code"
----     This code
+--- >    This code
 ---     ```lua
----     -- Local variables
----     local game = Game()
----     local level = game:GetLevel()
+--- >    -- Local variables
+--- >    local game = Game()
+--- >    local level = game:GetLevel()
 --- 
----     -- Give the player the Compass effect, which will display all of the floor's special rooms on the mini-map
----     level:ApplyCompassEffect()
+--- >    -- Give the player the Compass effect, which will display all of the floor's special rooms on the mini-map
+--- >    level:ApplyCompassEffect()
 --- 
----     -- Remove the icon for the Treasure Room specifically
----     local treasureIndex = level:QueryRoomTypeIndex(RoomType.ROOM_TREASURE, false, RNG())
----     local treasureRoom = level:GetRoomByIdx(treasureIndex)
----     treasureRoom.DisplayFlags = 0
+--- >    -- Remove the icon for the Treasure Room specifically
+--- >    local treasureIndex = level:QueryRoomTypeIndex(RoomType.ROOM_TREASURE, false, RNG())
+--- >    local treasureRoom = level:GetRoomByIdx(treasureIndex)
+--- >    treasureRoom.DisplayFlags = 0
 --- 
----     -- Since the mini-map is cached, changing display flags won't update it unless we explicitly call this function
----     level:UpdateVisibility()
+--- >    -- Since the mini-map is cached, changing display flags won't update it unless we explicitly call this function
+--- >    level:UpdateVisibility()
 --- 
 ---     ```
 ---
@@ -336,8 +336,8 @@ Level.DungeonReturnRoomIndex = nil
 
 --- This value defines on which doorslot you entered the room.
 --- 
---- + bug "Bugs"
----     Changing this value has no impact on anything. the EnterDoor value is always determined by the LeaveDoor Value and the game itself.
+--- - Bug
+--- >    Changing this value has no impact on anything. the EnterDoor value is always determined by the LeaveDoor Value and the game itself.
 ---@type number @(member) (int)
 Level.EnterDoor = nil
 
@@ -347,6 +347,6 @@ Level.GreedModeWave = nil
 --- This value defines on which doorslot you are positioned after the transition. You will always end up at the oposite side of the door specified. Example: LeaveDoor=1 (Up0) will position you at Doorslot Down0 (Logic: Doorslot+2)
 --- 
 --- - note "Notes"
----     if level.LeaveDoor is set to anything other than -1, the function will transition based on the room you are currently in.
+--- >    if level.LeaveDoor is set to anything other than -1, the function will transition based on the room you are currently in.
 ---@type number @(member) (int)
 Level.LeaveDoor = nil

@@ -1,5 +1,5 @@
 ---@class Card @enum
-local Card = {}
+Card = {}
 
 ---
 --- -1

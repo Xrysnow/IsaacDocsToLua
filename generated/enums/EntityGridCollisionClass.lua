@@ -1,5 +1,5 @@
 ---@class EntityGridCollisionClass @enum
-local EntityGridCollisionClass = {}
+EntityGridCollisionClass = {}
 
 ---
 --- 0

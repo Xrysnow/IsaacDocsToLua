@@ -25,8 +25,8 @@ Costume.OverwriteColor = nil
 
 ---@type number @(member) (int)
 Costume.Priority = nil
---- + bug "Bug"
----     Since it returns UserData, this function is unusable and therefore broken.
+--- - Bug
+--- >    Since it returns UserData, this function is unusable and therefore broken.
 ---
 ---@type SkinColor @(member)
 Costume.SkinColor = nil

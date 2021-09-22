@@ -1,5 +1,5 @@
 ---@class Keyboard @enum
-local Keyboard = {}
+Keyboard = {}
 
 ---
 --- 32

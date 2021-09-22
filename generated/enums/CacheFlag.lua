@@ -1,5 +1,5 @@
 ---@class CacheFlag @enum
-local CacheFlag = {}
+CacheFlag = {}
 
 --- 0x1
 ---

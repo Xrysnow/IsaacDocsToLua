@@ -1,5 +1,5 @@
 ---@class PlayerType @enum
-local PlayerType = {}
+PlayerType = {}
 
 ---
 --- -1

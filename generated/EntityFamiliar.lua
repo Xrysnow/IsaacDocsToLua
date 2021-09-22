@@ -63,11 +63,11 @@ function EntityFamiliar:MoveDiagonally(Speed)
 end
 --- **Flags**: A combination of the following flags (none of these are set by default)
 --- 
----     * 1: Allow switching to a better target even if we already have one
----     * 2: Don't prioritize enemies that are close to our owner
----     * 4: Prioritize enemies with higher HP
----     * 8: Prioritize enemies with lower HP
----     * 16: Give lower priority to our current target (this makes us more likely to switch between targets)
+--- >    * 1: Allow switching to a better target even if we already have one
+--- >    * 2: Don't prioritize enemies that are close to our owner
+--- >    * 4: Prioritize enemies with higher HP
+--- >    * 8: Prioritize enemies with lower HP
+--- >    * 16: Give lower priority to our current target (this makes us more likely to switch between targets)
 --- 
 --- **ConeDir**: If ~= Vector.Zero, searches for targets in a cone pointing in this direction
 --- 
@@ -108,8 +108,8 @@ function EntityFamiliar:RemoveFromOrbit()
 end
 
 --- 
---- + bug "Bugs"
----     This function does not seem to work.
+--- - Bug
+--- >    This function does not seem to work.
 function EntityFamiliar:Shoot()
 end
 
@@ -141,17 +141,17 @@ EntityFamiliar.MoveDirection = nil
 --- Can be used to override the angular position of the familiar on its orbit based on the initial starting position of the orbit.
 --- 
 --- - example "Example Code"
----     This code will make all of your orbitals move as a tight wall around you.
+--- >    This code will make all of your orbitals move as a tight wall around you.
 --- 
 ---     ```lua
----     for i,v in ipairs(Isaac.GetRoomEntities()) do
----         if v.Type==3 then
----             v:ToFamiliar().OrbitAngleOffset = 0.25*i
----         end
----     end
+--- >    for i,v in ipairs(Isaac.GetRoomEntities()) do
+--- >        if v.Type==3 then
+--- >            v:ToFamiliar().OrbitAngleOffset = 0.25*i
+--- >        end
+--- >    end
 ---     ```
 --- 
----     Result: ![angle offset](images/example_familiar_angleOffset.png)
+--- >    Result: ![angle offset](images/example_familiar_angleOffset.png)
 ---@type number @(member) (float)
 EntityFamiliar.OrbitAngleOffset = nil
 

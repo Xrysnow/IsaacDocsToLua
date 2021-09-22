@@ -1,5 +1,5 @@
 ---@class PoopPickupSubType @enum
-local PoopPickupSubType = {}
+PoopPickupSubType = {}
 
 ---
 --- 0

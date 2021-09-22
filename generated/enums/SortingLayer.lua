@@ -1,5 +1,5 @@
 ---@class SortingLayer @enum
-local SortingLayer = {}
+SortingLayer = {}
 
 --- Background level, behind grid entities (creep, pitfalls)
 ---

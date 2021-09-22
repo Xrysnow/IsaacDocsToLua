@@ -1,5 +1,5 @@
 ---@class Difficulty @enum
-local Difficulty = {}
+Difficulty = {}
 
 ---
 --- 0

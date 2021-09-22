@@ -1,5 +1,5 @@
 ---@class Mouse @enum
-local Mouse = {}
+Mouse = {}
 
 ---
 --- 0

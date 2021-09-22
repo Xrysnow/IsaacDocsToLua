@@ -1,5 +1,5 @@
 ---@class RoomShape @enum
-local RoomShape = {}
+RoomShape = {}
 
 --- Grid indicies: 0-134
 ---

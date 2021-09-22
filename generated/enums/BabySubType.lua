@@ -1,5 +1,5 @@
 ---@class BabySubType @enum
-local BabySubType = {}
+BabySubType = {}
 
 ---
 --- -1

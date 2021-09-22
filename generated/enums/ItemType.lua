@@ -1,5 +1,5 @@
 ---@class ItemType @enum
-local ItemType = {}
+ItemType = {}
 
 ---
 --- 0

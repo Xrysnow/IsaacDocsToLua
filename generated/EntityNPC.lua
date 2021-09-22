@@ -33,17 +33,17 @@ end
 function EntityNPC:FireBossProjectiles(NumProjectiles, TargetPos, TrajectoryModifier, Params)
 end
 
---- - info "ProjectilesMode"
----     * 0 : single projectile
----     * 1 : two projectiles (uses params.Spread)
----     * 2 : three projectiles (uses params.Spread)
----     * 3 : three projectiles (uses params.Spread, more spread out?)
----     * 4 : four projectiles (uses params.Spread)
----     * 5 : five projectiles (uses params.Spread)
----     * 6 : four projectiles in a + pattern (uses velocity.x as speed)
----     * 7 : four projectiles in a x pattern (uses velocity.x as speed)
----     * 8 : eight projectiles in a star pattern (uses velocity.x as speed)
----     * 9 : N projectiles in a circle (velocity.x = speed, velocity.y = N, params.FireDirectionLimit and params.DotProductLimit to fire in an arc only)
+--- - ProjectilesMode
+--- >    * 0 : single projectile
+--- >    * 1 : two projectiles (uses params.Spread)
+--- >    * 2 : three projectiles (uses params.Spread)
+--- >    * 3 : three projectiles (uses params.Spread, more spread out?)
+--- >    * 4 : four projectiles (uses params.Spread)
+--- >    * 5 : five projectiles (uses params.Spread)
+--- >    * 6 : four projectiles in a + pattern (uses velocity.x as speed)
+--- >    * 7 : four projectiles in a x pattern (uses velocity.x as speed)
+--- >    * 8 : eight projectiles in a star pattern (uses velocity.x as speed)
+--- >    * 9 : N projectiles in a circle (velocity.x = speed, velocity.y = N, params.FireDirectionLimit and params.DotProductLimit to fire in an arc only)
 ---@param Pos Vector @
 ---@param Velocity Vector @
 ---@param Mode ProjectilesMode @
@@ -57,14 +57,14 @@ end
 
 --- 
 --- - note "Notes"
----     This will return the boss color idx reduced by 1. To get the actual color as set in bosscolors.xml, add +1 to the result.
+--- >    This will return the boss color idx reduced by 1. To get the actual color as set in bosscolors.xml, add +1 to the result.
 ---@return number @ (int)
 function EntityNPC:GetBossColorIdx()
 end
 
 --- 
 --- - note "Notes"
----     A list of Champion colors can be found here : [ChampionColorIdx](https://bindingofisaacrebirth.gamepedia.com/Monsters#Champions)
+--- >    A list of Champion colors can be found here : [ChampionColorIdx](https://bindingofisaacrebirth.gamepedia.com/Monsters#Champions)
 ---@return number @ (int)
 function EntityNPC:GetChampionColorIdx()
 end
@@ -103,9 +103,9 @@ end
 --- A list of Champion colors can be found here : [ChampionColorIdx](https://bindingofisaacrebirth.gamepedia.com/Monsters#Champions)
 --- 
 --- - example "Example Code"
----     This code turns an entity into a gaper.
+--- >    This code turns an entity into a gaper.
 ---     ```lua
----     entity:ToNPC():Morph(EntityType.ENTITY_GAPER , 0, 0,-1)
+--- >    entity:ToNPC():Morph(EntityType.ENTITY_GAPER , 0, 0,-1)
 ---     ```
 ---@param type EntityType @
 ---@param Variant number @ (int)

@@ -1,5 +1,5 @@
 ---@class TrinketType @enum
-local TrinketType = {}
+TrinketType = {}
 
 ---
 --- 0

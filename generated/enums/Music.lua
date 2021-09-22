@@ -1,5 +1,5 @@
 ---@class Music @enum
-local Music = {}
+Music = {}
 
 ---
 --- 0

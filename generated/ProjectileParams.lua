@@ -5,9 +5,6 @@ local ProjectileParams = {}
 -- Constructors
 --------------------
 
----@return ProjectileParams @
-function ProjectileParams:ProjectileParams()
-end
 
 --------------------
 -- Variables

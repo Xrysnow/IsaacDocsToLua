@@ -1,291 +1,890 @@
 ---@class ModCallbacks @enum
-local ModCallbacks = {}
+ModCallbacks = {}
 
---- ([EntityNPC](../EntityNPC.md))
+--- Called after an NPC is updated.
+--- 
+--- Returning any value will have no effect on later callback executions.
+--- 
+--- - Warning
+--- >    This callback will NOT fire when the NPC is playing the "Appear" animation. For example, when a Gaper spawns, it will fire on frame 1, then on frame 31 and onwards.
+--- 
+--- - example "Example Code"
+--- >    This code will print "Hello World!" for every NPC Update. If the NPC is of the type "ENTITY_GAPER", it will also print "Gaper found".
+---     ```lua
+--- >    function mod:myFunction(entity) -- 'entity' contains a reference to the NPC
+--- >        print("Hello World!")
+--- >    end
+--- >    mod:AddCallback(ModCallbacks.MC_NPC_UPDATE, mod.myFunction)
+--- 
+--- >    function mod:myFunction2(entity) -- 'entity' contains a reference to the NPC
+--- >        print("Gaper found!")
+--- >    end
+--- >    mod:AddCallback(ModCallbacks.MC_NPC_UPDATE, mod.myFunction2, EntityType.ENTITY_GAPER)
+---     ```
+--- 
+--- Function args: EntityNPC
+---
+--- Optional args: EntityType
 ---
 --- 0
 ModCallbacks.MC_NPC_UPDATE = 0
---- -
+--- Called after every game update.
+--- 
+--- Returning any value will have no effect on later callback executions.
+--- 
+--- - Execution informations
+--- >    This callback is called 30 times per second. It will not be called, when its paused (for example on screentransitions or on the pause menu).
+--- 
 ---
 --- 1
 ModCallbacks.MC_POST_UPDATE = 1
---- -
+--- Called after every game render (60 times per second).
+--- 
+--- Returning any value will have no effect on later callback executions.
+--- 
+--- - Execution informations
+--- >    It is highly recommended to only use this function when you want to render something. Its not recommended to use this function for things which are not frequently used or need constant recalculation.
+--- 
 ---
 --- 2
 ModCallbacks.MC_POST_RENDER = 2
---- ([CollectibleType](CollectibleType.md),<br>[RNG](../RNG.md),<br>[EntityPlayer](../EntityPlayer.md),<br>UseFlags [int],<br>[ActiveSlot](ActiveSlot.md),<br>CustomVarData [int])
+--- Called when a custom active item is used, after discharging it.
+--- 
+--- The item [RNG](../RNG.md) allows for the item's random events to be seeded.
+--- 
+--- Return true to show the "use item" animation, otherwise false.Returning any value will have no effect on later callback executions.
+--- 
+--- If a table is returned instead of a boolean, the following fields can be set to a non-nil value for extra functionality:
+--- 
+--- * Discharge: Determines whether the item should be discharged or not after being used
+--- * Remove: Determines whether the item should be removed from the player or not after being used
+--- * ShowAnim: Plays the default use animation if set to true (equivalent to simply returning true in AB+)
+--- 
+--- Function args: CollectibleType,RNG,EntityPlayer,UseFlags(int),ActiveSlot,CustomVarData(int)
+---
+--- Optional args: CollectibleType
 ---
 --- 3
 ModCallbacks.MC_USE_ITEM = 3
---- ([EntityPlayer](../EntityPlayer.md))
+--- Called for each player, each frame, after the player evaluates the effects of items that must be constantly evaluated.
+--- 
+--- Returning any value will have no effect on later callback executions.
+--- 
+--- Function args: EntityPlayer
+---
+--- Optional args: PlayerType
 ---
 --- 4
 ModCallbacks.MC_POST_PEFFECT_UPDATE = 4
---- ([Card](Card.md),<br>[EntityPlayer](../EntityPlayer.md),<br>UseFlags [int])
+--- Called when a card/rune is used.
+--- 
+--- Returning any value will have no effect on later callback executions.
+--- 
+--- Function args: Card,EntityPlayer,UseFlags(int)
+---
+--- Optional args: Card
 ---
 --- 5
 ModCallbacks.MC_USE_CARD = 5
---- ([EntityFamiliar](../EntityFamiliar.md))
+--- Called every frame for each familiar.
+--- 
+--- Returning any value will have no effect on later callback executions.
+--- 
+--- Function args: EntityFamiliar
+---
+--- Optional args: FamiliarVariant
 ---
 --- 6
 ModCallbacks.MC_FAMILIAR_UPDATE = 6
---- ([EntityFamiliar](../EntityFamiliar.md))
+--- Called just after a familiar is initialized.
+--- 
+--- Returning any value will have no effect on later callback executions.
+--- 
+--- - Warning
+--- >    Accessing the initialized entity does provide incomplete data in some use cases. Only Position, Velocity, SpawnerType, SpawnerVariant, SpawnerEntity and some others are set before PostInit callbacks are called and are therefore accessible. Some other attributes (i.e. effect attributes or tear flags) will not be set. If you want to access those values, you need to hook into MC_POST_PEFFECT_UPDATE and check those attributes on the first possible frame.
+--- 
+--- Function args: EntityFamiliar
+---
+--- Optional args: FamiliarVariant
 ---
 --- 7
 ModCallbacks.MC_FAMILIAR_INIT = 7
---- ([EntityPlayer](../EntityPlayer.md),<br>[CacheFlag](CacheFlag.md))
+--- Called one or more times when a player's stats must be re-evaluated, such as after picking up an item, using certain pills or manually calling EvaluateItems() on an [EntityPlayer](../EntityPlayer.md).
+--- 
+--- Returning any value will have no effect on later callback executions.
+--- 
+--- - Hint
+--- >    Use this to let custom items change the player's stats, familiars, flying, weapons, etc. Items tell the game which stats they affect using cache values in items.xml. Then the callback should respond to the [CacheFlag](CacheFlag.md) by setting the corresponding player stat. Other items' stat modifiers, multipliers, etc are applied before this callback is called.
+--- 
+--- Function args: EntityPlayer,CacheFlag
+---
+--- Optional args: CacheFlag
 ---
 --- 8
 ModCallbacks.MC_EVALUATE_CACHE = 8
---- ([EntityPlayer](../EntityPlayer.md))
+--- Called after a Player Entity is initialized.
+--- 
+--- The optional parameter can be used to specify a Player Variant. 0 = Player, 1 = Co-Op-Baby
+--- 
+--- Returning any value will have no effect on later callback executions.
+--- 
+--- - Warning
+--- >    Accessing the initialized entity does provide incomplete data in some use cases. Only Position, Velocity, SpawnerType, SpawnerVariant, SpawnerEntity and some others are set before PostInit callbacks are called and are therefore accessible. Some other attributes (i.e. effect attributes or tear flags) will not be set. If you want to access those values, you need to hook into MC_POST_PEFFECT_UPDATE and check those attributes on the first possible frame.
+--- 
+--- Function args: EntityPlayer
+---
+--- Optional args: PlayerVariant*
 ---
 --- 9
 ModCallbacks.MC_POST_PLAYER_INIT = 9
---- ([PillEffect](PillEffect.md),<br>[EntityPlayer](../EntityPlayer.md),<br>UseFlags [int])
+--- Called when a pill is used.
+--- 
+--- Returning any value will have no effect on later callback executions.
+--- 
+--- Function args: PillEffect,EntityPlayer,UseFlags(int)
+---
+--- Optional args: PillEffect
 ---
 --- 10
 ModCallbacks.MC_USE_PILL = 10
---- (TookDamage [[Entity](../Entity.md)],<br>DamageAmount [float],<br>DamageFlags [int],<br>DamageSource [[EntityRef](../EntityRef.md)],<br>DamageCountdownFrames [int])
+--- Called before new damage is applied.
+--- 
+--- If the entity has a DAMAGE_COUNTDOWN flag, it will ignore any other DAMAGE_COUNTDOWN hits for the duration specified.
+--- 
+--- Return true or nil if the entity or player should sustain the damage, otherwise false to ignore it. If the entity is an [EntityPlayer](../EntityPlayer.md), the DamageAmount is the integer number of half-hearts of damage that the player will take. Otherwise, DamageAmount is a number of hit points.
+--- 
+--- + bug
+--- >    Returning any value besides nil will prevent later callbacks from being executed.
+--- 
+--- Function args: TookDamage(Entity),DamageAmount(float),DamageFlags(int),DamageSource EntityRef,DamageCountdownFrames(int)
+---
+--- Optional args: EntityType
 ---
 --- 11
 ModCallbacks.MC_ENTITY_TAKE_DMG = 11
---- (Curses)
+--- Curses is a bitmask containing current curses. Called after the current Level applied it's curses. Returns the new curse bitmask. Use Isaac.GetCurseIdByName() to get the curseID.
+--- 
+--- If a number is returned, it will be the "Curses" arg for later executed callbacks.
+--- 
+--- + bug
+--- >    Returning a value that is not an integer or nil will cause the game to crash.
+--- 
+--- - Warning
+--- >    The last callback to return a valid return value wins out and overwrites previous callbacks' return values
+--- 
+--- Function args: Curses
 ---
 --- 12
 ModCallbacks.MC_POST_CURSE_EVAL = 12
---- ([Entity](../Entity.md),<br>[InputHook](InputHook.md),<br>[ButtonAction](ButtonAction.md))
+--- It is called when game/game entities wants to read an action input.
+--- 
+--- [Entity](../Entity.md) can be nil if the input is not read from an entity class.
+--- 
+--- The [InputHook](InputHook.md) value can be used to determine if this callback was called through Input.IsActionTriggered(), Input.IsActionPressed(), or Input.GetActionValue()
+--- 
+--- Return nil if you don't want to overwrite the input or value.
+--- 
+--- The return value can be bool if it's a IS_ACTION_XXX hook or float if it's an GET_ACTION_VALUE hook. Float values should be in range of 0.0 and 1.0
+--- 
+--- Returning any value will have no effect on later callback executions.
+--- 
+--- - Execution informations
+--- >    This callback is called roughly 1470 times a second.
+--- 
+--- Function args: Entity,InputHook,ButtonAction
+---
+--- Optional args: InputHook
 ---
 --- 13
 ModCallbacks.MC_INPUT_ACTION = 13
---- -
+--- 
+--- + bug
+--- >    This callback doesn't work right now and will never be called by the game!
+--- 
 ---
 --- 14
 ModCallbacks.MC_LEVEL_GENERATOR = 14
---- (IsContinued [bool])
+--- 
+--- This function gets called when you start a game. The boolean value is true when you continue a run, false when you start a new one.
+--- 
+--- This callback will be called after MC_POST_NEW_ROOM and after MC_POST_NEW_LEVEL.
+--- 
+--- Returning any value will have no effect on later callback executions.
+--- 
+--- - Example code
+---     ```lua
+--- >    local function onStart(_,bool)
+--- >    	print(bool)
+--- >    end
+--- >    mod:AddCallback(ModCallbacks.MC_POST_GAME_STARTED, onStart)
+---     ```
+--- 
+--- Function args: IsContinued(bool)
 ---
 --- 15
 ModCallbacks.MC_POST_GAME_STARTED = 15
---- (IsGameOver [bool])
+--- 
+--- This function gets called when the game over screen appears, or when the an ending starts playing. The boolean value is true when you died and got a game over, false when you won and got an ending.
+--- 
+--- Returning any value will have no effect on later callback executions.
+--- 
+--- - Example code
+---     ```lua
+--- >    local function onEnd(_,bool)
+--- >        print(bool)
+--- >    end
+--- >    mod:AddCallback(ModCallbacks.MC_POST_GAME_END, onEnd)
+---     ```
+--- 
+--- Function args: IsGameOver(bool)
 ---
 --- 16
 ModCallbacks.MC_POST_GAME_END = 16
---- (ShouldSave [bool])
+--- 
+--- 
+--- This function gets called when you quit a run. The boolean value is true when the game would normally create a continuable save, false when it wouldn't. Called twice when the game plays an ending.
+--- 
+--- Returning any value will have no effect on later callback executions.
+--- 
+--- - Example code
+---     ```lua
+--- >    local function onExit(_,bool)
+--- >        print(bool)
+--- >    end
+--- >    mod:AddCallback(ModCallbacks.MC_PRE_GAME_EXIT, onExit)
+---     ```
+--- 
+--- Function args: ShouldSave(bool)
 ---
 --- 17
 ModCallbacks.MC_PRE_GAME_EXIT = 17
---- -
+--- This triggers after transitioning a level or stage.
+--- 
+--- Its always called **after** MC_POST_NEW_ROOM.
+--- 
+--- Returning any value will have no effect on later callback executions.
+--- 
 ---
 --- 18
 ModCallbacks.MC_POST_NEW_LEVEL = 18
---- -
+--- This triggers after entering a room.
+--- 
+--- Returning any value will have no effect on later callback executions.
+--- 
 ---
 --- 19
 ModCallbacks.MC_POST_NEW_ROOM = 19
---- ([RNG](../RNG.md),<br>[Card](Card.md),<br>IncludePlayingCards [bool],<br>IncludeRunes [bool],<br>OnlyRunes [bool])
+--- This callback is used for handling Card Pools.
+--- 
+--- Because not all cards have the same chance to spawn, use [RNG](../RNG.md) for a seeded random selection.
+--- 
+--- You can use the boolean values as a filter for the selection.
+--- 
+--- The return value determines, what [Card](Card.md) will be spawned. Return nil to not replace the spawned card.
+--- 
+--- Returned values will not update the "[Card](Card.md)" arg of later executed callbacks.
+--- 
+--- + bug
+--- >    Returning a value that is not an integer or nil will cause the game to crash.
+--- 
+--- - Warning
+--- >    The last callback to return a valid return value wins out and overwrites previous callbacks' return values
+--- 
+--- Function args: RNG,Card,IncludePlayingCards(bool),IncludeRunes(bool),OnlyRunes(bool)
 ---
 --- 20
 ModCallbacks.MC_GET_CARD = 20
---- (ShaderName [string])
+--- Returns a table containing a key -> value pair for custom shader parameters.
+--- 
+--- Will skip remaining callbacks when returning a table.
+--- 
+--- Function args: ShaderName(string)
 ---
 --- 21
 ModCallbacks.MC_GET_SHADER_PARAMS = 21
---- (CMD [string],<br>Parameters [string])
+--- Returns a string separated by `<br />` (newline) per output line CMD is the first word of the Console input.
+--- 
+--- The parameters are the rest of the Input.
+--- 
+--- + info "Important"
+--- >    This function is NOT called for default game commands like Spawn or Debug.
+--- 
+--- Returning a string will print it to the console.
+--- 
+--- Returning any value will have no effect on later callback executions.
+--- 
+--- + bug
+--- >    Returning any value beside nil will cause the game to crash, including a string.
+--- 
+--- - Example code
+---     ```lua
+--- >    function mod.oncmd(_, command, args)
+--- >        print(command)
+--- >        print(args)
+--- >    end
+--- >    mod:AddCallback(ModCallbacks.MC_EXECUTE_CMD, mod.oncmd)
+--- >    -- executing command "Test apple 1 Pear test" prints
+--- >    -- Test
+--- >    -- apple 1 Pear test
+---     ```
+--- 
+--- Function args: CMD(string),Parameters(string)
 ---
 --- 22
 ModCallbacks.MC_EXECUTE_CMD = 22
---- ([CollectibleType](CollectibleType.md),<br>[RNG](../RNG.md),<br>[EntityPlayer](../EntityPlayer.md),<br>UseFlags [int],<br>[ActiveSlot](ActiveSlot.md),<br>CustomVarData [int])
+--- Called before an item is used.
+--- 
+--- Return true to prevent the default code of an item to be triggered. This will still discharge the item.
+--- 
+--- + bug
+--- >    Returning any value besides nil will also prevent later callbacks from being executed.
+--- 
+--- Function args: CollectibleType,RNG,EntityPlayer,UseFlags(int),ActiveSlot,CustomVarData(int)
+---
+--- Optional args: CollectibleType
 ---
 --- 23
 ModCallbacks.MC_PRE_USE_ITEM = 23
---- ([EntityType](EntityType.md),<br>Variant [int],<br>SubType [int],<br>Position [Vector],<br>Velocity [Vector],<br>Spawner [[Entity](../Entity.md)],<br>Seed [int])
+--- Called right before an entity is spawned.
+--- 
+--- Optional: Return a table with new values `{ Type, Variant, Subtype, Seed }` to override these values of the spawned entity.
+--- 
+--- + bug
+--- >    Returning a value that is not a table or nil will cause the game to crash.
+--- 
+--- - Warning
+--- >    The last callback to return a valid return value wins out and overwrites previous callbacks' return values
+--- 
+--- Function args: EntityType,Variant(int),SubType(int),Position(Vector),Velocity(Vector),Spawner(Entity),Seed(int)
 ---
 --- 24
 ModCallbacks.MC_PRE_ENTITY_SPAWN = 24
---- ([EntityFamiliar](../EntityFamiliar.md),<br>RenderOffset [Vector])
+--- Returning any value will have no effect on later callback executions.
+--- 
+--- Function args: EntityFamiliar,RenderOffset(Vector)
+---
+--- Optional args: FamiliarVariant
 ---
 --- 25
 ModCallbacks.MC_POST_FAMILIAR_RENDER = 25
---- ([EntityFamiliar](../EntityFamiliar.md),<br>Collider [[Entity](../Entity.md)],<br>Low [bool])
+--- The Low value is true, when the entity collided with the collider first. Its false if the collider collides first.
+--- 
+--- Return true to ignore collision, false to collide but not execute internal code and nil to continue with internal code (example: taking damage on contact).
+--- Returning any non-nil value will skip remaining callbacks.
+--- 
+--- 
+--- Function args: EntityFamiliar,Collider(Entity),Low(bool)
+---
+--- Optional args: FamiliarVariant
 ---
 --- 26
 ModCallbacks.MC_PRE_FAMILIAR_COLLISION = 26
---- ([EntityNPC](../EntityNPC.md))
+--- Returning any value will have no effect on later callback executions.
+--- 
+--- - Warning
+--- >    Accessing the initialized entity does provide incomplete data in some use cases. Only Position, Velocity, SpawnerType, SpawnerVariant, SpawnerEntity and some others are set before PostInit callbacks are called and are therefore accessible. Some other attributes (i.e. effect attributes or tear flags) will not be set. If you want to access those values, you need to hook into MC_NPC_UPDATE and check those attributes on the first possible frame.
+--- 
+--- Function args: EntityNPC
+---
+--- Optional args: EntityType
 ---
 --- 27
 ModCallbacks.MC_POST_NPC_INIT = 27
---- ([EntityNPC](../EntityNPC.md),<br>RenderOffset [Vector])
+--- Returning any value will have no effect on later callback executions.
+--- 
+--- Function args: EntityNPC,RenderOffset(Vector)
+---
+--- Optional args: EntityType
 ---
 --- 28
 ModCallbacks.MC_POST_NPC_RENDER = 28
---- ([EntityNPC](../EntityNPC.md))
+--- Gets called after the Death animation is played.
+--- 
+--- Returning any value will have no effect on later callback executions.
+--- 
+--- Function args: EntityNPC
+---
+--- Optional args: EntityType
 ---
 --- 29
 ModCallbacks.MC_POST_NPC_DEATH = 29
---- ([EntityNPC](../EntityNPC.md),<br>Collider [[Entity](../Entity.md)],<br>Low [bool])
+--- The Low value is true, when the entity collided with the collider first. Its false if the collider collides first.
+--- 
+--- Return true to ignore collision, false to collide but not execute internal code and nil to continue with internal code (example: taking damage on contact).
+--- Returning any non-nil value will skip remaining callbacks.
+--- 
+--- Function args: EntityNPC,Collider(Entity),Low(bool)
+---
+--- Optional args: EntityType
 ---
 --- 30
 ModCallbacks.MC_PRE_NPC_COLLISION = 30
---- ([EntityPlayer](../EntityPlayer.md))
+--- The optional parameter can be used to specify a Player Variant. 0 = Player, 1 = Co-Op-Baby
+--- 
+--- Returning any value will have no effect on later callback executions.
+--- 
+--- - Execution informations
+--- >    This callback is called 60 times per second
+--- 
+--- Function args: EntityPlayer
+---
+--- Optional args: PlayerVariant*
 ---
 --- 31
 ModCallbacks.MC_POST_PLAYER_UPDATE = 31
---- ([EntityPlayer](../EntityPlayer.md),<br>RenderOffset [Vector])
+--- The optional parameter can be used to specify a Player Variant. 0 = Player, 1 = Co-Op-Baby
+--- 
+--- Returning any value will have no effect on later callback executions.
+--- 
+--- Function args: EntityPlayer,RenderOffset(Vector)
+---
+--- Optional args: PlayerVariant*
 ---
 --- 32
 ModCallbacks.MC_POST_PLAYER_RENDER = 32
---- ([EntityPlayer](../EntityPlayer.md),<br>Collider [[Entity](../Entity.md)],<br>Low [bool])
+--- The Low value is true, when the entity collided with the collider first. Its false if the collider collides first.
+--- 
+--- Return true to ignore collision, false to collide but not execute internal code and nil to continue with internal code (example: taking damage on contact).
+--- Returning any non-nil value will skip remaining callbacks.
+--- 
+--- The optional parameter can be used to specify a Player Variant. 0 = Player, 1 = Co-Op-Baby
+--- 
+--- Function args: EntityPlayer,Collider(Entity),Low(bool)
+---
+--- Optional args: PlayerVariant*
 ---
 --- 33
 ModCallbacks.MC_PRE_PLAYER_COLLISION = 33
---- ([EntityPickup](../EntityPickup.md))
+--- Returning any value will have no effect on later callback executions.
+--- 
+--- - Warning
+--- >    Accessing the initialized entity does provide incomplete data in some use cases. Only Position, Velocity, SpawnerType, SpawnerVariant, SpawnerEntity and some others are set before PostInit callbacks are called and are therefore accessible. Some other attributes (i.e. effect attributes or tear flags) will not be set. If you want to access those values, you need to hook into MC_POST_PICKUP_UPDATE and check those attributes on the first possible frame.
+--- 
+--- Function args: EntityPickup
+---
+--- Optional args: PickupVariant
 ---
 --- 34
 ModCallbacks.MC_POST_PICKUP_INIT = 34
---- ([EntityPickup](../EntityPickup.md))
+--- Returning any value will have no effect on later callback executions.
+--- 
+--- - Execution informations
+--- >    This callback will be called on the 1st frame that the entity exists. It will only be called on the 0th frame, when you enter a room that already contains a spawned pickup.
+--- 
+--- Function args: EntityPickup
+---
+--- Optional args: PickupVariant
 ---
 --- 35
 ModCallbacks.MC_POST_PICKUP_UPDATE = 35
---- ([EntityPickup](../EntityPickup.md),<br>RenderOffset [Vector])
+--- Returning any value will have no effect on later callback executions.
+--- 
+--- Function args: EntityPickup,RenderOffset(Vector)
+---
+--- Optional args: PickupVariant
 ---
 --- 36
 ModCallbacks.MC_POST_PICKUP_RENDER = 36
---- ([EntityPickup](../EntityPickup.md),<br>Variant [int],<br>Subtype [int])
+--- Called after a Pickup was choosen from a list of random pickups to be spawned.Return nil to continue with default game code.
+--- 
+--- Return a table `{ Variant, Subtype }` to override the specified values. This does also affect later executed callbacks.
+--- 
+--- + bug
+--- >    Returning a value that is not a table or nil will cause the game to crash.
+--- 
+--- - Warning
+--- >    The last callback to return a valid return value wins out and overwrites previous callbacks' return values
+--- 
+--- + bug
+--- >    [EntityPickup](../EntityPickup.md) does contain the Type/variant of the pickup to spawn, but is otherwise an empty class with empty / zeroed values.
+--- 
+--- >    This Callback is also called when entering a room that contains pickups that are already selected. It is also called when the player drops a card. Those facts make this callback useless to use for handling pickup pools.
+--- 
+--- Function args: EntityPickup,Variant(int),Subtype(int)
 ---
 --- 37
 ModCallbacks.MC_POST_PICKUP_SELECTION = 37
---- ([EntityPickup](../EntityPickup.md),<br>Collider [[Entity](../Entity.md)],<br>Low [bool])
+--- The Low value is true, when the entity collided with the collider first. Its false if the collider collides first.
+--- 
+--- Return true to ignore collision, false to collide but not execute internal code and nil to continue with internal code (example: taking damage on contact).
+--- Returning any non-nil value will skip remaining callbacks.
+--- 
+--- Function args: EntityPickup,Collider(Entity),Low(bool)
+---
+--- Optional args: PickupVariant
 ---
 --- 38
 ModCallbacks.MC_PRE_PICKUP_COLLISION = 38
---- ([EntityTear](../EntityTear.md))
+--- Returning any value will have no effect on later callback executions.
+--- 
+--- - Warning
+--- >    Accessing the initialized entity does provide incomplete data in some use cases. Only Position, Velocity, SpawnerType, SpawnerVariant, SpawnerEntity and some others are set before PostInit callbacks are called and are therefore accessible. Some other attributes (i.e. effect attributes or tear flags) will not be set. If you want to access those values, you need to hook into MC_POST_TEAR_UPDATE and check those attributes on the first possible frame.
+--- 
+--- Function args: EntityTear
+---
+--- Optional args: TearVariant
 ---
 --- 39
 ModCallbacks.MC_POST_TEAR_INIT = 39
---- ([EntityTear](../EntityTear.md))
+--- Returning any value will have no effect on later callback executions.
+--- 
+--- Function args: EntityTear
+---
+--- Optional args: TearVariant
 ---
 --- 40
 ModCallbacks.MC_POST_TEAR_UPDATE = 40
---- ([EntityTear](../EntityTear.md),<br>RenderOffset [Vector])
+--- Returning any value will have no effect on later callback executions.
+--- 
+--- Function args: EntityTear,RenderOffset(Vector)
+---
+--- Optional args: TearVariant
 ---
 --- 41
 ModCallbacks.MC_POST_TEAR_RENDER = 41
---- ([EntityTear](../EntityTear.md),<br>Collider [[Entity](../Entity.md)],<br>Low [bool])
+--- The Low value is true, when the entity collided with the collider first. Its false if the collider collides first.
+--- 
+--- Return true to ignore collision, false to collide but not execute internal code and nil to continue with internal code (example: taking damage on contact).
+--- Returning any non-nil value will skip remaining callbacks.
+--- 
+--- Function args: EntityTear,Collider(Entity),Low(bool)
+---
+--- Optional args: TearVariant
 ---
 --- 42
 ModCallbacks.MC_PRE_TEAR_COLLISION = 42
---- ([EntityProjectile](../EntityProjectile.md))
+--- Returning any value will have no effect on later callback executions.
+--- 
+--- - Warning
+--- >    Accessing the initialized entity does provide incomplete data in some use cases. Only Position, Velocity, SpawnerType, SpawnerVariant, SpawnerEntity and some others are set before PostInit callbacks are called and are therefore accessible. Some other attributes (i.e. effect attributes or tear flags) will not be set. If you want to access those values, you need to hook into MC_POST_PROJECTILE_UPDATE and check those attributes on the first possible frame.
+--- 
+--- Function args: EntityProjectile
+---
+--- Optional args: ProjectileVariant
 ---
 --- 43
 ModCallbacks.MC_POST_PROJECTILE_INIT = 43
---- ([EntityProjectile](../EntityProjectile.md))
+--- Returning any value will have no effect on later callback executions.
+--- 
+--- Function args: EntityProjectile
+---
+--- Optional args: ProjectileVariant
 ---
 --- 44
 ModCallbacks.MC_POST_PROJECTILE_UPDATE = 44
---- ([EntityProjectile](../EntityProjectile.md),<br>RenderOffset [Vector])
+--- Returning any value will have no effect on later callback executions.
+--- 
+--- Function args: EntityProjectile,RenderOffset(Vector)
+---
+--- Optional args: ProjectileVariant
 ---
 --- 45
 ModCallbacks.MC_POST_PROJECTILE_RENDER = 45
---- ([EntityProjectile](../EntityProjectile.md),<br>Collider [[Entity](../Entity.md)],<br>Low [bool])
+--- The Low value is true, when the entity collided with the collider first. Its false if the collider collides first.
+--- 
+--- Return true to ignore collision, false to collide but not execute internal code and nil to continue with internal code (example: taking damage on contact).
+--- Returning any non-nil value will skip remaining callbacks.
+--- 
+--- Function args: EntityProjectile,Collider(Entity),Low(bool)
+---
+--- Optional args: ProjectileVariant
 ---
 --- 46
 ModCallbacks.MC_PRE_PROJECTILE_COLLISION = 46
---- ([EntityLaser](../EntityLaser.md))
+--- Returning any value will have no effect on later callback executions.
+--- 
+--- - Warning
+--- >    Accessing the initialized entity does provide incomplete data in some use cases. Only Position, Velocity, SpawnerType, SpawnerVariant, SpawnerEntity and some others are set before PostInit callbacks are called and are therefore accessible. Some other attributes (i.e. effect attributes or tear flags) will not be set. If you want to access those values, you need to hook into MC_POST_LASER_UPDATE and check those attributes on the first possible frame.
+--- 
+--- Function args: EntityLaser
+---
+--- Optional args: LaserVariant
 ---
 --- 47
 ModCallbacks.MC_POST_LASER_INIT = 47
---- ([EntityLaser](../EntityLaser.md))
+--- Returning any value will have no effect on later callback executions.
+--- 
+--- Function args: EntityLaser
+---
+--- Optional args: LaserVariant
 ---
 --- 48
 ModCallbacks.MC_POST_LASER_UPDATE = 48
---- ([EntityLaser](../EntityLaser.md),<br>RenderOffset [Vector])
+--- Returning any value will have no effect on later callback executions.
+--- 
+--- Function args: EntityLaser,RenderOffset(Vector)
+---
+--- Optional args: LaserVariant
 ---
 --- 49
 ModCallbacks.MC_POST_LASER_RENDER = 49
---- ([EntityKnife](../EntityKnife.md))
+--- Returning any value will have no effect on later callback executions.
+--- 
+--- 
+--- + note
+--- >    The optional parameter is a SubType and **NOT** a Variant!
+--- 
+--- - Warning
+--- >    Accessing the initialized entity does provide incomplete data in some use cases. Only Position, Velocity, SpawnerType, SpawnerVariant, SpawnerEntity and some others are set before PostInit callbacks are called and are therefore accessible. Some other attributes (i.e. effect attributes or tear flags) will not be set. If you want to access those values, you need to hook into MC_POST_KNIFE_UPDATE and check those attributes on the first possible frame.
+--- 
+--- Function args: EntityKnife
+---
+--- Optional args: KnifeSubType *
 ---
 --- 50
 ModCallbacks.MC_POST_KNIFE_INIT = 50
---- ([EntityKnife](../EntityKnife.md))
+--- Returning any value will have no effect on later callback executions.
+--- 
+--- + note
+--- >    The optional parameter is a SubType and **NOT** a Variant!
+--- 
+--- Function args: EntityKnife
+---
+--- Optional args: KnifeSubType *
 ---
 --- 51
 ModCallbacks.MC_POST_KNIFE_UPDATE = 51
---- ([EntityKnife](../EntityKnife.md),<br>RenderOffset [Vector])
+--- Returning any value will have no effect on later callback executions.
+--- 
+--- + note
+--- >    The optional parameter is a SubType and **NOT** a Variant!
+--- 
+--- Function args: EntityKnife,RenderOffset(Vector)
+---
+--- Optional args: KnifeSubType *
 ---
 --- 52
 ModCallbacks.MC_POST_KNIFE_RENDER = 52
---- ([EntityKnife](../EntityKnife.md),<br>Collider [[Entity](../Entity.md)],<br>Low [bool])
+--- The Low value is true, when the entity collided with the collider first. Its false if the collider collides first.
+--- 
+--- Return true to ignore collision, false to collide but not execute internal code and nil to continue with internal code (example: taking damage on contact).
+--- Returning any non-nil value will skip remaining callbacks.
+--- 
+--- + note
+--- >    The optional parameter is a SubType and **NOT** a Variant!
+--- 
+--- Function args: EntityKnife,Collider(Entity),Low(bool)
+---
+--- Optional args: KnifeSubType *
 ---
 --- 53
 ModCallbacks.MC_PRE_KNIFE_COLLISION = 53
---- ([EntityEffect](../EntityEffect.md))
+--- Returning any value will have no effect on later callback executions.
+--- 
+--- - Warning
+--- >    Accessing the initialized entity does provide incomplete data in some use cases. Only Position, Velocity, SpawnerType, SpawnerVariant, SpawnerEntity and some others are set before PostInit callbacks are called and are therefore accessible. Some other attributes (i.e. effect attributes or tear flags) will not be set. If you want to access those values, you need to hook into MC_POST_EFFECT_UPDATE and check those attributes on the first possible frame.
+--- 
+--- Function args: EntityEffect
+---
+--- Optional args: EffectVariant
 ---
 --- 54
 ModCallbacks.MC_POST_EFFECT_INIT = 54
---- ([EntityEffect](../EntityEffect.md))
+--- Returning any value will have no effect on later callback executions.
+--- 
+--- Function args: EntityEffect
+---
+--- Optional args: EffectVariant
 ---
 --- 55
 ModCallbacks.MC_POST_EFFECT_UPDATE = 55
---- ([EntityEffect](../EntityEffect.md),<br>RenderOffset [Vector])
+--- Returning any value will have no effect on later callback executions.
+--- 
+--- Function args: EntityEffect,RenderOffset(Vector)
+---
+--- Optional args: EffectVariant
 ---
 --- 56
 ModCallbacks.MC_POST_EFFECT_RENDER = 56
---- ([EntityBomb](../EntityBomb.md))
+--- Returning any value will have no effect on later callback executions.
+--- 
+--- - Warning
+--- >    Accessing the initialized entity does provide incomplete data in some use cases. Only Position, Velocity, SpawnerType, SpawnerVariant, SpawnerEntity and some others are set before PostInit callbacks are called and are therefore accessible. Some other attributes (i.e. effect attributes or tear flags) will not be set. If you want to access those values, you need to hook into MC_POST_BOMB_UPDATE and check those attributes on the first possible frame.
+--- 
+--- Function args: EntityBomb
+---
+--- Optional args: BombVariant
 ---
 --- 57
 ModCallbacks.MC_POST_BOMB_INIT = 57
---- ([EntityBomb](../EntityBomb.md))
+--- Returning any value will have no effect on later callback executions.
+--- 
+--- Function args: EntityBomb
+---
+--- Optional args: BombVariant
 ---
 --- 58
 ModCallbacks.MC_POST_BOMB_UPDATE = 58
---- ([EntityBomb](../EntityBomb.md),<br>Offset [Vector])
+--- Returning any value will have no effect on later callback executions.
+--- 
+--- Function args: EntityBomb,Offset(Vector)
+---
+--- Optional args: BombVariant
 ---
 --- 59
 ModCallbacks.MC_POST_BOMB_RENDER = 59
---- ([EntityBomb](../EntityBomb.md),<br>Collider [[Entity](../Entity.md)],<br>Low [bool])
+--- The Low value is true, when the entity collided with the collider first. Its false if the collider collides first.
+--- 
+--- Return true to ignore collision, false to collide but not execute internal code and nil to continue with internal code (example: taking damage on contact).
+--- Returning any non-nil value will skip remaining callbacks.
+--- 
+--- Function args: EntityBomb,Collider(Entity),Low(bool)
+---
+--- Optional args: BombVariant
 ---
 --- 60
 ModCallbacks.MC_PRE_BOMB_COLLISION = 60
---- ([EntityTear](../EntityTear.md))
+--- Called when the player fires a tear.
+--- 
+--- It is not called for other weapons or tears fired with Incubus.
+--- 
+--- Returning any value will have no effect on later callback executions.
+--- 
+--- Function args: EntityTear
 ---
 --- 61
 ModCallbacks.MC_POST_FIRE_TEAR = 61
---- ([ItemPoolType](ItemPoolType.md),<br>Decrease [bool],<br>Seed [int])
+--- 
+--- 
+--- This callback is called when the game needs to get a new random item from an item pool.
+--- 
+--- You can return an integer from this callback in order to change the returned collectible type.
+--- 
+--- It is not called for "scripted" drops (like Mr. Boom from Wrath) and manually spawned items.
+--- 
+--- Returned values will not alter args of later executed callbacks.
+--- 
+--- + bug
+--- >    Returning a value that is not a table or nil will cause the game to crash.
+--- 
+--- - Warning
+--- >    The last callback to return a valid return value wins out and overwrites previous callbacks' return values
+--- 
+--- Function args: ItemPoolType,Decrease(bool),Seed(int)
 ---
 --- 62
 ModCallbacks.MC_PRE_GET_COLLECTIBLE = 62
---- (SelectedCollectible [[CollectibleType](CollectibleType.md)],<br>[ItemPoolType](ItemPoolType.md),<br>Decrease [bool],<br>Seed [int])
+--- This function is called right after MC_PRE_GET_COLLECTIBLE and determines the Collectible that will be spawned from the given [ItemPoolType](ItemPoolType.md).
+--- 
+--- You can return an integer from this callback in order to change the returned collectible type.
+--- 
+--- Returned values will not update the "SelectedCollectible" arg of later executed callbacks.
+--- 
+--- + bug
+--- >    Returning a value that is not a table or nil will cause the game to crash.
+--- 
+--- - Warning
+--- >    The last callback to return a valid return value wins out and overwrites previous callbacks' return values
+--- 
+--- Function args: SelectedCollectible CollectibleType,ItemPoolType,Decrease(bool),Seed(int)
 ---
 --- 63
 ModCallbacks.MC_POST_GET_COLLECTIBLE = 63
---- (Seed [int])
+--- 
+--- This function is called, when the game is spawning a pill and needs to determine its PillColor.
+--- 
+--- Return a PillColor to specify a Pillcolor that needs to be choosen. Return nothing to let it be handled by the game.
+--- 
+--- Returned values will not alter the args of later executed callbacks.
+--- 
+--- + bug
+--- >    Returning a value that is not a table or nil will cause the game to crash.
+--- 
+--- - Warning
+--- >    The last callback to return a valid return value wins out and overwrites previous callbacks' return values
+--- 
+--- Function args: Seed(int)
 ---
 --- 64
 ModCallbacks.MC_GET_PILL_COLOR = 64
---- (SelectedPillEffect [[PillEffect](PillEffect.md)],<br>PillColor)
+--- Called every frames when the game get the [PillEffect](PillEffect.md) of a pill. The effect of the pill can be choosed by returning the chosen [PillEffect](PillEffect.md).
+--- 
+--- The effect is applied to every pill of the same PillColor, not to a single pill.
+--- 
+--- Returned values will not update the "SelectedPillEffect" arg of later executed callbacks.
+--- 
+--- + bug
+--- >    Returning a value that is not a table or nil will cause the game to crash.
+--- 
+--- - Warning
+--- >    The last callback to return a valid return value wins out and overwrites previous callbacks' return values
+--- 
+--- - Example code
+--- >    This code turn "Bad Trip" pills into "Balls of Steel" pills.
+---     ```lua
+--- >    function mod:getPillEffect(pillEffect, pillColor)
+--- >        if pillEffect == PillEffect.PILLEFFECT_BAD_TRIP then
+--- >        return PillEffect.PILLEFFECT_BALLS_OF_STEEL
+--- >        end
+--- >    end
+--- >    mod:AddCallback(ModCallbacks.MC_GET_PILL_EFFECT, mod.getPillEffect)
+---     ```
+--- 
+--- Function args: SelectedPillEffect(PillEffect),PillColor
 ---
 --- 65
 ModCallbacks.MC_GET_PILL_EFFECT = 65
---- (SelectedTrinket [[TrinketType](TrinketType.md)],<br>[RNG](../RNG.md))
+--- Called when a [TrinketType](TrinketType.md) of a Trinket needs to be determined.
+--- 
+--- A [TrinketType](TrinketType.md) can be returned to change the SelectedTrinket.
+--- 
+--- Returned values will not update the "SelectedTrinket" arg of later executed callbacks.
+--- 
+--- + bug
+--- >    Returning a value that is not a table or nil will cause the game to crash.
+--- 
+--- - Warning
+--- >    The last callback to return a valid return value wins out and overwrites previous callbacks' return values
+--- 
+--- Function args: SelectedTrinket TrinketType,RNG
 ---
 --- 66
 ModCallbacks.MC_GET_TRINKET = 66
---- ([Entity](../Entity.md))
+--- Called whenever an [Entity](../Entity.md) gets removed by the game. This includes deaths, kills, removals and even unloading an entity on room transition or ending a run.
+--- 
+--- Returning any value will have no effect on later callback executions.
+--- 
+--- Function args: Entity
+---
+--- Optional args: EntityType
 ---
 --- 67
 ModCallbacks.MC_POST_ENTITY_REMOVE = 67
---- ([Entity](../Entity.md))
+--- Called right before a death animation is triggered for an [Entity](../Entity.md).
+--- 
+--- Returning any value will have no effect on later callback executions.
+--- 
+--- Function args: Entity
+---
+--- Optional args: EntityType
 ---
 --- 68
 ModCallbacks.MC_POST_ENTITY_KILL = 68
---- ([EntityNPC](../EntityNPC.md))
+--- Return true if the internal AI of an NPC should be ignored, nil/nothing otherwise. Returning any non-nil value will skip remaining callbacks.
+--- 
+--- Function args: EntityNPC
+---
+--- Optional args: EntityType
 ---
 --- 69
 ModCallbacks.MC_PRE_NPC_UPDATE = 69
---- ([RNG](../RNG.md),<br>SpawnPosition [Vector])
+--- This function is triggered in every room that can be cleared, including boss and angel rooms, and even when it normally would not spawn a reward.
+--- 
+--- This Callback also handles special spawns like the spawning of Trapdoors after a boss is killed, therefore returning true here will also cancel those events.
+--- 
+--- Return true if the spawn routine should be ignored, nil/nothing otherwise. Returning any non-nil value will skip remaining callbacks.
+--- 
+--- Function args: RNG,SpawnPosition(Vector)
 ---
 --- 70
 ModCallbacks.MC_PRE_SPAWN_CLEAN_AWARD = 70
---- ([EntityType](EntityType.md),<br>Variant [int],<br>SubType [int],<br>GridIndex [int],<br>Seed [int])
+--- This is called when entering a new room, before spawning entities which are part of its layout. Grid entities will also trigger this callback and their type will the same as the type used by the gridspawn command. Because of this, effects are assigned the type 999 instead of 1000 in this callback.
+--- 
+--- Optional: Return a table with new values { Type, Variant, Subtype }. Returning such a table will override any replacements that might naturally occur i.e. enemy variants.
+--- 
+--- Returning any value will have no effect on later callback executions.
+--- 
+--- Function args: EntityType,Variant(int),SubType(int),GridIndex(int),Seed(int)
 ---
 --- 71
 ModCallbacks.MC_PRE_ROOM_ENTITY_SPAWN = 71

@@ -1,5 +1,5 @@
 ---@class ActionTriggers @enum
-local ActionTriggers = {}
+ActionTriggers = {}
 
 ---
 --- 0

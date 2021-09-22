@@ -1,5 +1,5 @@
 ---@class CoinSubType @enum
-local CoinSubType = {}
+CoinSubType = {}
 
 ---
 --- 1

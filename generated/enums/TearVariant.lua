@@ -1,5 +1,5 @@
 ---@class TearVariant @enum
-local TearVariant = {}
+TearVariant = {}
 
 ---
 --- 0

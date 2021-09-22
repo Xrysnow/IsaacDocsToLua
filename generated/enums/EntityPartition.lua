@@ -1,5 +1,5 @@
 ---@class EntityPartition @enum
-local EntityPartition = {}
+EntityPartition = {}
 
 ---
 --- 1

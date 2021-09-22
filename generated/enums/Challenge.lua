@@ -1,5 +1,5 @@
 ---@class Challenge @enum
-local Challenge = {}
+Challenge = {}
 
 ---
 --- 0

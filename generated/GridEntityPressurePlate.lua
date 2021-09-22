@@ -6,12 +6,12 @@ local GridEntityPressurePlate = {}
 --------------------
 --- Triggers the spawning of the reward as if the plate would be pressed, without actually pressing it.
 --- 
---- - info "Greed mode behavior"
----     When in greedmode and used on the Greedmode-pressureplate, it has multiple effects:
+--- - Greed mode behavior
+--- >    When in greedmode and used on the Greedmode-pressureplate, it has multiple effects:
 --- 
----     When no wave is active, it will spawn a random reward analog to the normal pressure plate pool.
+--- >    When no wave is active, it will spawn a random reward analog to the normal pressure plate pool.
 --- 
----     When a wave is active, it will spawn a wave, wihtout increasing the wave counter.
+--- >    When a wave is active, it will spawn a wave, wihtout increasing the wave counter.
 ---
 function GridEntityPressurePlate:Reward()
 end

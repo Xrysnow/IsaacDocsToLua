@@ -1,5 +1,5 @@
 ---@class LevelStateFlag @enum
-local LevelStateFlag = {}
+LevelStateFlag = {}
 
 ---
 --- 0

@@ -1,5 +1,5 @@
 ---@type ItemConfig
-local ItemConfig = {}
+ItemConfig = {}
 
 ---
 --- 0

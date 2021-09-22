@@ -5,11 +5,6 @@ local Vector = {}
 -- Constructors
 --------------------
 
----@param x number @ (float)
----@param y number @ (float)
----@return Vector @
-function Vector:Vector(x, y)
-end
 
 --------------------
 -- Constants
@@ -28,9 +23,9 @@ Vector.One = nil
 --- 
 --- - example "Example Code"
 ---     ```lua
----     local vec1 = Vector(2,1)
----     local vec2 = Vector(5,3)
----     local result = vec1+vec2 -- result equals Vector(7,4) now
+--- >    local vec1 = Vector(2,1)
+--- >    local vec2 = Vector(5,3)
+--- >    local result = vec1+vec2 -- result equals Vector(7,4) now
 ---     ```
 ---@param Right Vector @
 ---@return Vector @
@@ -40,9 +35,9 @@ end
 --- 
 --- - example "Example Code"
 ---     ```lua
----     local vec1 = Vector(6,4)
----     local vec2 = Vector(2,4)
----     local result = vec1/vec2 -- result equals Vector(3,1) now
+--- >    local vec1 = Vector(6,4)
+--- >    local vec2 = Vector(2,4)
+--- >    local result = vec1/vec2 -- result equals Vector(3,1) now
 ---     ```
 ---@param Modifier number @ (float)
 ---@return Vector @
@@ -52,9 +47,9 @@ end
 --- 
 --- - example "Example Code"
 ---     ```lua
----     local vec1 = Vector(2,3)
----     local vec2 = Vector(5,3)
----     local result = vec1*vec2 -- result equals Vector(10,9) now
+--- >    local vec1 = Vector(2,3)
+--- >    local vec2 = Vector(5,3)
+--- >    local result = vec1*vec2 -- result equals Vector(10,9) now
 ---     ```
 ---@param Modifier number @ (float)
 ---@return Vector @
@@ -64,9 +59,9 @@ end
 --- 
 --- - example "Example Code"
 ---     ```lua
----     local vec1 = Vector(2,1)
----     local vec2 = Vector(5,3)
----     local result = vec1-vec2 -- result equals Vector(-3,-2) now
+--- >    local vec1 = Vector(2,1)
+--- >    local vec2 = Vector(5,3)
+--- >    local result = vec1-vec2 -- result equals Vector(-3,-2) now
 ---     ```
 ---@param Right Vector @
 ---@return Vector @
@@ -76,8 +71,8 @@ end
 --- 
 --- - example "Example Code"
 ---     ```lua
----     local vec1 = Vector(2,1)
----     local result = -vec1 -- result equals Vector(-2,-1) now
+--- >    local vec1 = Vector(2,1)
+--- >    local result = -vec1 -- result equals Vector(-2,-1) now
 ---     ```
 ---
 ---@param Right Vector @
@@ -112,7 +107,7 @@ end
 --- 
 --- - example "Example Code"
 ---     ```lua
----     local sqtDist = Vector(2,0):Distance(Vector(4,0))) --sqtDist = 2
+--- >    local sqtDist = Vector(2,0):Distance(Vector(4,0))) --sqtDist = 2
 --- 
 ---     ```
 ---
@@ -125,7 +120,7 @@ end
 --- 
 --- - example "Example Code"
 ---     ```lua
----     local sqtDist = Vector(2,0):DistanceSquared(Vector(4,0))) --sqtDist = 4
+--- >    local sqtDist = Vector(2,0):DistanceSquared(Vector(4,0))) --sqtDist = 4
 --- 
 ---     ```
 ---
@@ -142,9 +137,9 @@ end
 --- Build a [Vector](Vector.md) from an angle, returns a normalized vector. Angle 0 will result in (1, 0). Angle 90 will result in (0, 1).
 --- 
 --- - example "Example Code"
----     This code returns a vector that has a 45 degree angle
+--- >    This code returns a vector that has a 45 degree angle
 ---     ```lua
----     local vec = Vector.FromAngle(45)) --vec is now Vector(0.70711,0.70711)
+--- >    local vec = Vector.FromAngle(45)) --vec is now Vector(0.70711,0.70711)
 --- 
 ---     ```
 ---@param AngleDegrees number @ (float)
@@ -162,12 +157,12 @@ end
 --- - Down: 90
 --- 
 --- - example "Example Code"
----     This code returns the angle between two positions.
+--- >    This code returns the angle between two positions.
 ---     ```lua
----     local v1 = Vector(1,0) -- has angle 0.0
----     local v2 = Vector(0,1) -- has angle 90.0
----     local v3 = v2-v1 -- subtraction of 2 points is a vector connecting the two points
----     print(v3:GetAngleDegrees()) -- prints 45.0
+--- >    local v1 = Vector(1,0) -- has angle 0.0
+--- >    local v2 = Vector(0,1) -- has angle 90.0
+--- >    local v3 = v2-v1 -- subtraction of 2 points is a vector connecting the two points
+--- >    print(v3:GetAngleDegrees()) -- prints 45.0
 --- 
 ---     ```
 ---
@@ -186,19 +181,19 @@ end
 --- Linear interpolation between two vectors. For t = 0 it returns the first Vector, for t = 1 it returns the second.
 --- 
 --- - example "Alternate Function example"
----     This function does the same as Lerp, but will not alter the input vectors.
+--- >    This function does the same as Lerp, but will not alter the input vectors.
 ---     ```lua
----     function Lerp(vec1, vec2, percent)
----         return vec1 * (1 - percent) + vec2 * percent
----     end
+--- >    function Lerp(vec1, vec2, percent)
+--- >        return vec1 * (1 - percent) + vec2 * percent
+--- >    end
 ---     ```
 --- 
 --- - example "Example Code"
----     This code will make v1 the vector 50% in between v1 and v2
+--- >    This code will make v1 the vector 50% in between v1 and v2
 ---     ```lua
----     local v1 = Vector(0,0)
----     local v2 = Vector(1,1)
----     v1:Lerp(v2,0.5) -- v1 equals  Vector(0.5,0.5)  now
+--- >    local v1 = Vector(0,0)
+--- >    local v2 = Vector(1,1)
+--- >    v1:Lerp(v2,0.5) -- v1 equals  Vector(0.5,0.5)  now
 --- 
 ---     ```
 ---@param first Vector @

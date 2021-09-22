@@ -17,8 +17,8 @@ end
 
 --- Returns userdata at the index of the list provided.
 --- 
---- + bug "Bugs"
----     This function does not return usable userdata, rendering it useless.
+--- - Bug
+--- >    This function does not return usable userdata, rendering it useless.
 ---
 ---@param idx number @ (int)
 ---@return userdata @

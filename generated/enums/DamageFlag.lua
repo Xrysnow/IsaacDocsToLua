@@ -1,5 +1,5 @@
 ---@class DamageFlag @enum
-local DamageFlag = {}
+DamageFlag = {}
 
 --- Damage can not kill the receiver <br>
 ---

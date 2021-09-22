@@ -8,9 +8,9 @@ local EntityPlayer = {}
 --- Adds Black hearts to the player. 1 unit is half a heart. Remove them with negative numbers.
 --- 
 --- - example "Example Code"
----     This code adds 1 full black heart to the player.
+--- >    This code adds 1 full black heart to the player.
 ---     ```lua
----     Isaac.GetPlayer(0):AddBlackHearts(2)
+--- >    Isaac.GetPlayer(0):AddBlackHearts(2)
 ---     ```
 ---
 ---@param BlackHearts number @ (int)
@@ -38,9 +38,9 @@ end
 --- Adds bombs to the player. Remove them with negative numbers.
 --- 
 --- - example "Example Code"
----     This code removes 1 bomb from the player.
+--- >    This code removes 1 bomb from the player.
 ---     ```lua
----     Isaac.GetPlayer(0):AddBombs(-1)
+--- >    Isaac.GetPlayer(0):AddBombs(-1)
 ---     ```
 ---
 ---@param Amount number @ (int)
@@ -50,9 +50,9 @@ end
 --- Adds bone hearts to the player. 1 unit is a single bone heart. Remove them with negative numbers.
 --- 
 --- - example "Example Code"
----     This code adds 1 bone heart to the player.
+--- >    This code adds 1 bone heart to the player.
 ---     ```lua
----     Isaac.GetPlayer(0):AddBoneHearts(1)
+--- >    Isaac.GetPlayer(0):AddBoneHearts(1)
 ---     ```
 ---
 ---@param Hearts number @ (int)
@@ -65,9 +65,9 @@ end
 --- Will reevaluate the cache flags provided in the next cache reevaluation.
 --- 
 --- - example "Example Code"
----     This code will add several cacheflags.
+--- >    This code will add several cacheflags.
 ---     ```lua
----     Isaac.GetPlayer(0):AddCacheFlags(CacheFlag.CACHE_DAMAGE | CacheFlag.CACHE_FIREDELAY | CacheFlag.CACHE_LUCK)
+--- >    Isaac.GetPlayer(0):AddCacheFlags(CacheFlag.CACHE_DAMAGE | CacheFlag.CACHE_FIREDELAY | CacheFlag.CACHE_LUCK)
 ---     ```
 ---@param CacheFlag CacheFlag @
 function EntityPlayer:AddCacheFlags(CacheFlag)
@@ -80,9 +80,9 @@ end
 --- Adds coins to the player. Remove them with negative numbers.
 --- 
 --- - example "Example Code"
----     This code adds 1 coin to the player.
+--- >    This code adds 1 coin to the player.
 ---     ```lua
----     Isaac.GetPlayer(0):AddCoins(1)
+--- >    Isaac.GetPlayer(0):AddCoins(1)
 ---     ```
 ---
 ---@param Amount number @ (int)
@@ -151,9 +151,9 @@ end
 --- (Note that eternal hearts automatically turn to full hearts, when you have more than one.)
 --- 
 --- - example "Example Code"
----     This code adds 1 eternal heart to the player.
+--- >    This code adds 1 eternal heart to the player.
 ---     ```lua
----     Isaac.GetPlayer(0):AddEternalHearts(1)
+--- >    Isaac.GetPlayer(0):AddEternalHearts(1)
 ---     ```
 ---
 ---@param EternalHearts number @ (int)
@@ -162,17 +162,17 @@ end
 
 --- - note "Dip Subtypes"
 ---     ```lua
----     0: normal
----     1: red
----     2: corny
----     3: golden
----     4: rainbow
----     5: black
----     6: holy
----     12: stone
----     13: flaming
----     14: poison
----     20: brownie
+--- >    0: normal
+--- >    1: red
+--- >    2: corny
+--- >    3: golden
+--- >    4: rainbow
+--- >    5: black
+--- >    6: holy
+--- >    12: stone
+--- >    13: flaming
+--- >    14: poison
+--- >    20: brownie
 ---     ```
 ---@param Subtype number @ (int)
 ---@param Position Vector @
@@ -193,9 +193,9 @@ end
 --- Adds golden hearts to the player. 1 unit is a single gold heart. Remove them with negative numbers.
 --- 
 --- - example "Example Code"
----     This code adds 1 golden heart to the player.
+--- >    This code adds 1 golden heart to the player.
 ---     ```lua
----     Isaac.GetPlayer(0):AddGoldenHearts(1)
+--- >    Isaac.GetPlayer(0):AddGoldenHearts(1)
 ---     ```
 ---
 ---@param Hearts number @ (int)
@@ -208,9 +208,9 @@ end
 --- Adds red hearts to the player if there are any empty heart containers. 1 unit is half a heart. Remove health with negative numbers.
 --- 
 --- - example "Example Code"
----     This code adds 1 full red heart to the player.
+--- >    This code adds 1 full red heart to the player.
 ---     ```lua
----     Isaac.GetPlayer(0):AddHearts(2)
+--- >    Isaac.GetPlayer(0):AddHearts(2)
 ---     ```
 ---
 ---@param Hearts number @ (int)
@@ -235,9 +235,9 @@ end
 --- Adds keys to the player. Remove them with negative numbers.
 --- 
 --- - example "Example Code"
----     This code adds 1 key to the player.
+--- >    This code adds 1 key to the player.
 ---     ```lua
----     Isaac.GetPlayer(0):AddKeys(1)
+--- >    Isaac.GetPlayer(0):AddKeys(1)
 ---     ```
 ---
 ---@param Amount number @ (int)
@@ -247,21 +247,21 @@ end
 --- Adds heart containers to the player. 2 units is a full heart container. Remove them with negative numbers.
 --- 
 --- - note "Notes"
----     It is possible to add a half heart container to the player. This will appear as a regular heart container but can only be filled half-way.
+--- >    It is possible to add a half heart container to the player. This will appear as a regular heart container but can only be filled half-way.
 --- 
 --- - example "Example Code"
----     This code adds 1 heart container to the player.
+--- >    This code adds 1 heart container to the player.
 ---     ```lua
----     Isaac.GetPlayer(0):AddMaxHearts(2,true)
+--- >    Isaac.GetPlayer(0):AddMaxHearts(2,true)
 ---     ```
 --- 
 --- 
---- + bug "Bugs"
----     IgnoreKeeper does not appear to work as intended.
+--- - Bug
+--- >    IgnoreKeeper does not appear to work as intended.
 --- 
----     Max hearts can be added or removed from Keeper regardless of what this boolean is.
----     If Keeper has Greed's Gullet and this boolean is set to false, max hearts cannot be added to Keeper, but can be removed normally.
----     If Keeper has Greed's Gullet and this boolean is set to true, Max hearts can be added or removed from Keeper normally.
+--- >    Max hearts can be added or removed from Keeper regardless of what this boolean is.
+--- >    If Keeper has Greed's Gullet and this boolean is set to false, max hearts cannot be added to Keeper, but can be removed normally.
+--- >    If Keeper has Greed's Gullet and this boolean is set to true, Max hearts can be added or removed from Keeper normally.
 ---
 ---@param MaxHearts number @ (int)
 ---@param IgnoreKeeper boolean @
@@ -292,9 +292,9 @@ end
 --- Adds rotten hearts to the player. 1 unit is half a heart. Remove rotten hearts with negative numbers.
 --- 
 --- - example "Example Code"
----     This code adds 1 full rotten heart to the player.
+--- >    This code adds 1 full rotten heart to the player.
 ---     ```lua
----     Isaac.GetPlayer(0):AddRottenHearts(2)
+--- >    Isaac.GetPlayer(0):AddRottenHearts(2)
 ---     ```
 ---
 ---@param RottenHearts number @ (int)
@@ -310,9 +310,9 @@ end
 --- Adds soul hearts to the player. 1 unit is half a heart. Remove them with negative numbers.
 --- 
 --- - example "Example Code"
----     This code adds 1 full soul heart to the player.
+--- >    This code adds 1 full soul heart to the player.
 ---     ```lua
----     Isaac.GetPlayer(0):AddSoulHearts(2)
+--- >    Isaac.GetPlayer(0):AddSoulHearts(2)
 ---     ```
 ---@param SoulHearts number @ (int)
 function EntityPlayer:AddSoulHearts(SoulHearts)
@@ -439,7 +439,7 @@ end
 ---@return boolean @
 function EntityPlayer:CanTurnHead()
 end
---- + bug "Bugs"
+--- - Bug
 --- 	Changing to Tainted Forgotten will result in no Tainted Soul appearing
 --- 	Changing to Tainted Lazarus will result in player only having one form
 ---
@@ -494,11 +494,11 @@ end
 --- Before you use this function, you need to set the appropriate cache flags first. See the example below.
 --- 
 --- - example "Example Code"
----     This code re-evaluates all of the stats for the player.
+--- >    This code re-evaluates all of the stats for the player.
 ---     ```lua
----     local player = Isaac.GetPlayer()
----     player:AddCacheFlags(CacheFlag.CACHE_ALL)
----     player:EvaluateItems()
+--- >    local player = Isaac.GetPlayer()
+--- >    player:AddCacheFlags(CacheFlag.CACHE_ALL)
+--- >    player:EvaluateItems()
 ---     ```
 ---
 function EntityPlayer:EvaluateItems()
@@ -633,11 +633,11 @@ end
 --- Returns the number of bone hearts as an integer value. 1 Boneheart = 1.
 --- 
 --- - example "Example Code"
----     This code gets the total amount of red heart containers including bone hearts. The bonehearts need to be mulltiplied by 2, since in GetMaxHearts() 2 equals 1 full heart.
+--- >    This code gets the total amount of red heart containers including bone hearts. The bonehearts need to be mulltiplied by 2, since in GetMaxHearts() 2 equals 1 full heart.
 --- 
 ---     ```lua
----     local player = Isaac.GetPlayer(0)
----     local totalRedHearts = player:GetMaxHearts() + player:GetBoneHearts() * 2
+--- >    local player = Isaac.GetPlayer(0)
+--- >    local totalRedHearts = player:GetMaxHearts() + player:GetBoneHearts() * 2
 ---     ```
 ---
 ---@return number @ (int)
@@ -824,8 +824,8 @@ end
 ---@return Vector @
 function EntityPlayer:GetMovementVector()
 end
---- + bug "Bug"
----     Since it returns UserData, this function is unusable and therefore broken.
+--- - Bug
+--- >    Since it returns UserData, this function is unusable and therefore broken.
 ---@param WeaponType WeaponType @ (default WeaponType.WEAPON_TEARS)
 ---@return MultiShotParams @
 function EntityPlayer:GetMultiShotParams(WeaponType)
@@ -902,8 +902,8 @@ end
 
 --- Get the userdata of the pocketitem (Card,Pill,rune) in a said slot.
 --- 
---- + bug "Bugs"
----     This function returns userdata, which can't be processed. It is therefore broken and should not be used!
+--- - Bug
+--- >    This function returns userdata, which can't be processed. It is therefore broken and should not be used!
 ---@param SlotId number @ (int)
 ---@return PlayerPocketItem @ (const)
 function EntityPlayer:GetPocketItem(SlotId)
@@ -920,8 +920,8 @@ end
 
 --- Returns a vector that corresponds to the shooting inputs that this player is pressing.
 --- 
---- - info "Shooting Angle diagram"
----     ![GetShootingInput diagram](images/infographics/GetShootingInput.png){: width='250' }
+--- - Shooting Angle diagram
+--- >    ![GetShootingInput diagram](images/infographics/GetShootingInput.png){: width='250' }
 ---
 ---@return Vector @
 function EntityPlayer:GetShootingInput()
@@ -942,7 +942,7 @@ end
 --- Returns the amount of Soul Hearts the player has. 1 unit is half a heart.
 --- 
 --- - note "Notes"
----     Black Hearts count toward this total, as the game sees them as soul hearts.
+--- >    Black Hearts count toward this total, as the game sees them as soul hearts.
 ---
 ---@return number @ (int)
 function EntityPlayer:GetSoulHearts()
@@ -994,10 +994,10 @@ function EntityPlayer:GetTrinket(TrinketIndex)
 end
 --- Gets the multiplier of a given Trinket effect. This is analog to the number of times the trinket effect is applied.
 --- 
---- - info "Multiplier Breakdown"
----     * Per normal trinket of this type equipped / gulped : +1
----     * Per golden trinket of this type equipped / gulped : +2
----     * Mom's Box equipped : +1 (does not stack)
+--- - Multiplier Breakdown
+--- >    * Per normal trinket of this type equipped / gulped : +1
+--- >    * Per golden trinket of this type equipped / gulped : +2
+--- >    * Mom's Box equipped : +1 (does not stack)
 ---@param TrinketID TrinketType @
 ---@return number @ (int)
 function EntityPlayer:GetTrinketMultiplier(TrinketID)
@@ -1164,12 +1164,12 @@ function EntityPlayer:RemoveCollectible(Type, IgnoreModifiers, ActiveSlot, Remov
 end
 --- Removes a given costume based on its item config entry.
 --- 
---- - example "Example code"
----     This code removes the costume of the Spoon Bender collectible.
+--- - Example code
+--- >    This code removes the costume of the Spoon Bender collectible.
 ---     ```lua
----     local player = Isaac.GetPlayer(0)
----     local itemConfig = Isaac.GetItemConfig():GetCollectible(CollectibleType.COLLECTIBLE_SPOON_BENDER)
----     player:RemoveCostume(itemConfig)
+--- >    local player = Isaac.GetPlayer(0)
+--- >    local itemConfig = Isaac.GetItemConfig():GetCollectible(CollectibleType.COLLECTIBLE_SPOON_BENDER)
+--- >    player:RemoveCostume(itemConfig)
 ---     ```
 ---
 ---@param Item ItemConfig.Item @
@@ -1302,17 +1302,17 @@ end
 
 --- - note "Dip Subtypes"
 ---     ```lua
----     0: normal
----     1: red
----     2: corny
----     3: golden
----     4: rainbow
----     5: black
----     6: holy
----     12: stone
----     13: flaming
----     14: poison
----     20: brownie
+--- >    0: normal
+--- >    1: red
+--- >    2: corny
+--- >    3: golden
+--- >    4: rainbow
+--- >    5: black
+--- >    6: holy
+--- >    12: stone
+--- >    13: flaming
+--- >    14: poison
+--- >    20: brownie
 ---     ```
 ---@param Subtype number @ (int)
 ---@param Position Vector @
@@ -1341,11 +1341,11 @@ function EntityPlayer:TryHoldTrinket(Type)
 end
 --- Tries to remove a costume of the given collectible. `KeepPersistent` is used to define if persistent costumes should be removed. If its set to `false`, it will only remove temporary costumes.
 --- 
---- - example "Example code"
----     This code removes the costume of the Spoon Bender collectible.
+--- - Example code
+--- >    This code removes the costume of the Spoon Bender collectible.
 ---     ```lua
----     local player = Isaac.GetPlayer(0)
----     player:TryRemoveCollectibleCostume(CollectibleType.COLLECTIBLE_SPOON_BENDER, false)
+--- >    local player = Isaac.GetPlayer(0)
+--- >    player:TryRemoveCollectibleCostume(CollectibleType.COLLECTIBLE_SPOON_BENDER, false)
 ---     ```
 ---@param Collectible CollectibleType @
 ---@param KeepPersistent boolean @
@@ -1406,8 +1406,8 @@ end
 --------------------
 --- P2 Skin section Used to hold the selected skin (in case of glitched baby it will pick a random one)
 --- 
---- + bug "Bugs"
----     This variable actually contains userdata and is not usable within API. Attempt to change it will results in a crash.
+--- - Bug
+--- >    This variable actually contains userdata and is not usable within API. Attempt to change it will results in a crash.
 ---
 ---@type BabySubType @(member)
 EntityPlayer.BabySkin = nil
@@ -1430,8 +1430,8 @@ EntityPlayer.Damage = nil
 ---@type number @(member) (int)
 EntityPlayer.FireDelay = nil
 
---- + bug "Bugs"
----     This function returns userdata that cant be edited or accessed.
+--- - Bug
+--- >    This function returns userdata that cant be edited or accessed.
 ---@type EntityDesc @(member)
 EntityPlayer.FriendBallEnemy = nil
 
@@ -1462,8 +1462,8 @@ EntityPlayer.MoveSpeed = nil
 ---@type QueueItemData @(member)
 EntityPlayer.QueuedItem = nil
 
---- + bug "Bug"
----     This function does not exist anymore in Repentance. As of right now, there is no other function to get the [ActiveItemDesc](PlayerTypes_ActiveItemDesc.md) of any active item the player holds. Until this is fixed, this info will stay here.
+--- - Bug
+--- >    This function does not exist anymore in Repentance. As of right now, there is no other function to get the [ActiveItemDesc](PlayerTypes_ActiveItemDesc.md) of any active item the player holds. Until this is fixed, this info will stay here.
 ---@type PlayerTypes.ActiveItemDesc @(member) (ActiveItemDesc)
 EntityPlayer.SecondaryActiveItem = nil
 --- Player stat - Only change this in a callback to MC_EVALUATE_CACHE.  **This is equal to the ShotSpeed Stat.**
@@ -1488,13 +1488,13 @@ EntityPlayer.TearFallingSpeed = nil
 --- Player stat - Only change this in a callback to MC_EVALUATE_CACHE. Various [TearFlags](enums/TearFlags.md).
 --- 
 --- - example "Example Code"
----     This code makes Isaac's tears spectral.
+--- >    This code makes Isaac's tears spectral.
 ---     ```lua
----     local mod:OnEvaluateTearFlags(player, flag)
----         player.TearFlags = player.TearFlags | TearFlags.TEAR_SPECTRAL
----     end
+--- >    local mod:OnEvaluateTearFlags(player, flag)
+--- >        player.TearFlags = player.TearFlags | TearFlags.TEAR_SPECTRAL
+--- >    end
 --- 
----     mod:AddCallback(ModCallbacks.MC_EVALUATE_CACHE, mod.OnEvaluateTearFlags, CacheFlag.CACHE_TEARFLAG)
+--- >    mod:AddCallback(ModCallbacks.MC_EVALUATE_CACHE, mod.OnEvaluateTearFlags, CacheFlag.CACHE_TEARFLAG)
 --- 
 ---     ```
 ---@type TearFlags @(member)
@@ -1504,15 +1504,15 @@ EntityPlayer.TearFlags = nil
 --- Note that tear height is not equivalent to the range stat. As of v820, there is no way for mods to update the player's range stat directly. As a workaround, you can award other range-up items.
 --- 
 --- - example "Example Code"
----     This code gives Isaac a +5 range up.
+--- >    This code gives Isaac a +5 range up.
 --- 
 ---     ```lua
----     local mod:OnEvaluateRange(player, flag)
----         -- we give -5 because the TearHeight stat is always negative; the lower the number - the further the tear travels
----         player.TearHeight = player.TearHeight - 5
----     end
+--- >    local mod:OnEvaluateRange(player, flag)
+--- >        -- we give -5 because the TearHeight stat is always negative; the lower the number - the further the tear travels
+--- >        player.TearHeight = player.TearHeight - 5
+--- >    end
 --- 
----     mod:AddCallback(ModCallbacks.MC_EVALUATE_CACHE, mod.OnEvaluateRange, CacheFlag.CACHE_RANGE)
+--- >    mod:AddCallback(ModCallbacks.MC_EVALUATE_CACHE, mod.OnEvaluateRange, CacheFlag.CACHE_RANGE)
 ---     ```
 ---
 ---@type number @(member) (float)

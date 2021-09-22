@@ -1,5 +1,5 @@
 ---@class EffectVariant @enum
-local EffectVariant = {}
+EffectVariant = {}
 
 ---
 --- 0

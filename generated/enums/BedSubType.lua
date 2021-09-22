@@ -1,5 +1,5 @@
 ---@class BedSubType @enum
-local BedSubType = {}
+BedSubType = {}
 
 ---
 --- 0

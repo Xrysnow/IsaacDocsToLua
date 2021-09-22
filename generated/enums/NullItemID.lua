@@ -1,5 +1,5 @@
 ---@class NullItemID @enum
-local NullItemID = {}
+NullItemID = {}
 
 ---
 --- -1

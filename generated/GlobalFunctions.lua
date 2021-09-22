@@ -37,11 +37,11 @@ end
 --- Constructor for the "[Font](Font.md)" class.
 --- 
 --- - example "Example Code"
----     Example usage.
+--- >    Example usage.
 ---     ```lua
----     local f = Font() -- init font object
----     f:Load("font/terminus.fnt") -- load a font into the font object
----     f:DrawString("Hello World!",60,50,KColor(1,1,1,1),0,true) -- render string with loaded font on position 60x50y
+--- >    local f = Font() -- init font object
+--- >    f:Load("font/terminus.fnt") -- load a font into the font object
+--- >    f:DrawString("Hello World!",60,50,KColor(1,1,1,1),0,true) -- render string with loaded font on position 60x50y
 --- 
 ---     ```
 ---
@@ -52,10 +52,10 @@ end
 --- Returns a [Game](Game.md) object.
 --- 
 --- - example "Example Code"
----     Example usage:
+--- >    Example usage:
 ---     ```lua
----     Game():IsPaused()
----     --returns true if the game is paused
+--- >    Game():IsPaused()
+--- >    --returns true if the game is paused
 --- 
 ---     ```
 ---@return Game @
@@ -75,9 +75,9 @@ end
 --- Returns a [MusicManager](MusicManager.md) object.
 --- 
 --- - example "Example Code"
----     Example usage:
+--- >    Example usage:
 ---     ```lua
----     MusicManager():Disable()
+--- >    MusicManager():Disable()
 --- 
 ---     ```
 ---@return MusicManager @
@@ -94,7 +94,7 @@ end
 --- 
 --- - example "Example Code"
 ---     ```lua
----     local yourMod = RegisterMod("someMod", 1)
+--- >    local yourMod = RegisterMod("someMod", 1)
 --- 
 ---     ```
 ---
@@ -115,9 +115,9 @@ end
 --- Returns a [SFXManager](SFXManager.md) object.
 --- 
 --- - example "Example Code"
----     Example usage:
+--- >    Example usage:
 ---     ```lua
----     SFXManager():Stop(SoundEffect.SOUND_1UP)
+--- >    SFXManager():Stop(SoundEffect.SOUND_1UP)
 --- 
 ---     ```
 ---@return SFXManager @
@@ -142,16 +142,16 @@ end
 --- If you spawn a certain entity, save it in a variable and then compare it to the `entity` parameter in `MC_ENTITY_TAKE_DMG`, this comparison will never be true even if both variables refer to the exact same entity in the game. `GetPtrHash()` turns pointer into a fixed number, which makes comparisons easier.
 --- 
 --- - example "Example Code"
----     Example on check if two entities saved in different variables are the same.
+--- >    Example on check if two entities saved in different variables are the same.
 ---     ```lua
----     -- don't do it like this
----     if entity1 == entity2 then
----         -- this will always be false, because two different references on a pointer are not equal
----     end
----     -- use GetPtrHash() to compare them
----     if GetPtrHash(entity1) == GetPtrHash(entity2) then
----         -- this will be true, when the pointer of both variables point to the same object.
----     end
+--- >    -- don't do it like this
+--- >    if entity1 == entity2 then
+--- >        -- this will always be false, because two different references on a pointer are not equal
+--- >    end
+--- >    -- use GetPtrHash() to compare them
+--- >    if GetPtrHash(entity1) == GetPtrHash(entity2) then
+--- >        -- this will be true, when the pointer of both variables point to the same object.
+--- >    end
 --- 
 ---     ```
 ---

@@ -1,5 +1,5 @@
 ---@class SoundEffect @enum
-local SoundEffect = {}
+SoundEffect = {}
 
 ---
 --- 0

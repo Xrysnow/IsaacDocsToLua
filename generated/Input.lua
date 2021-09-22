@@ -1,5 +1,5 @@
 ---@class Input @ (static)
-local Input = {}
+Input = {}
 
 --------------------
 -- Functions
@@ -8,9 +8,9 @@ local Input = {}
 --- Returns the current strength in which a button was pressed. This is 0 OR 1 with a keyboard. With a controller, this can be used to get the strength in which you have moved the analog stick in a direction.
 --- 
 --- - example "Example Code"
----     This code prints the current "strength" in which the analog stick was moved to the left.
+--- >    This code prints the current "strength" in which the analog stick was moved to the left.
 ---     ```lua
----     print(Input.GetActionValue(ButtonAction.ACTION_LEFT, 1))
+--- >    print(Input.GetActionValue(ButtonAction.ACTION_LEFT, 1))
 --- 
 ---     ```
 ---
@@ -30,11 +30,11 @@ end
 --- Returns the current mouse position in game coordinates (true) or render coordinates.
 --- 
 --- - example "Example Code"
----     This code renders "Hello World!" at the current mouse position.
+--- >    This code renders "Hello World!" at the current mouse position.
 ---     ```lua
----     local mousePos = Input.GetMousePosition(true) -- get mouse position in world coordinates
----     local screenPos = Isaac.WorldToScreen(mousePos) -- transfer game- to screen coordinates
----     Isaac.RenderText("Hello World!", screenPos.X, screenPos.Y, 1 ,1 ,1 ,1 )
+--- >    local mousePos = Input.GetMousePosition(true) -- get mouse position in world coordinates
+--- >    local screenPos = Isaac.WorldToScreen(mousePos) -- transfer game- to screen coordinates
+--- >    Isaac.RenderText("Hello World!", screenPos.X, screenPos.Y, 1 ,1 ,1 ,1 )
 --- 
 ---     ```
 ---
@@ -48,11 +48,11 @@ end
 --- [List of all Action enums](enums/ButtonAction.md)
 --- 
 --- - example "Example Code"
----     This code prints "bomb Button pressed", when any button was pressed that is assigned to the "place bomb" function.
+--- >    This code prints "bomb Button pressed", when any button was pressed that is assigned to the "place bomb" function.
 ---     ```lua
----     if Input.IsActionPressed(ButtonAction.ACTION_BOMB, 0)  then
----         print("bomb Button pressed")
----     end
+--- >    if Input.IsActionPressed(ButtonAction.ACTION_BOMB, 0)  then
+--- >        print("bomb Button pressed")
+--- >    end
 --- 
 ---     ```
 ---@param action number @ (int)
@@ -66,11 +66,11 @@ end
 --- [List of all Action enums](enums/ButtonAction.md)
 --- 
 --- - example "Example Code"
----     This code prints "bomb Button pressed", when any button was pressed that is assigned to the "place bomb" function.
+--- >    This code prints "bomb Button pressed", when any button was pressed that is assigned to the "place bomb" function.
 ---     ```lua
----     if Input.IsActionTriggered(ButtonAction.ACTION_BOMB, 0)  then
----         print("bomb Button pressed")
----     end
+--- >    if Input.IsActionTriggered(ButtonAction.ACTION_BOMB, 0)  then
+--- >        print("bomb Button pressed")
+--- >    end
 --- 
 ---     ```
 ---@param action number @ (int)
@@ -84,11 +84,11 @@ end
 --- [List of all Action enums](enums/ButtonAction.md)
 --- 
 --- - example "Example Code"
----     This code prints "Enter Button pressed", when the "Enter"-Button was pressed.
+--- >    This code prints "Enter Button pressed", when the "Enter"-Button was pressed.
 ---     ```lua
----     if Input.IsButtonPressed(Keyboard.KEY_ENTER, 0)  then
----         print("Enter Button pressed.")
----     end
+--- >    if Input.IsButtonPressed(Keyboard.KEY_ENTER, 0)  then
+--- >        print("Enter Button pressed.")
+--- >    end
 --- 
 ---     ```
 ---@param button number @ (int)
@@ -102,11 +102,11 @@ end
 --- [List of all Action enums](enums/ButtonAction.md)
 --- 
 --- - example "Example Code"
----     This code prints "Enter Button was pressed", when the "Enter"-Button was pressed.
+--- >    This code prints "Enter Button was pressed", when the "Enter"-Button was pressed.
 ---     ```lua
----     if Input.IsButtonTriggered(Keyboard.KEY_ENTER, 0)  then
----         print("Enter Button was pressed.")
----     end
+--- >    if Input.IsButtonTriggered(Keyboard.KEY_ENTER, 0)  then
+--- >        print("Enter Button was pressed.")
+--- >    end
 --- 
 ---     ```
 ---@param button number @ (int)
@@ -119,11 +119,11 @@ end
 --- Left: 0, Right: 1, mousewheel: 2, back button: 3, forward button: 4
 --- 
 --- - example "Example Code"
----     This code prints "Right Click", when the "right"-mousebutton was pressed.
+--- >    This code prints "Right Click", when the "right"-mousebutton was pressed.
 ---     ```lua
----     if Input.IsMouseBtnPressed(1)  then
----         print("Right Click")
----     end
+--- >    if Input.IsMouseBtnPressed(1)  then
+--- >        print("Right Click")
+--- >    end
 --- 
 ---     ```
 ---

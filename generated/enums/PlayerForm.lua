@@ -1,5 +1,5 @@
 ---@class PlayerForm @enum
-local PlayerForm = {}
+PlayerForm = {}
 
 ---
 --- 0

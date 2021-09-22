@@ -1,5 +1,5 @@
 ---@class NpcState @enum
-local NpcState = {}
+NpcState = {}
 
 ---
 --- 0

@@ -5,9 +5,6 @@ local Sprite = {}
 -- Constructors
 --------------------
 
----@return Sprite @
-function Sprite:Sprite()
-end
 
 --------------------
 -- Functions
@@ -19,32 +16,32 @@ function Sprite:GetAnimation()
 end
 --- This function returns the name of the "Default" animation of a given sprite based on its .anm2 file.
 --- 
---- - info "Info"
----     This function seems to be the same as `GetDefaultAnimationName()`.
+--- - Info
+--- >    This function seems to be the same as `GetDefaultAnimationName()`.
 --- 
 --- - example "Example Code"
----     This code print the default animation name "WalkDown" of the player sprite.
+--- >    This code print the default animation name "WalkDown" of the player sprite.
 --- 
 ---     ```lua
----     local player = Isaac.GetPlayer(0)
----     local sprite = player:GetSprite()
----     print(sprite:GetDefaultAnimation()) -- this prints "WalkDown"
+--- >    local player = Isaac.GetPlayer(0)
+--- >    local sprite = player:GetSprite()
+--- >    print(sprite:GetDefaultAnimation()) -- this prints "WalkDown"
 ---     ```
 ---@return string @
 function Sprite:GetDefaultAnimation()
 end
 --- This function returns the name of the "Default" animation of a given sprite based on its .anm2 file.
 --- 
---- - info "Info"
----     This function seems to be the same as `GetDefaultAnimation()`.
+--- - Info
+--- >    This function seems to be the same as `GetDefaultAnimation()`.
 --- 
 --- - example "Example Code"
----     This code print the default animation name "WalkDown" of the player sprite.
+--- >    This code print the default animation name "WalkDown" of the player sprite.
 --- 
 ---     ```lua
----     local player = Isaac.GetPlayer(0)
----     local sprite = player:GetSprite()
----     print(sprite:GetDefaultAnimationName()) -- this prints "WalkDown"
+--- >    local player = Isaac.GetPlayer(0)
+--- >    local sprite = player:GetSprite()
+--- >    print(sprite:GetDefaultAnimationName()) -- this prints "WalkDown"
 ---     ```
 ---
 ---@return string @
@@ -53,12 +50,12 @@ end
 --- This function returns the path to the .anm2 file used by the sprite.
 --- 
 --- - example "Example Code"
----     This code print the .anm2 path of the player sprite.
+--- >    This code print the .anm2 path of the player sprite.
 --- 
 ---     ```lua
----     local player = Isaac.GetPlayer(0)
----     local sprite = player:GetSprite()
----     print(sprite:GetFilename()) -- this prints "gfx/001.000_Player.anm2"
+--- >    local player = Isaac.GetPlayer(0)
+--- >    local sprite = player:GetSprite()
+--- >    print(sprite:GetFilename()) -- this prints "gfx/001.000_Player.anm2"
 ---     ```
 ---
 ---@return string @
@@ -121,12 +118,12 @@ end
 --- Loads a given ".anm2" file. The filepath is relative to the "resources" folder. The boolean can be used to load the graphics (.png files) as well, without calling the [LoadGraphics()](#LoadGraphics) function.
 --- 
 --- - example "Example Code"
----     This code creates a new sprite object, loads an .anm2 file and renders it on the screen.
+--- >    This code creates a new sprite object, loads an .anm2 file and renders it on the screen.
 --- 
 ---     ```lua
 --- 	local mySprite = Sprite()
 --- 	mySprite:Load("gfx/myCoolAnimation.anm2", true)
----     mySprite:Render(Vector(75,75), Vector(0,0), Vector(0,0))
+--- >    mySprite:Render(Vector(75,75), Vector(0,0), Vector(0,0))
 ---     ```
 ---@param Filename string @
 ---@param LoadGraphics boolean @
@@ -135,7 +132,7 @@ end
 --- Loads and applies assosiated graphic-objects like ".png" files.
 --- 
 --- - example "Example Code"
----     This code creates a new sprite object and replaces the spritesheet of layer 0 of a sprite object with a different spritesheet.
+--- >    This code creates a new sprite object and replaces the spritesheet of layer 0 of a sprite object with a different spritesheet.
 --- 
 ---     ```lua
 --- 	local mySprite = Sprite()
@@ -181,10 +178,10 @@ end
 --- Changes the ".png" file assosiated to a specific layer of a sprite.
 --- 
 --- + note "Notes"
----     The effect is only applied after calling the [LoadGraphics()](#LoadGraphics) function afterwards.
+--- >    The effect is only applied after calling the [LoadGraphics()](#LoadGraphics) function afterwards.
 --- 
 --- - example "Example Code"
----     This code creates a new sprite object and replaces the spritesheet of layer 0 of a sprite object with a different spritesheet.
+--- >    This code creates a new sprite object and replaces the spritesheet of layer 0 of a sprite object with a different spritesheet.
 --- 
 ---     ```lua
 --- 	local mySprite = Sprite()
@@ -201,7 +198,7 @@ function Sprite:Reset()
 end
 
 --- + note "Notes"
----     Passing Reset as false will continue the animation from the current frame. This is a really good tool for familiars that alternate between different FloatDirection animations dynamically and other entities that follow similar behaviors.
+--- >    Passing Reset as false will continue the animation from the current frame. This is a really good tool for familiars that alternate between different FloatDirection animations dynamically and other entities that follow similar behaviors.
 ---
 ---@param AnimationName string @
 ---@param Reset boolean @ (default true)

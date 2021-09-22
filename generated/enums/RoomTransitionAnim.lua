@@ -1,5 +1,5 @@
 ---@class RoomTransitionAnim @enum
-local RoomTransitionAnim = {}
+RoomTransitionAnim = {}
 
 --- mostly when using doors
 ---

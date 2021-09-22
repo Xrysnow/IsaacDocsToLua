@@ -1,5 +1,5 @@
 ---@class StageType @enum
-local StageType = {}
+StageType = {}
 
 ---
 --- 0

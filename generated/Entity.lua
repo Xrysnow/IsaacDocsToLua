@@ -7,29 +7,29 @@ local Entity = {}
 
 --- Adds a burn-effect to an enemy. Duration is in Number of Frames. Damage is the Damage taken per frame.
 --- 
---- - info "Duration infos"
----     The Duration must be a minimum of 2 frames. Every consecutive damage tick is 20 frames apart.
+--- - Duration infos
+--- >    The Duration must be a minimum of 2 frames. Every consecutive damage tick is 20 frames apart.
 --- 
 ---     ```
----     2 Damage-ticks = 22 frames
----     3 = 42
----     4 = 62
----     ...
+--- >    2 Damage-ticks = 22 frames
+--- >    3 = 42
+--- >    4 = 62
+--- >    ...
 ---     ```
 --- 
 --- + bug
----     Changing the Damage value doesn't seem to have an effect. It always deals the amount of damage of the player.
+--- >    Changing the Damage value doesn't seem to have an effect. It always deals the amount of damage of the player.
 --- 
----     The Duration value seems to have an upper limit. For a PlayerEntity, its only lasting for the duration of one damage interval. For Entities its up to 6 damage-intervals.
+--- >    The Duration value seems to have an upper limit. For a PlayerEntity, its only lasting for the duration of one damage interval. For Entities its up to 6 damage-intervals.
 --- 
 --- - example "Example Code"
----     This code damages every entity in the room for 1 second with the damage source set to the player. The total damage dealt is 1.
+--- >    This code damages every entity in the room for 1 second with the damage source set to the player. The total damage dealt is 1.
 --- 
 ---     ```lua
----     local player =Isaac.GetPlayer(0)
----     for i, entity in ipairs(Isaac.GetRoomEntities()) do
----     	entity:AddBurn(EntityRef(player), 30, 1)
----     end
+--- >    local player =Isaac.GetPlayer(0)
+--- >    for i, entity in ipairs(Isaac.GetRoomEntities()) do
+--- >    	entity:AddBurn(EntityRef(player), 30, 1)
+--- >    end
 ---     ```
 ---
 ---@param Source EntityRef @
@@ -43,13 +43,13 @@ end
 --- `Duration = -1` makes the effect permanent and the enemy will follow you even to different rooms.
 --- 
 --- - example "Example Code"
----     This code charms every entity in the room for 1 second.
+--- >    This code charms every entity in the room for 1 second.
 --- 
 ---     ```lua
----     local player = Isaac.GetPlayer(0)
----     for i, entity in ipairs(Isaac.GetRoomEntities()) do
----     	entity:AddCharmed(EntityRef(player), 30)
----     end
+--- >    local player = Isaac.GetPlayer(0)
+--- >    for i, entity in ipairs(Isaac.GetRoomEntities()) do
+--- >    	entity:AddCharmed(EntityRef(player), 30)
+--- >    end
 ---     ```
 ---
 ---@param sourceEntity EntityRef @
@@ -59,17 +59,17 @@ end
 
 --- Adds a confusion effect to an entity.
 --- 
---- - info "Duration infos"
----     The Duration has a maximum of 5 seconds
+--- - Duration infos
+--- >    The Duration has a maximum of 5 seconds
 --- 
 --- - example "Example Code"
----     This code confuses every entity in the room for 1 second while ignoring bosses.
+--- >    This code confuses every entity in the room for 1 second while ignoring bosses.
 --- 
 ---     ```lua
----     local player = Isaac.GetPlayer(0)
----     for i, entity in ipairs(Isaac.GetRoomEntities()) do
----     	entity:AddConfusion(EntityRef(player), 30, true)
----     end
+--- >    local player = Isaac.GetPlayer(0)
+--- >    for i, entity in ipairs(Isaac.GetRoomEntities()) do
+--- >    	entity:AddConfusion(EntityRef(player), 30, true)
+--- >    end
 ---     ```
 ---
 ---@param Source EntityRef @
@@ -81,13 +81,13 @@ end
 --- Add [EntityFlags](enums/EntityFlag.md) to the entity. Flags are used to add specific effects like poisoning or freeze. You can add multiple flags at the same time by bitwise-concatenating them.
 --- 
 --- - example "Example Code"
----     This code adds slowing and confusion to the enetity.
+--- >    This code adds slowing and confusion to the enetity.
 --- 
 ---     ```lua
----     local player = Isaac.GetPlayer(0)
----     for i, entity in ipairs(Isaac.GetRoomEntities()) do
----     	entity:AddEntityFlags(EntityFlag.FLAG_SLOW | EntityFlag.FLAG_CONFUSION)
----     end
+--- >    local player = Isaac.GetPlayer(0)
+--- >    for i, entity in ipairs(Isaac.GetRoomEntities()) do
+--- >    	entity:AddEntityFlags(EntityFlag.FLAG_SLOW | EntityFlag.FLAG_CONFUSION)
+--- >    end
 ---     ```
 ---@param Flags number @ (int)
 function Entity:AddEntityFlags(Flags)
@@ -95,17 +95,17 @@ end
 
 --- Adds a fear-effect to an entity.
 --- 
---- - info "Duration infos"
----     The Duration has a maximum of 5 seconds
+--- - Duration infos
+--- >    The Duration has a maximum of 5 seconds
 --- 
 --- - example "Example Code"
----     This code frightens every entity in the room for 1 second.
+--- >    This code frightens every entity in the room for 1 second.
 --- 
 ---     ```lua
----     local player = Isaac.GetPlayer(0)
----     for i, entity in ipairs(Isaac.GetRoomEntities()) do
----     	entity:AddFear(EntityRef(player), 30)
----     end
+--- >    local player = Isaac.GetPlayer(0)
+--- >    for i, entity in ipairs(Isaac.GetRoomEntities()) do
+--- >    	entity:AddFear(EntityRef(player), 30)
+--- >    end
 ---     ```
 ---
 ---@param Source EntityRef @
@@ -115,17 +115,17 @@ end
 
 --- Freezes an entity, making it unable to move and attack.
 --- 
---- - info "Duration infos"
----     The Duration has a maximum of 5 seconds
+--- - Duration infos
+--- >    The Duration has a maximum of 5 seconds
 --- 
 --- - example "Example Code"
----     This code freezes every entity in the room for 1 second.
+--- >    This code freezes every entity in the room for 1 second.
 --- 
 ---     ```lua
----     local player = Isaac.GetPlayer(0)
----     for i, entity in ipairs(Isaac.GetRoomEntities()) do
----     	entity:AddFreeze(EntityRef(player), 30)
----     end
+--- >    local player = Isaac.GetPlayer(0)
+--- >    for i, entity in ipairs(Isaac.GetRoomEntities()) do
+--- >    	entity:AddFreeze(EntityRef(player), 30)
+--- >    end
 ---     ```
 ---
 ---@param Source EntityRef @
@@ -138,20 +138,20 @@ function Entity:AddHealth(HitPoints)
 end
 --- Turns the entity into a gold statue (can't move, can't attack, drops coins when killed)
 --- 
---- - info "Duration infos"
----     The Duration has a maximum of 5 seconds
+--- - Duration infos
+--- >    The Duration has a maximum of 5 seconds
 --- 
 --- + bug
----     The golden color applied to the entity will stay for the full duration passed into the function, despite the freeze effect only lasting for a maximum of 5 seconds.
+--- >    The golden color applied to the entity will stay for the full duration passed into the function, despite the freeze effect only lasting for a maximum of 5 seconds.
 --- 
 --- - example "Example Code"
----     This code turns every entity in the room into gold for 1 second.
+--- >    This code turns every entity in the room into gold for 1 second.
 --- 
 ---     ```lua
----     local player = Isaac.GetPlayer(0)
----     for i, entity in ipairs(Isaac.GetRoomEntities()) do
----     	entity:AddMidasFreeze(EntityRef(player), 30)
----     end
+--- >    local player = Isaac.GetPlayer(0)
+--- >    for i, entity in ipairs(Isaac.GetRoomEntities()) do
+--- >    	entity:AddMidasFreeze(EntityRef(player), 30)
+--- >    end
 ---     ```
 ---@param Source EntityRef @
 ---@param Duration number @ (int)
@@ -160,29 +160,29 @@ end
 
 --- Adds a poison effect to the entity.
 --- 
---- - info "Duration infos"
----     The Duration must be a minimum of 2 frames. Every consecutive damage tick is 20 frames apart.
+--- - Duration infos
+--- >    The Duration must be a minimum of 2 frames. Every consecutive damage tick is 20 frames apart.
 --- 
 ---     ```
----     2 Damage-ticks = 22 frames
----     3 = 42
----     4 = 62
----     ...
+--- >    2 Damage-ticks = 22 frames
+--- >    3 = 42
+--- >    4 = 62
+--- >    ...
 ---     ```
 --- 
 --- + bug
----     Changing the Damage value doesnt seem to have an effect. It always deals the amount of damage of the player.
+--- >    Changing the Damage value doesnt seem to have an effect. It always deals the amount of damage of the player.
 --- 
----     The Duration value seems to have an upper limit. For a PlayerEntity, its only lasting for the duration of one damage interval. For Entities its up to 6 damage-intervals.
+--- >    The Duration value seems to have an upper limit. For a PlayerEntity, its only lasting for the duration of one damage interval. For Entities its up to 6 damage-intervals.
 --- 
 --- - example "Example Code"
----     This code applies a poison effect to every entity in the room for 1 second.
+--- >    This code applies a poison effect to every entity in the room for 1 second.
 --- 
 ---     ```lua
----     local player = Isaac.GetPlayer(0)
----     for i, entity in ipairs(Isaac.GetRoomEntities()) do
----     	entity:AddPoison(EntityRef(player), 30, 1)
----     end
+--- >    local player = Isaac.GetPlayer(0)
+--- >    for i, entity in ipairs(Isaac.GetRoomEntities()) do
+--- >    	entity:AddPoison(EntityRef(player), 30, 1)
+--- >    end
 ---     ```
 ---@param Source EntityRef @
 ---@param Duration number @ (int)
@@ -192,17 +192,17 @@ end
 
 --- Adds a shrink effect to the entity.
 --- 
---- - info "Duration infos"
----     The Duration has a maximum of 5 seconds
+--- - Duration infos
+--- >    The Duration has a maximum of 5 seconds
 --- 
 --- - example "Example Code"
----     This code shrinks every entity in the room for 1 second.
+--- >    This code shrinks every entity in the room for 1 second.
 --- 
 ---     ```lua
----     local player = Isaac.GetPlayer(0)
----     for i, entity in ipairs(Isaac.GetRoomEntities()) do
----     	entity:AddShrink(EntityRef(player), 30)
----     end
+--- >    local player = Isaac.GetPlayer(0)
+--- >    for i, entity in ipairs(Isaac.GetRoomEntities()) do
+--- >    	entity:AddShrink(EntityRef(player), 30)
+--- >    end
 ---     ```
 ---@param Source EntityRef @
 ---@param Duration number @ (int)
@@ -211,14 +211,14 @@ end
 --- Makes the friction higher effectively slowing down the entity.
 --- 
 --- - example "Example Code"
----     This code slows every entity in the room for 1 second with 0.5 original speed and applying a red color to it.
+--- >    This code slows every entity in the room for 1 second with 0.5 original speed and applying a red color to it.
 --- 
 ---     ```lua
----     local player = Isaac.GetPlayer(0)
----     local slowColor = Color(1, 0, 0, 1, 0, 0, 0)
----     for i, entity in ipairs(Isaac.GetRoomEntities()) do
----     	entity:AddSlowing(EntityRef(player), 30, 0.5, slowColor)
----     end
+--- >    local player = Isaac.GetPlayer(0)
+--- >    local slowColor = Color(1, 0, 0, 1, 0, 0, 0)
+--- >    for i, entity in ipairs(Isaac.GetRoomEntities()) do
+--- >    	entity:AddSlowing(EntityRef(player), 30, 0.5, slowColor)
+--- >    end
 ---     ```
 ---@param Source EntityRef @
 ---@param Duration number @ (int)
@@ -272,17 +272,17 @@ end
 --- Returns a table that contains all data assosiated with the entity. This can be used to add custom data as well.
 --- 
 --- - note "Notes"
----     Data associated with an entity does only persists in between rooms, when the entity is a player, familiar or the entity has the "EntityFlag.FLAG_PERSISTENT" Flag active. Data does not persists in between exiting the game to a menu, or when restarting/finishing a run.
+--- >    Data associated with an entity does only persists in between rooms, when the entity is a player, familiar or the entity has the "EntityFlag.FLAG_PERSISTENT" Flag active. Data does not persists in between exiting the game to a menu, or when restarting/finishing a run.
 --- 
 --- - example "Example Code"
----     This code adds custom data to an entity or prints it in the console if it exists.
+--- >    This code adds custom data to an entity or prints it in the console if it exists.
 --- 
 ---     ```lua
----     if type(entity:GetData()["MyValue"]) == type(nil) then -- checks, if the Data does exist already
----         entity:GetData()["MyValue"] = "Cool" -- assign a value to the data
----     else
----         print(entity:GetData()["MyValue"])  -- this will print "Cool" in the console
----     end
+--- >    if type(entity:GetData()["MyValue"]) == type(nil) then -- checks, if the Data does exist already
+--- >        entity:GetData()["MyValue"] = "Cool" -- assign a value to the data
+--- >    else
+--- >        print(entity:GetData()["MyValue"])  -- this will print "Cool" in the console
+--- >    end
 ---     ```
 ---
 ---@return table @
@@ -297,12 +297,12 @@ end
 --- Get the [EntityFlags](enums/EntityFlag.md)of the entity. This will be a number which acts like a bitmask.
 --- 
 --- - example "Example Code"
----     This code prints something in the console, if the entity has a specific [EntityFlags](enums/EntityFlag.md).
+--- >    This code prints something in the console, if the entity has a specific [EntityFlags](enums/EntityFlag.md).
 --- 
 ---     ```lua
----     if entity:GetEntityFlags() & EntityFlag.FLAG_CONFUSION == EntityFlag.FLAG_CONFUSION then
----         print("This entity is confused!")
----     end
+--- >    if entity:GetEntityFlags() & EntityFlag.FLAG_CONFUSION == EntityFlag.FLAG_CONFUSION then
+--- >        print("This entity is confused!")
+--- >    end
 ---     ```
 ---@return number @ (int)
 function Entity:GetEntityFlags()
@@ -311,7 +311,7 @@ end
 --- Returns the last entity spawned by this entity.
 --- 
 --- + note "Return behavior"
----     If no child is found, this function returns `nil`.
+--- >    If no child is found, this function returns `nil`.
 ---@return Entity @
 function Entity:GetLastChild()
 end
@@ -319,7 +319,7 @@ end
 --- Returns the last parent of this entity.
 --- 
 --- + note "Return behavior"
----     If no parent is found, this function returns `nil`.
+--- >    If no parent is found, this function returns `nil`.
 ---@return Entity @
 function Entity:GetLastParent()
 end
@@ -337,12 +337,12 @@ end
 --- Returns true, if the entity has all named [EntityFlags](enums/EntityFlag.md) set.
 --- 
 --- - example "Example Code"
----     This code prints something in the console, if the entity has a specific [EntityFlags](enums/EntityFlag.md).
+--- >    This code prints something in the console, if the entity has a specific [EntityFlags](enums/EntityFlag.md).
 --- 
 ---     ```lua
----     if entity:HasEntityFlags(EntityFlag.FLAG_CONFUSION) then
----         print("This entity is confused!")
----     end
+--- >    if entity:HasEntityFlags(EntityFlag.FLAG_CONFUSION) then
+--- >        print("This entity is confused!")
+--- >    end
 ---     ```
 ---@param Flags number @ (int)
 ---@return boolean @
@@ -355,8 +355,8 @@ end
 
 --- 
 --- - note "Notes"
----     The game adds taken damage to a damage buffer, which gets applied in the next frame. HasMortalDamage() returns true if the buffered damage is enough to kill the entity.
----     HasMortalDamage() will be updated additionally after TakeDamage() is called.
+--- >    The game adds taken damage to a damage buffer, which gets applied in the next frame. HasMortalDamage() returns true if the buffered damage is enough to kill the entity.
+--- >    HasMortalDamage() will be updated additionally after TakeDamage() is called.
 ---@return boolean @
 function Entity:HasMortalDamage()
 end
@@ -430,10 +430,10 @@ end
 --- Set the colormask for the entity. This can be used to tint the sprites in different colors.
 --- 
 --- - example "Example Code"
----     This code changes the color of the sprite to a fully white sprite for 15 frames.
+--- >    This code changes the color of the sprite to a fully white sprite for 15 frames.
 --- 
 ---     ```lua
----     entity:SetColor(Color(1, 1, 1, 1, 255, 255, 255), 15, 1, false, false)
+--- >    entity:SetColor(Color(1, 1, 1, 1, 255, 255, 255), 15, 1, false, false)
 ---     ```
 ---
 ---@param Color Color @
@@ -463,7 +463,7 @@ end
 
 --- 
 --- - note "Notes"
----     The game adds taken damage to a damage buffer, which gets applied in the next frame. Therefore, TakeDamage() will not decrement the entities HP immediately upon calling the function. Rather, it is only updated on the frame afterwards.
+--- >    The game adds taken damage to a damage buffer, which gets applied in the next frame. Therefore, TakeDamage() will not decrement the entities HP immediately upon calling the function. Rather, it is only updated on the frame afterwards.
 ---@param Damage number @ (float)
 ---@param Flags number @ (int)
 ---@param Source EntityRef @
@@ -474,14 +474,14 @@ end
 --- Used to cast an [Entity](Entity.md) object to an [EntityBomb](EntityBomb.md) object.
 --- 
 --- + note "Return behavior"
----     If the conversion is not successful, this function returns `nil`.
+--- >    If the conversion is not successful, this function returns `nil`.
 ---@return EntityBomb @
 function Entity:ToBomb()
 end
 --- Used to cast an [Entity](Entity.md) object to an [EntityEffect](EntityEffect.md) object.
 --- 
 --- + note "Return behavior"
----     If the conversion is not successful, this function returns `nil`.
+--- >    If the conversion is not successful, this function returns `nil`.
 ---
 ---@return EntityEffect @
 function Entity:ToEffect()
@@ -489,7 +489,7 @@ end
 --- Used to cast an [Entity](Entity.md) object to an [EntityFamiliar](EntityFamiliar.md) object.
 --- 
 --- + note "Return behavior"
----     If the conversion is not successful, this function returns `nil`.
+--- >    If the conversion is not successful, this function returns `nil`.
 ---
 ---@return EntityFamiliar @
 function Entity:ToFamiliar()
@@ -497,7 +497,7 @@ end
 --- Used to cast an [Entity](Entity.md) object to an [EntityKnife](EntityKnife.md) object.
 --- 
 --- + note "Return behavior"
----     If the conversion is not successful, this function returns `nil`.
+--- >    If the conversion is not successful, this function returns `nil`.
 ---
 ---@return EntityKnife @
 function Entity:ToKnife()
@@ -505,7 +505,7 @@ end
 --- Used to cast an [Entity](Entity.md) object to an [EntityLaser](EntityLaser.md) object.
 --- 
 --- + note "Return behavior"
----     If the conversion is not successful, this function returns `nil`.
+--- >    If the conversion is not successful, this function returns `nil`.
 ---
 ---@return EntityLaser @
 function Entity:ToLaser()
@@ -513,7 +513,7 @@ end
 --- Used to cast an [Entity](Entity.md) object to an [EntityNPC](EntityNPC.md) object.
 --- 
 --- + note "Return behavior"
----     If the conversion is not successful, this function returns `nil`.
+--- >    If the conversion is not successful, this function returns `nil`.
 ---
 ---@return EntityNPC @
 function Entity:ToNPC()
@@ -521,7 +521,7 @@ end
 --- Used to cast an [Entity](Entity.md) object to an [EntityPickup](EntityPickup.md) object.
 --- 
 --- + note "Return behavior"
----     If the conversion is not successful, this function returns `nil`.
+--- >    If the conversion is not successful, this function returns `nil`.
 ---
 ---@return EntityPickup @
 function Entity:ToPickup()
@@ -529,7 +529,7 @@ end
 --- Used to cast an [Entity](Entity.md) object to an [EntityPlayer](EntityPlayer.md) object.
 --- 
 --- + note "Return behavior"
----     If the conversion is not successful, this function returns `nil`.
+--- >    If the conversion is not successful, this function returns `nil`.
 ---
 ---@return EntityPlayer @
 function Entity:ToPlayer()
@@ -537,7 +537,7 @@ end
 --- Used to cast an [Entity](Entity.md) object to an [EntityProjectile](EntityProjectile.md) object.
 --- 
 --- + note "Return behavior"
----     If the conversion is not successful, this function returns `nil`.
+--- >    If the conversion is not successful, this function returns `nil`.
 ---
 ---@return EntityProjectile @
 function Entity:ToProjectile()
@@ -545,7 +545,7 @@ end
 --- Used to cast an [Entity](Entity.md) object to an [EntityTear](EntityTear.md) object.
 --- 
 --- + note "Return behavior"
----     If the conversion is not successful, this function returns `nil`.
+--- >    If the conversion is not successful, this function returns `nil`.
 ---
 ---@return EntityTear @
 function Entity:ToTear()
@@ -567,16 +567,16 @@ Entity.CollisionDamage = nil
 --- Get/Set the depth-offset of the entity. This value is added to the Y Position of the entity, which is then used to determine the rendering order of each entity. Default is 0 for all entities.
 --- 
 --- - example "Example Code"
----     This code explains how this variable works.
+--- >    This code explains how this variable works.
 --- 
 ---     ```lua
----     entity1.Position.Y -- => 50
----     entity2.Position.Y -- => 45
----     -- Entity1 is rendered in front of Entity2
+--- >    entity1.Position.Y -- => 50
+--- >    entity2.Position.Y -- => 45
+--- >    -- Entity1 is rendered in front of Entity2
 --- 
----     entity1.DepthOffset = -10
----     -- new Entity1 renderYPosition => 40
----     -- Entity2 is rendered in front of Entity1
+--- >    entity1.DepthOffset = -10
+--- >    -- new Entity1 renderYPosition => 40
+--- >    -- Entity2 is rendered in front of Entity1
 ---     ```
 ---
 ---@type number @(member) (float)
@@ -603,7 +603,7 @@ Entity.GridCollisionClass = nil
 
 --- 
 --- - note "Notes"
----     The HitPoints value is not decremented immediately upon taking damage like you would expect. Rather, it is only updated on the frame after the entity takes damage.
+--- >    The HitPoints value is not decremented immediately upon taking damage like you would expect. Rather, it is only updated on the frame after the entity takes damage.
 ---@type number @(member) (float)
 Entity.HitPoints = nil
 
@@ -629,8 +629,8 @@ Entity.Position = nil
 Entity.PositionOffset = nil
 
 --- 
---- + bug "Bugs"
----     This variable doesn't seem to do anything useful. Use DepthOffset instead.
+--- - Bug
+--- >    This variable doesn't seem to do anything useful. Use DepthOffset instead.
 ---@type number @(member) (int)
 Entity.RenderZOffset = nil
 --- Returns the size of the hitbox on an entity.

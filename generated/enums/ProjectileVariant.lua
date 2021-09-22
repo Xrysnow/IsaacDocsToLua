@@ -1,5 +1,5 @@
 ---@class ProjectileVariant @enum
-local ProjectileVariant = {}
+ProjectileVariant = {}
 
 ---
 --- 0

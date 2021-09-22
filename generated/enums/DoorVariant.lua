@@ -1,5 +1,5 @@
 ---@class DoorVariant @enum
-local DoorVariant = {}
+DoorVariant = {}
 
 ---
 --- 0

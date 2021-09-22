@@ -1,5 +1,5 @@
 ---@class SeedEffect @enum
-local SeedEffect = {}
+SeedEffect = {}
 
 ---
 --- 0

@@ -1,5 +1,5 @@
 ---@class InputHook @enum
-local InputHook = {}
+InputHook = {}
 
 ---
 --- 0

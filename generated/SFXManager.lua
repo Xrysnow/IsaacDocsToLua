@@ -5,17 +5,6 @@ local SFXManager = {}
 -- Constructors
 --------------------
 
---- Returns a [SFXManager](SFXManager.md) object.
---- 
---- - example "Example Code"
----     Example usage:
----     ```lua
----     SFXManager():Stop(SoundEffect.SOUND_1UP)
---- 
----     ```
----@return SFXManager @
-function SFXManager:SFXManager()
-end
 
 --------------------
 -- Functions

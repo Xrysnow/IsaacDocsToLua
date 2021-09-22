@@ -1,5 +1,5 @@
 ---@class LocustSubtypes @enum
-local LocustSubtypes = {}
+LocustSubtypes = {}
 
 ---
 --- 1

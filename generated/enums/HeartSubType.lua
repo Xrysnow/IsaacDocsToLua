@@ -1,5 +1,5 @@
 ---@class HeartSubType @enum
-local HeartSubType = {}
+HeartSubType = {}
 
 ---
 --- 1

@@ -1,5 +1,5 @@
 ---@class WeaponType @enum
-local WeaponType = {}
+WeaponType = {}
 
 ---
 --- 1

@@ -1,5 +1,5 @@
 ---@class UseFlag @enum
-local UseFlag = {}
+UseFlag = {}
 
 --- Don't play use animations
 ---

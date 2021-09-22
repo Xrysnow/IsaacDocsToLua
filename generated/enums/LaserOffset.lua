@@ -1,5 +1,5 @@
 ---@class LaserOffset @enum
-local LaserOffset = {}
+LaserOffset = {}
 
 ---
 --- 0

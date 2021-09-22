@@ -1,5 +1,5 @@
 ---@class PickupPrice @enum
-local PickupPrice = {}
+PickupPrice = {}
 
 ---
 --- -1

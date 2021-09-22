@@ -1,5 +1,5 @@
 ---@class LevelCurse @enum
-local LevelCurse = {}
+LevelCurse = {}
 
 ---
 --- 0

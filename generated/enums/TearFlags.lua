@@ -1,5 +1,5 @@
 ---@class TearFlags @enum
-local TearFlags = {}
+TearFlags = {}
 
 --- Default tear (no special effects)
 ---

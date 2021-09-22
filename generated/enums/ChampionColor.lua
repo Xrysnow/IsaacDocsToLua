@@ -1,5 +1,5 @@
 ---@class ChampionColor @enum
-local ChampionColor = {}
+ChampionColor = {}
 
 --- 33% more life, full heart
 ---

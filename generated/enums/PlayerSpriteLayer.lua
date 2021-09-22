@@ -1,5 +1,5 @@
 ---@class PlayerSpriteLayer @enum
-local PlayerSpriteLayer = {}
+PlayerSpriteLayer = {}
 
 ---
 --- 0

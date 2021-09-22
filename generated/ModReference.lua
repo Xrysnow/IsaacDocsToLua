@@ -20,19 +20,19 @@ end
 --- There are 3 "saveX.dat" files, one per Savegame. They are stored in the mod's folder next to the "main.lua" file. The number indicates the savegame it corresponds to. The number will be determined automatically by the game.
 --- 
 --- - example "Example Code"
----     This code loads a string that was stored in the "saveX.dat" file, if it exists, and converts it into a table using JSON.
+--- >    This code loads a string that was stored in the "saveX.dat" file, if it exists, and converts it into a table using JSON.
 --- 
 ---     ```lua
----     local yourMod = RegisterMod("someMod", 1)
----     local json = require("json")
----     -- ...
----     function yourMod:OnGameStart(isSave)
----     	--Loading Moddata--
----     	if yourMod:HasData() then
----     		local myTable = json.decode(yourMod:LoadData())
----     	end
----     end
----     yourMod:AddCallback(ModCallbacks.MC_POST_GAME_STARTED, yourMod.OnGameStart)
+--- >    local yourMod = RegisterMod("someMod", 1)
+--- >    local json = require("json")
+--- >    -- ...
+--- >    function yourMod:OnGameStart(isSave)
+--- >    	--Loading Moddata--
+--- >    	if yourMod:HasData() then
+--- >    		local myTable = json.decode(yourMod:LoadData())
+--- >    	end
+--- >    end
+--- >    yourMod:AddCallback(ModCallbacks.MC_POST_GAME_STARTED, yourMod.OnGameStart)
 --- 
 ---     ```
 ---
@@ -54,17 +54,17 @@ end
 --- There are 3 "saveX.dat" files, one per Savegame. They are stored in the mod's folder next to the "main.lua" file. The number indicates the savegame it corresponds to. The number will be determined automatically by the game.
 --- 
 --- - example "Example Code"
----     This code uses JSON to convert a table into a string, and saves it in the "saveX.dat" file.
+--- >    This code uses JSON to convert a table into a string, and saves it in the "saveX.dat" file.
 ---     ```lua
----     local yourMod = RegisterMod("someMod", 1)
----     local json = require("json")
----     -- ...
----     --Saving Moddata--
----     function yourMod:SaveGame()
----         local table= {1,2,3}
----         yourMod:SaveData(json.encode(table))
----     end
----     yourMod:AddCallback(ModCallbacks.MC_PRE_GAME_EXIT, yourMod.SaveGame)
+--- >    local yourMod = RegisterMod("someMod", 1)
+--- >    local json = require("json")
+--- >    -- ...
+--- >    --Saving Moddata--
+--- >    function yourMod:SaveGame()
+--- >        local table= {1,2,3}
+--- >        yourMod:SaveData(json.encode(table))
+--- >    end
+--- >    yourMod:AddCallback(ModCallbacks.MC_PRE_GAME_EXIT, yourMod.SaveGame)
 --- 
 ---     ```
 ---@param data string @

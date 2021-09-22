@@ -5,17 +5,6 @@ local MusicManager = {}
 -- Constructors
 --------------------
 
---- Returns a [MusicManager](MusicManager.md) object.
---- 
---- - example "Example Code"
----     Example usage:
----     ```lua
----     MusicManager():Disable()
---- 
----     ```
----@return MusicManager @
-function MusicManager:MusicManager()
-end
 
 --------------------
 -- Functions

@@ -1,5 +1,5 @@
 ---@class SackSubType @enum
-local SackSubType = {}
+SackSubType = {}
 
 ---
 --- 1

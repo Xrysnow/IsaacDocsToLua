@@ -1,5 +1,5 @@
 ---@class LevelStage @enum
-local LevelStage = {}
+LevelStage = {}
 
 --- Special Rooms (Game crashes on entering this stage)
 ---

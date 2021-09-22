@@ -1,5 +1,5 @@
 ---@class PickupVariant @enum
-local PickupVariant = {}
+PickupVariant = {}
 
 ---
 --- 0

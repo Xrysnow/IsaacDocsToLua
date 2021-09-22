@@ -9,15 +9,15 @@ local Room = {}
 --- 		* Vector: first hit position from Pos1 to Pos2 (returns Pos2 if the line didn't hit anything)
 --- 
 --- + note "Notes"
----     Linecheck Modes:
+--- >    Linecheck Modes:
 --- 
----     **0** : makes the line check collide with anything that impedes ground movement
+--- >    **0** : makes the line check collide with anything that impedes ground movement
 --- 
----     **1** : is a cheaper version of 0, but is not as reliable
+--- >    **1** : is a cheaper version of 0, but is not as reliable
 --- 
----     **2** : is used for explosions, it only collides with walls and indestructible blocks
+--- >    **2** : is used for explosions, it only collides with walls and indestructible blocks
 --- 
----     **3** : is a line check that only collides with obstacles that can block projectiles
+--- >    **3** : is a line check that only collides with obstacles that can block projectiles
 ---@param Pos1 Vector @
 ---@param Pos2 Vector @
 ---@param Mode number @ (LinecheckMode)
@@ -75,36 +75,36 @@ end
 --- 
 --- - note "BackdropTypes (corresponds to ids in backdrops.xml)"
 --- 
----     | ID | Backdrop |
----     |--:|:--|
----     |1|Basement|
----     |2|Cellar|
----     |3|Burning Basement|
----     |4|Caves|
----     |5|Catacombs|
----     |6|Drowned Caves|
----     |7|Depths|
----     |8|Necropolis|
----     |9|Dank Depths|
----     |10|Womb|
----     |11|Utero|
----     |12|Scarred Womb|
----     |13|Blue Womb (Hush)|
----     |14|Sheol|
----     |15|Cathedral|
----     |16|Dark Room|
----     |17|Chest|
----     |18|Mega Satan|
----     |19|Library|
----     |20|Shop|
----     |21|Isaac's Room|
----     |22|Barren Room|
----     |23|Secret Room|
----     |24|Dice Room|
----     |25|Arcade|
----     |26|Error Room|
----     |27|Blue Secret|
----     |28|Ultra Greed Shop|
+--- >    | ID | Backdrop |
+--- >    |--:|:--|
+--- >    |1|Basement|
+--- >    |2|Cellar|
+--- >    |3|Burning Basement|
+--- >    |4|Caves|
+--- >    |5|Catacombs|
+--- >    |6|Drowned Caves|
+--- >    |7|Depths|
+--- >    |8|Necropolis|
+--- >    |9|Dank Depths|
+--- >    |10|Womb|
+--- >    |11|Utero|
+--- >    |12|Scarred Womb|
+--- >    |13|Blue Womb (Hush)|
+--- >    |14|Sheol|
+--- >    |15|Cathedral|
+--- >    |16|Dark Room|
+--- >    |17|Chest|
+--- >    |18|Mega Satan|
+--- >    |19|Library|
+--- >    |20|Shop|
+--- >    |21|Isaac's Room|
+--- >    |22|Barren Room|
+--- >    |23|Secret Room|
+--- >    |24|Dice Room|
+--- >    |25|Arcade|
+--- >    |26|Error Room|
+--- >    |27|Blue Secret|
+--- >    |28|Ultra Greed Shop|
 ---@return number @ (int)
 function Room:GetBackdropType()
 end
@@ -167,8 +167,8 @@ end
 function Room:GetDungeonRockIdx()
 end
 
---- + bug "Bugs"
----     This function is bugged and you should use [Isaac.GetRoomEntities()](Isaac.md#getroomentities) instead!
+--- - Bug
+--- >    This function is bugged and you should use [Isaac.GetRoomEntities()](Isaac.md#getroomentities) instead!
 ---
 ---@return EntityList @
 function Room:GetEntities()
@@ -246,14 +246,14 @@ end
 function Room:GetLightingAlpha()
 end
 
---- + bug "Bug"
----     Since it returns UserData, this function is unusable and therefore broken.
+--- - Bug
+--- >    Since it returns UserData, this function is unusable and therefore broken.
 ---@return LRoomAreaDesc @
 function Room:GetLRoomAreaDesc()
 end
 
---- + bug "Bug"
----     Since it returns UserData, this function is unusable and therefore broken.
+--- - Bug
+--- >    Since it returns UserData, this function is unusable and therefore broken.
 ---@return LRoomTileDesc @
 function Room:GetLRoomTileDesc()
 end
@@ -287,35 +287,35 @@ end
 --- 
 --- - note "Stage IDs (corresponds to ids in stages.xml)"
 --- 
----     | ID | Backdrop | Notes |
----     |--:|:--||
----     |0|Special Rooms||
----     |1|Basement||
----     |2|Cellar||
----     |3|Burning Basement||
----     |4|Caves||
----     |5|Catacombs||
----     |6|Drowned Caves||
----     |7|Depths||
----     |8|Necropolis||
----     |9|Dank Depths||
----     |10|Womb||
----     |11|Utero||
----     |12|Scarred Womb||
----     |13|Blue Womb (Hush)||
----     |14|Sheol||
----     |15|Cathedral||
----     |16|Dark Room||
----     |17|Chest||
----     |18|Special Rooms (Greed Mode)||
----     |19|Basement (Greed Mode)|Normally inaccessible. In greed mode, the main room is based off of the Special Rooms (Greed Mode) file.|
----     |20|Caves (Greed Mode)|Normally inaccessible unless in the first variant of unused stage 13. In greed mode, the main room is based off of the Special Rooms (Greed Mode) file.|
----     |21|Depths (Greed Mode)|Normally inaccessible unless in the second variant of unused stage 13. In greed mode, the main room is based off of the Special Rooms (Greed Mode) file.|
----     |22|Womb (Greed Mode)|Normally inaccessible unless in the third variant of unused stage 13. In greed mode, the main room is based off of the Special Rooms (Greed Mode) file.|
----     |23|Sheol (Greed Mode)|Normally inaccessible. In greed mode, the main room is based off of the Special Rooms (Greed Mode) file.|
----     |24|The Shop (Greed Mode)|Normally inaccessible. In greed mode, the main room is based off of the Special Rooms (Greed Mode) file.|
----     |25|Ultra Greed (Greed Mode)||
----     |26|The Void|Normally inaccessible. This stage uses rooms from other stages, and will return their respective values.|
+--- >    | ID | Backdrop | Notes |
+--- >    |--:|:--||
+--- >    |0|Special Rooms||
+--- >    |1|Basement||
+--- >    |2|Cellar||
+--- >    |3|Burning Basement||
+--- >    |4|Caves||
+--- >    |5|Catacombs||
+--- >    |6|Drowned Caves||
+--- >    |7|Depths||
+--- >    |8|Necropolis||
+--- >    |9|Dank Depths||
+--- >    |10|Womb||
+--- >    |11|Utero||
+--- >    |12|Scarred Womb||
+--- >    |13|Blue Womb (Hush)||
+--- >    |14|Sheol||
+--- >    |15|Cathedral||
+--- >    |16|Dark Room||
+--- >    |17|Chest||
+--- >    |18|Special Rooms (Greed Mode)||
+--- >    |19|Basement (Greed Mode)|Normally inaccessible. In greed mode, the main room is based off of the Special Rooms (Greed Mode) file.|
+--- >    |20|Caves (Greed Mode)|Normally inaccessible unless in the first variant of unused stage 13. In greed mode, the main room is based off of the Special Rooms (Greed Mode) file.|
+--- >    |21|Depths (Greed Mode)|Normally inaccessible unless in the second variant of unused stage 13. In greed mode, the main room is based off of the Special Rooms (Greed Mode) file.|
+--- >    |22|Womb (Greed Mode)|Normally inaccessible unless in the third variant of unused stage 13. In greed mode, the main room is based off of the Special Rooms (Greed Mode) file.|
+--- >    |23|Sheol (Greed Mode)|Normally inaccessible. In greed mode, the main room is based off of the Special Rooms (Greed Mode) file.|
+--- >    |24|The Shop (Greed Mode)|Normally inaccessible. In greed mode, the main room is based off of the Special Rooms (Greed Mode) file.|
+--- >    |25|Ultra Greed (Greed Mode)||
+--- >    |26|The Void|Normally inaccessible. This stage uses rooms from other stages, and will return their respective values.|
 ---@return number @ (int)
 function Room:GetRoomConfigStage()
 end
@@ -331,8 +331,8 @@ end
 function Room:GetSecondBossID()
 end
 
---- + bug "Bug"
----     Calling this function crashes the game
+--- - Bug
+--- >    Calling this function crashes the game
 ---
 ---@param Seed number @ (int)
 ---@return CollectibleType @
@@ -456,7 +456,7 @@ end
 --- Returns Pos, screen-wrapped (if it is just outside the room on the right it will be moved to the left side of the room, etc)
 --- 
 --- - note "Notes"
----      This only wraps the point once, so if it has crossed multiple wrapping planes it will only wrap on the one it's closest to. For wrapping a position that has crossed two planes (outside a room in the top left for instance) call this function iteratively.
+--- >     This only wraps the point once, so if it has crossed multiple wrapping planes it will only wrap on the one it's closest to. For wrapping a position that has crossed two planes (outside a room in the top left for instance) call this function iteratively.
 ---@param Pos Vector @
 ---@param Margin number @ (float)
 ---@return Vector @
@@ -485,9 +485,9 @@ end
 --- Allows you to apply a color modifier to the floor texture of the current room.
 --- 
 --- - example "Example Code"
----     This code changes the floor color to red.
+--- >    This code changes the floor color to red.
 ---     ```lua
----     Game():GetRoom():SetFloorColor(Color(1,1,1,1,255,0,0))
+--- >    Game():GetRoom():SetFloorColor(Color(1,1,1,1,255,0,0))
 ---     ```
 ---
 ---@param FloorColor Color @
@@ -521,9 +521,9 @@ end
 --- Allows you to apply a color modifier to the wall texture of the current room.
 --- 
 --- - example "Example Code"
----     This code changes the wall color to red.
+--- >    This code changes the wall color to red.
 ---     ```lua
----     Game():GetRoom():SetWallColor(Color(1,1,1,1,255,0,0))
+--- >    Game():GetRoom():SetWallColor(Color(1,1,1,1,255,0,0))
 ---     ```
 ---
 ---@param WallColor Color @
@@ -596,8 +596,8 @@ end
 --- Updates the current room.
 --- 
 --- - note "Notes"
----     Calling this function is NOT needed to apply changes!
----     This function is pretty useless
+--- >    Calling this function is NOT needed to apply changes!
+--- >    This function is pretty useless
 function Room:Update()
 end
 --- Converts an entity position to one that can be used to render to the screen.

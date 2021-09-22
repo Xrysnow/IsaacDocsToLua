@@ -5,20 +5,6 @@ local Font = {}
 -- Constructors
 --------------------
 
---- Constructor for the "Font" class.
---- 
---- - example "Example Code"
----     Example usage.
----     ```lua
----     local f = Font() -- init font object
----     f:Load("font/terminus.fnt") -- load a font into the font object
----     f:DrawString("Hello World!",60,50,KColor(1,1,1,1),0,true) -- render string with loaded font on position 60x50y
---- 
----     ```
----
----@return Font @
-function Font:Font()
-end
 
 --------------------
 -- Functions
@@ -28,11 +14,11 @@ end
 --- Notes: The BoxWidth and Center parameters can be used for aligning the text: If BoxWidth is zero, the text will be left aligned and the center parameter will be ignored If BoxWidth is NOT zero, and the Center parameter is FALSE, then the text will be right aligned inside the BoxWidth size If BoxWidth is NOT zero, and the center parameter is TRUE, then the text will be centered inside the BoxWidth size
 --- 
 --- - example "Example Code"
----     Example usage.
+--- >    Example usage.
 ---     ```lua
----     local f = Font() -- init font object
----     f:Load("font/terminus.fnt") -- load a font into the font object
----     f:DrawString("Hello World!",60,50,KColor(1,1,1,1),0,true) -- render string with loaded font on position 60x50y
+--- >    local f = Font() -- init font object
+--- >    f:Load("font/terminus.fnt") -- load a font into the font object
+--- >    f:DrawString("Hello World!",60,50,KColor(1,1,1,1),0,true) -- render string with loaded font on position 60x50y
 --- 
 ---     ```
 ---
@@ -48,11 +34,11 @@ end
 --- Converts UTF8 to UTF16, then draws the string.
 --- 
 --- - example "Example Code"
----     Example usage.
+--- >    Example usage.
 ---     ```lua
----     local f = Font() -- init font object
----     f:Load("font/terminus.fnt") -- load a font into the font object
----     f:DrawStringScaled("Hello World!",60,50,0.5,0.5,KColor(1,1,1,1),0,true) -- render string with loaded font on position 60x50y
+--- >    local f = Font() -- init font object
+--- >    f:Load("font/terminus.fnt") -- load a font into the font object
+--- >    f:DrawStringScaled("Hello World!",60,50,0.5,0.5,KColor(1,1,1,1),0,true) -- render string with loaded font on position 60x50y
 --- 
 ---     ```
 ---
@@ -69,11 +55,11 @@ end
 --- Draws a scaled string of Unicode text on the screen.
 --- 
 --- - example "Example Code"
----     Example usage.
+--- >    Example usage.
 ---     ```lua
----     local f = Font() -- init font object
----     f:Load("font/terminus.fnt") -- load a font into the font object
----     f:DrawStringScaledUTF8("Hello World!",60,50,0.5,0.5,KColor(1,1,1,1),0,true) -- render string with loaded font on position 60x50y
+--- >    local f = Font() -- init font object
+--- >    f:Load("font/terminus.fnt") -- load a font into the font object
+--- >    f:DrawStringScaledUTF8("Hello World!",60,50,0.5,0.5,KColor(1,1,1,1),0,true) -- render string with loaded font on position 60x50y
 --- 
 ---     ```
 ---
@@ -91,11 +77,11 @@ end
 --- Notes: The BoxWidth and Center parameters can be used for aligning the text: If BoxWidth is zero, the text will be left aligned and the center parameter will be ignored If BoxWidth is NOT zero, and the Center parameter is FALSE, then the text will be right aligned inside the BoxWidth size If BoxWidth is NOT zero, and the center parameter is TRUE, then the text will be centered inside the BoxWidth size
 --- 
 --- - example "Example Code"
----     Example usage.
+--- >    Example usage.
 ---     ```lua
----     local f = Font() -- init font object
----     f:Load("font/terminus.fnt") -- load a font into the font object
----     f:DrawStringUTF8("Hello World!",60,50,KColor(1,1,1,1),0,true) -- render string with loaded font on position 60x50y
+--- >    local f = Font() -- init font object
+--- >    f:Load("font/terminus.fnt") -- load a font into the font object
+--- >    f:DrawStringUTF8("Hello World!",60,50,KColor(1,1,1,1),0,true) -- render string with loaded font on position 60x50y
 --- 
 ---     ```
 ---
@@ -137,11 +123,11 @@ end
 --- Loads a font.
 --- 
 --- - example "Example Code"
----     Example usage.
+--- >    Example usage.
 ---     ```lua
----     local f = Font() -- init font object
----     f:Load("font/terminus.fnt") -- load a font into the font object
----     f:DrawString("Hello World!",60,50,KColor(1,1,1,1),0,true) -- render string with loaded font on position 60x50y
+--- >    local f = Font() -- init font object
+--- >    f:Load("font/terminus.fnt") -- load a font into the font object
+--- >    f:DrawString("Hello World!",60,50,KColor(1,1,1,1),0,true) -- render string with loaded font on position 60x50y
 --- 
 ---     ```
 ---

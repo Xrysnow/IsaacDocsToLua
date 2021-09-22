@@ -1,5 +1,5 @@
 ---@class KeySubType @enum
-local KeySubType = {}
+KeySubType = {}
 
 ---
 --- 1

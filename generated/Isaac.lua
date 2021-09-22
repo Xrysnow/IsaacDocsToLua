@@ -1,5 +1,5 @@
 ---@class Isaac @ (static)
-local Isaac = {}
+Isaac = {}
 
 --------------------
 -- Functions
@@ -22,14 +22,14 @@ end
 --- Prints a string into the Debug Console
 --- 
 --- - example "Example Code"
----     You can use this example as an alternative.
+--- >    You can use this example as an alternative.
 ---     ```lua
----     Isaac.ConsoleOutput("This is a Test.")
----     -- Output: This is a Test.
+--- >    Isaac.ConsoleOutput("This is a Test.")
+--- >    -- Output: This is a Test.
 --- 
----     -- Alternatively:
----     print("This is a Test.")
----     -- Output: This is a Test.
+--- >    -- Alternatively:
+--- >    print("This is a Test.")
+--- >    -- Output: This is a Test.
 --- 
 ---     ```
 ---
@@ -52,8 +52,8 @@ end
 --- Type refers to the found entity's type (Can be `EntityType.ENTITY_NULL`)
 --- Variant and Subtype refer to the found entitys Variant and Subtype (Can be `-1`)
 --- 
---- + bug "Bugs"
----     This function is broken as of now and can return values from other segments of game's memory
+--- - Bug
+--- >    This function is broken as of now and can return values from other segments of game's memory
 ---
 ---@param Spawner Entity @
 ---@param Type EntityType @ (default EntityType.ENTITY_NULL)
@@ -66,10 +66,10 @@ end
 --- Prints a string into the log file. You can find this file here `%systemdrive%\Users\%username%\Documents\My Games\Binding of Isaac Repentance\log.txt`
 --- 
 --- - example "Example Code"
----     This code prints `"This is a Test."` in the log.txt file.
+--- >    This code prints `"This is a Test."` in the log.txt file.
 ---     ```lua
----     Isaac.DebugString("This is a Test.")
----     -- Output: [INFO] - Lua Debug: This is a Test.
+--- >    Isaac.DebugString("This is a Test.")
+--- >    -- Output: [INFO] - Lua Debug: This is a Test.
 --- 
 ---     ```
 ---
@@ -112,13 +112,13 @@ end
 --- Returns the CardID based on its hud value. (File: pocketitems.xml) Returns `-1` if no card with that name could be found.
 --- 
 --- - note "Notes"
----     The name of this function is misleading, this function will only work with the hud value of a card and not the name of a card.
+--- >    The name of this function is misleading, this function will only work with the hud value of a card and not the name of a card.
 --- 
 --- - example "Example Code"
----     This code gets the CardID of XVI - The Tower.
+--- >    This code gets the CardID of XVI - The Tower.
 ---     ```lua
----     Isaac.GetCardIdByName("16_TheTower")
----     --Returns: 17
+--- >    Isaac.GetCardIdByName("16_TheTower")
+--- >    --Returns: 17
 --- 
 ---     ```
 ---
@@ -134,10 +134,10 @@ end
 --- Returns the ChallengeID of a challenge based on its name. (File: challenges.xml) Returns `-1` if no challenge with that name could be found (Case sensitive).
 --- 
 --- - example "Example Code"
----     This code gets the ChallengeID of Aprils fool.
+--- >    This code gets the ChallengeID of Aprils fool.
 ---     ```lua
----     Isaac.GetChallengeIdByName("Aprils fool")
----     --Returns: 32
+--- >    Isaac.GetChallengeIdByName("Aprils fool")
+--- >    --Returns: 32
 --- 
 ---     ```
 ---
@@ -149,10 +149,10 @@ end
 --- Returns the CostumeID of a costume based on its file path. (File: costumes2.xml) Returns `-1` if no costume with that path could be found.
 --- 
 --- - example "Example Code"
----     This code gets the CostumeID of the Poop transformation costume.
+--- >    This code gets the CostumeID of the Poop transformation costume.
 ---     ```lua
----     Isaac.GetCostumeIdByPath("gfx/characters/n027_Transformation_Poop.anm2")
----     --Returns: 27
+--- >    Isaac.GetCostumeIdByPath("gfx/characters/n027_Transformation_Poop.anm2")
+--- >    --Returns: 27
 --- 
 ---     ```
 ---
@@ -164,10 +164,10 @@ end
 --- Returns the CurseID of a curse based on its name. (File: curses.xml) Returns `-1` if no curse with that name could be found.
 --- 
 --- - example "Example Code"
----     This code gets the CurseID of Curse of the Unknown.
+--- >    This code gets the CurseID of Curse of the Unknown.
 ---     ```lua
----     Isaac.GetCurseIdByName("Curse of the Unknown")
----     --Returns: 4
+--- >    Isaac.GetCurseIdByName("Curse of the Unknown")
+--- >    --Returns: 4
 --- 
 ---     ```
 ---
@@ -179,13 +179,13 @@ end
 --- Returns the EntityType of an entity based on its name. (File: entities2.xml) Returns `0` if no entity with that name could be found.
 --- 
 --- - note "Notes"
----     There is no SubType version of this function.
+--- >    There is no SubType version of this function.
 --- 
 --- - example "Example Code"
----     This code gets the EntityType of Flaming Gaper.
+--- >    This code gets the EntityType of Flaming Gaper.
 ---     ```lua
----     Isaac.GetEntityTypeByName("Flaming Gaper")
----     --Returns: 10
+--- >    Isaac.GetEntityTypeByName("Flaming Gaper")
+--- >    --Returns: 10
 --- 
 ---     ```
 ---
@@ -197,13 +197,13 @@ end
 --- Returns the variant of an entity based on its name. (File: entities2.xml) Returns `-1` if no entity with that name could be found.
 --- 
 --- - note "Notes"
----     There is no SubType version of this function.
+--- >    There is no SubType version of this function.
 --- 
 --- - example "Example Code"
----     This code gets the variant of Flaming Gaper.
+--- >    This code gets the variant of Flaming Gaper.
 ---     ```lua
----     Isaac.GetEntityVariantByName("Flaming Gaper")
----     --Returns: 2
+--- >    Isaac.GetEntityVariantByName("Flaming Gaper")
+--- >    --Returns: 2
 --- 
 ---     ```
 ---
@@ -225,17 +225,17 @@ end
 function Isaac.GetFreeNearPosition(pos, step)
 end
 --- Returns the [ItemConfig::Config](ItemConfig.md) object.
----@return Config @
+---@return ItemConfig @
 function Isaac.GetItemConfig()
 end
 
 --- Returns the ItemID of a Collectible. (File: items.xml) Returns `-1` if no item with that name could be found.
 --- 
 --- - example "Example Code"
----     This code gets the ItemID of Brimstone.
+--- >    This code gets the ItemID of Brimstone.
 ---     ```lua
----     Isaac.GetItemIdByName("Brimstone")
----     --Returns: 118
+--- >    Isaac.GetItemIdByName("Brimstone")
+--- >    --Returns: 118
 --- 
 ---     ```
 ---
@@ -247,10 +247,10 @@ end
 --- Returns the MusicID of a music track. (File: music.xml) Returns `-1` if no music with that name could be found.
 --- 
 --- - example "Example Code"
----     This code gets the MusicID of the Title Screen.
+--- >    This code gets the MusicID of the Title Screen.
 ---     ```lua
----     Isaac.GetMusicIdByName("Title Screen")
----     --Returns: 61
+--- >    Isaac.GetMusicIdByName("Title Screen")
+--- >    --Returns: 61
 --- 
 ---     ```
 ---
@@ -262,10 +262,10 @@ end
 --- Returns the PillEffectID based on its name. (File: pocketitems.xml) Returns `-1` if no pill with that name could be found.
 --- 
 --- - example "Example Code"
----     This code gets the PillEffectID of I can see forever!.
+--- >    This code gets the PillEffectID of I can see forever!.
 ---     ```lua
----     Isaac.GetPillEffectByName("I can see forever!")
----     --Returns: 23
+--- >    Isaac.GetPillEffectByName("I can see forever!")
+--- >    --Returns: 23
 --- 
 ---     ```
 ---
@@ -282,7 +282,7 @@ end
 --- 
 --- - example "Example Code"
 ---     ```lua
----     Isaac.GetPlayer(0)
+--- >    Isaac.GetPlayer(0)
 --- 
 ---     ```
 ---
@@ -294,10 +294,10 @@ end
 --- Returns the PlayerType (ID) of a character based on its name. (File: players.xml) Returns `-1` if no player with that name could be found.
 --- 
 --- - example "Example Code"
----     This code gets the PlayerType of Azazel.
+--- >    This code gets the PlayerType of Azazel.
 ---     ```lua
----     Isaac.GetPlayerTypeByName("Azazel")
----     --Returns: 7
+--- >    Isaac.GetPlayerTypeByName("Azazel")
+--- >    --Returns: 7
 --- 
 ---     ```
 ---
@@ -319,9 +319,9 @@ end
 --- Returns the SoundEffectID of a sound based on its name. (File: sounds.xml) Returns `-1` if no sound with that name could be found.
 --- 
 --- - example "Example Code"
----     This code gets the SoundEffectID of a sound named "Custom Sound Effect"
+--- >    This code gets the SoundEffectID of a sound named "Custom Sound Effect"
 ---     ```lua
----     Isaac.GetSoundIdByName("Custom Sound Effect")
+--- >    Isaac.GetSoundIdByName("Custom Sound Effect")
 --- 
 ---     ```
 ---
@@ -345,10 +345,10 @@ end
 --- Returns the TrinketType of a trinket based on its name. (File: items.xml) Returns `-1` if no trinket with that name could be found.
 --- 
 --- - example "Example Code"
----     This code gets the TrinketType of Lucky Toe.
+--- >    This code gets the TrinketType of Lucky Toe.
 ---     ```lua
----     Isaac.GetTrinketIdByName("Lucky Toe")
----     --Returns: 42
+--- >    Isaac.GetTrinketIdByName("Lucky Toe")
+--- >    --Returns: 42
 --- 
 ---     ```
 ---
@@ -359,8 +359,8 @@ end
 
 --- Spawn a [GridEntity](GridEntity.md) at the given position (world coordinates).
 --- 
---- + bug "Bugs"
----     forced has no effect and will NOT override the grid entity at the given location. Remove a grid entity at the given location if nessesary before spawning something again.
+--- - Bug
+--- >    forced has no effect and will NOT override the grid entity at the given location. Remove a grid entity at the given location if nessesary before spawning something again.
 ---@param gridEntityType GridEntity @
 ---@param Variant number @ (int)
 ---@param position Vector @
@@ -427,11 +427,11 @@ end
 --- Renders a scaled text on the Screen. X and Y coordinates need to be in screen coordinates ( x[0,~500) y [0,~350) ). ScaleX, ScaleY, R ,G ,B and A need to be between [0,1]. Some scale values can cause the font to display deformed and pixelated.
 --- 
 --- - example "Example Code"
----     This code renders the player position on the screen.
+--- >    This code renders the player position on the screen.
 ---     ```lua
----     local player = Isaac.GetPlayer(0)
----     local pos = player.Position
----     Isaac.RenderText("X: "..pos.X.." Y: "..pos.Y, 50, 50, 0.5, 0.5, 1 ,1 ,1 ,1 )
+--- >    local player = Isaac.GetPlayer(0)
+--- >    local pos = player.Position
+--- >    Isaac.RenderText("X: "..pos.X.." Y: "..pos.Y, 50, 50, 0.5, 0.5, 1 ,1 ,1 ,1 )
 --- 
 ---     ```
 ---
@@ -450,11 +450,11 @@ end
 --- Renders a text with the default size on the Screen. X and Y coordinates need to be in screen coordinates ( x[0,~500) y [0,~350) ). R,G,B and A need to be between [0,1].
 --- 
 --- - example "Example Code"
----     This code renders the player position on the screen.
+--- >    This code renders the player position on the screen.
 ---     ```lua
----     local player = Isaac.GetPlayer(0)
----     local pos = player.Position
----     Isaac.RenderText("X: "..pos.X.." Y: "..pos.Y, 50, 50, 1 ,1 ,1 ,1 )
+--- >    local player = Isaac.GetPlayer(0)
+--- >    local pos = player.Position
+--- >    Isaac.RenderText("X: "..pos.X.." Y: "..pos.Y, 50, 50, 1 ,1 ,1 ,1 )
 --- 
 ---     ```
 ---
@@ -497,9 +497,9 @@ end
 --- There are two spawn functions. [Isaac.Spawn()](Isaac.md#spawn) and [Game():Spawn()](Game.md#spawn). If you need to spawn something with a specific seed, then you use [Game():Spawn()](Game.md#spawn). If you need to spawn something with a randomly generated seed, then use [Isaac.Spawn()](Isaac.md#spawn). Most of the time, you will probably want to use [Isaac.Spawn()](Isaac.md#spawn).
 --- 
 --- - example "Example Code"
----     This code spawns a random collectible at in center of the current room.
+--- >    This code spawns a random collectible at in center of the current room.
 ---     ```lua
----     Isaac.Spawn(EntityType.ENTITY_PICKUP, PickupVariant.PICKUP_COLLECTIBLE, 0, Vector(320,280), Vector(0,0), nil)
+--- >    Isaac.Spawn(EntityType.ENTITY_PICKUP, PickupVariant.PICKUP_COLLECTIBLE, 0, Vector(320,280), Vector(0,0), nil)
 --- 
 ---     ```
 ---@param entityType number @ (int)
@@ -515,11 +515,11 @@ end
 --- Transfers world (aka. game coordinates) into Rendercoordinates. This can be used to render things at fixed positions in a room. The Render coordinate system is x[0,inf) y[0,inf). It defines the Position on the rendering-plane in the current room.
 --- 
 --- - example "Example Code"
----     This code render "test" at the position of the mouse cursor independend on if the game is in full screen or not.
+--- >    This code render "test" at the position of the mouse cursor independend on if the game is in full screen or not.
 ---     ```lua
----     local mousePos = Input.GetMousePosition(true)
----     local renderpos = Isaac.WorldToRenderPosition(mousePos) * 2
----     Isaac.RenderText("test", renderpos.X, renderpos.Y, 1 ,1 ,1 ,1 )
+--- >    local mousePos = Input.GetMousePosition(true)
+--- >    local renderpos = Isaac.WorldToRenderPosition(mousePos) * 2
+--- >    Isaac.RenderText("test", renderpos.X, renderpos.Y, 1 ,1 ,1 ,1 )
 ---     ```
 ---
 ---@param pos Vector @
@@ -530,11 +530,11 @@ end
 --- Transfers world (aka. game coordinates) into Screen (aka. Window) coordinates. This can be used to render things next to an entity. The Screen coordinate system is x[0,inf) y[0,inf). Normally, it goes till ~500x ~300y. The return vector contains integer values or numbers ending with .5
 --- 
 --- - example "Example Code"
----     This code render "test" at the position of the player. The text will move with isaac.
+--- >    This code render "test" at the position of the player. The text will move with isaac.
 ---     ```lua
----     local player = Isaac.GetPlayer(0)
----     local screenpos = Isaac.WorldToScreen(player.Position)
----     Isaac.RenderText("test", screenpos.X, screenpos.Y, 1 ,1 ,1 ,1 )
+--- >    local player = Isaac.GetPlayer(0)
+--- >    local screenpos = Isaac.WorldToScreen(player.Position)
+--- >    Isaac.RenderText("test", screenpos.X, screenpos.Y, 1 ,1 ,1 ,1 )
 --- 
 ---     ```
 ---

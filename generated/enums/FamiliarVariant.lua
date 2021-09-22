@@ -1,5 +1,5 @@
 ---@class FamiliarVariant @enum
-local FamiliarVariant = {}
+FamiliarVariant = {}
 
 ---
 --- 0

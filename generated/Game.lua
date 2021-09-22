@@ -5,18 +5,6 @@ local Game = {}
 -- Constructors
 --------------------
 
---- Returns a Game object.
---- 
---- - example "Example Code"
----     Example usage:
----     ```lua
----     Game():IsPaused()
----     --returns true if the game is paused
---- 
----     ```
----@return Game @
-function Game:Game()
-end
 
 --------------------
 -- Functions
@@ -85,8 +73,8 @@ end
 function Game:ButterBeanFart(Position, Radius, Source, ShowEffect, DoSuperKnockback)
 end
 
---- - info "Dimension Info"
----     Dimension: ID of the dimension to get the room from
+--- - Dimension Info
+--- >    Dimension: ID of the dimension to get the room from
 --- 
 --- 		* -1: Current dimension
 --- 		* 0: Main dimension
@@ -166,8 +154,8 @@ end
 
 function Game:FinishChallenge()
 end
---- + bug "Bug"
----     Since it returns UserData, this function is unusable and therefore broken.
+--- - Bug
+--- >    Since it returns UserData, this function is unusable and therefore broken.
 ---
 ---@return Ambush @
 function Game:GetAmbush()
@@ -199,13 +187,13 @@ end
 --- This function therefore works drastically different than `Isaac.GetFrameCount()`
 --- 
 --- - example "Example Code"
----     This code returns hours, minutes, seconds, and milliseconds of the game running actively:
+--- >    This code returns hours, minutes, seconds, and milliseconds of the game running actively:
 ---     ```lua
----     local curTime = Game():GetFrameCount()
----     local msecs= curTime%30 * (10/3) -- turns the millisecond value range from [0 to 30] to [0 to 100]
----     local secs= math.floor(curTime/30)%60
----     local mins= math.floor(curTime/30/60)%60
----     local hours= math.floor(curTime/30/60/60)%60
+--- >    local curTime = Game():GetFrameCount()
+--- >    local msecs= curTime%30 * (10/3) -- turns the millisecond value range from [0 to 30] to [0 to 100]
+--- >    local secs= math.floor(curTime/30)%60
+--- >    local mins= math.floor(curTime/30/60)%60
+--- >    local hours= math.floor(curTime/30/60/60)%60
 --- 
 ---     ```
 ---@return number @ (int)
@@ -223,8 +211,8 @@ end
 ---@return HUD @
 function Game:GetHUD()
 end
---- + bug "Bug"
----     Since it returns UserData, this function is unusable and therefore broken.
+--- - Bug
+--- >    Since it returns UserData, this function is unusable and therefore broken.
 ---
 ---@return ItemOverlay @
 function Game:GetItemOverlay()
@@ -234,20 +222,20 @@ end
 function Game:GetItemPool()
 end
 
---- + bug "Bug"
----     Since it returns UserData, this function is unusable and therefore broken.
+--- - Bug
+--- >    Since it returns UserData, this function is unusable and therefore broken.
 ---@return LevelStage @
 function Game:GetLastDevilRoomStage()
 end
 
---- + bug "Bug"
----     Since it returns UserData, this function is unusable and therefore broken.
+--- - Bug
+--- >    Since it returns UserData, this function is unusable and therefore broken.
 ---@return LevelStage @
 function Game:GetLastLevelWithDamage()
 end
 
---- + bug "Bug"
----     Since it returns UserData, this function is unusable and therefore broken.
+--- - Bug
+--- >    Since it returns UserData, this function is unusable and therefore broken.
 ---@return LevelStage @
 function Game:GetLastLevelWithoutHalfHp()
 end
@@ -387,28 +375,28 @@ end
 --- Plays the Delirium animation (Static noise intersected with past gameplay fotage), which will also change the background of the current room.
 --- 
 --- - example "Workaround Code for AB+ mods"
----     This function was broken in AB+, so there was this implementation in order to recreate the effect.
+--- >    This function was broken in AB+, so there was this implementation in order to recreate the effect.
 --- 
----     This code emulated the effect of this function by hijacking the Delirious item effect
+--- >    This code emulated the effect of this function by hijacking the Delirious item effect
 --- 
 ---     ```lua
----     local usagetime = -1 -- stores the last time the effect was called.
+--- >    local usagetime = -1 -- stores the last time the effect was called.
 --- 
----     -- call this function to play the Hallucination effect
----     function playHallucination()
----         local player = Isaac.GetPlayer(0)
----         usagetime = Game().TimeCounter
----         player:UseActiveItem(510, false, false, false, false) -- use the delirious item without applying the costume
----         player:GetEffects():RemoveCollectibleEffect(510) -- remove any unwanted side effects of the item usage
----     end
+--- >    -- call this function to play the Hallucination effect
+--- >    function playHallucination()
+--- >        local player = Isaac.GetPlayer(0)
+--- >        usagetime = Game().TimeCounter
+--- >        player:UseActiveItem(510, false, false, false, false) -- use the delirious item without applying the costume
+--- >        player:GetEffects():RemoveCollectibleEffect(510) -- remove any unwanted side effects of the item usage
+--- >    end
 --- 
----     -- Removes all spawned NPC entities when activating the function
----     function mod:onFriendlyInit(npc)
----     	if Game().TimeCounter-usagetime == 0 then -- only remove enemies that spawned when the effect was called!
----     		npc:Remove()
----     	end
----     end
----     mod:AddCallback(ModCallbacks.MC_POST_NPC_INIT, mod.onFriendlyInit)
+--- >    -- Removes all spawned NPC entities when activating the function
+--- >    function mod:onFriendlyInit(npc)
+--- >    	if Game().TimeCounter-usagetime == 0 then -- only remove enemies that spawned when the effect was called!
+--- >    		npc:Remove()
+--- >    	end
+--- >    end
+--- >    mod:AddCallback(ModCallbacks.MC_POST_NPC_INIT, mod.onFriendlyInit)
 --- 
 ---     ```
 ---@param FrameCount number @ (int)
@@ -422,17 +410,17 @@ end
 --- The game has two spawn functions, [Game():Spawn()](#spawn) (this one) and [Isaac.Spawn()](Isaac.md#spawn). If you need to spawn something with a specific seed, then you use [Game():Spawn()](#spawn). If you need to spawn something with a randomly generated seed, then use [Isaac.Spawn()](Isaac.md#spawn). Most of the time, you will probably want to use [Isaac.Spawn()](Isaac.md#spawn).
 --- 
 --- - example "Example Code"
----     This code spawns a Leech with specific seed.
+--- >    This code spawns a Leech with specific seed.
 ---     ```lua
----     Game():Spawn(
----       EntityType.ENTITY_LEECH, -- Type
----       0, -- Variant
----       Game():GetRoom():GetCenterPos(), -- Position
----       Vector(0, 0), -- Velocity
----       nil, -- Parent
----       0, -- SubType
----       Game():GetRoom():GetSpawnSeed() -- Seed (the "GetSpawnSeed()" function gets a reproducible seed based on the room, e.g. "2496979501")
----     )
+--- >    Game():Spawn(
+--- >      EntityType.ENTITY_LEECH, -- Type
+--- >      0, -- Variant
+--- >      Game():GetRoom():GetCenterPos(), -- Position
+--- >      Vector(0, 0), -- Velocity
+--- >      nil, -- Parent
+--- >      0, -- SubType
+--- >      Game():GetRoom():GetSpawnSeed() -- Seed (the "GetSpawnSeed()" function gets a reproducible seed based on the room, e.g. "2496979501")
+--- >    )
 --- 
 ---     ```
 ---@param Type EntityType @
@@ -463,8 +451,8 @@ end
 function Game:SpawnParticles(Pos, ParticleType, NumParticles, Speed, Color, Height, SubType)
 end
 
---- - info "Dimension Info"
----     Dimension: ID of the dimension to get the room from
+--- - Dimension Info
+--- >    Dimension: ID of the dimension to get the room from
 --- 
 --- 		* -1: Current dimension
 --- 		* 0: Main dimension
@@ -472,36 +460,36 @@ end
 --- 		* 2: Death Certificate dimension
 --- 
 --- - note "Notes"
----     Available Animation types (Discovered by "ilise rose" (@yatboim)):
+--- >    Available Animation types (Discovered by "ilise rose" (@yatboim)):
 --- 
----     0: (Default) Standard transition, sweeps the room in from a direction
+--- >    0: (Default) Standard transition, sweeps the room in from a direction
 --- 
----     1: (Fade) Fade to black transition, like its used for the "goto" - console command
+--- >    1: (Fade) Fade to black transition, like its used for the "goto" - console command
 --- 
----     2: (Stage) Pixel out transition, like used for crawlspaces and the trapdoor at the end of floors
+--- >    2: (Stage) Pixel out transition, like used for crawlspaces and the trapdoor at the end of floors
 --- 
----     3: (Teleport) teleport transition, isaac teleports out of the current room and into the next
+--- >    3: (Teleport) teleport transition, isaac teleports out of the current room and into the next
 --- 
----     5: (Ankh) Same as standard transition
+--- >    5: (Ankh) Same as standard transition
 --- 
----     6: (Dead Cat) Same as standard transition
+--- >    6: (Dead Cat) Same as standard transition
 --- 
----     7: (1Up) Same as standard transition
+--- >    7: (1Up) Same as standard transition
 --- 
----     8: (Guppys Collar) Same as standard transition
+--- >    8: (Guppys Collar) Same as standard transition
 --- 
----     9: (Judas Shadow) Same as standard transition
+--- >    9: (Judas Shadow) Same as standard transition
 --- 
----     10: (Lazarus Rags) Same as standard transition
+--- >    10: (Lazarus Rags) Same as standard transition
 --- 
----     12: (Glowing Hourglass) Same as standard transition
+--- >    12: (Glowing Hourglass) Same as standard transition
 --- 
----     13: (D7) Same as standard transition
+--- >    13: (D7) Same as standard transition
 --- 
----     14: (Missing Poster) Same as standard transition
+--- >    14: (Missing Poster) Same as standard transition
 --- 
---- + bug "Bugs"
----     The Direction variable is completely ignored at all times, with the game instead calculating the direction between the two rooms itself for the animation. The two rooms are the current room and the room of the RoomIndex. It has no impact on the doors either.
+--- - Bug
+--- >    The Direction variable is completely ignored at all times, with the game instead calculating the direction between the two rooms itself for the animation. The two rooms are the current room and the room of the RoomIndex. It has no impact on the doors either.
 ---@param RoomIndex number @ (int)
 ---@param Direction Direction @
 ---@param Animation RoomTransitionAnim @ (default RoomTransitionAnim.WALK)

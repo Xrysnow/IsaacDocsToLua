@@ -1,5 +1,5 @@
 ---@class GridCollisionClass @enum
-local GridCollisionClass = {}
+GridCollisionClass = {}
 
 ---
 --- 0

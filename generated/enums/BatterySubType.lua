@@ -1,5 +1,5 @@
 ---@class BatterySubType @enum
-local BatterySubType = {}
+BatterySubType = {}
 
 ---
 --- 1

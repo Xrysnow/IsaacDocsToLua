@@ -1,5 +1,5 @@
 ---@class PillColor @enum
-local PillColor = {}
+PillColor = {}
 
 ---
 --- 0

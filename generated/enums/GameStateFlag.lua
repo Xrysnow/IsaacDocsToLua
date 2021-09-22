@@ -1,5 +1,5 @@
 ---@class GameStateFlag @enum
-local GameStateFlag = {}
+GameStateFlag = {}
 
 ---
 --- 0

@@ -1,5 +1,5 @@
 ---@class ChestSubType @enum
-local ChestSubType = {}
+ChestSubType = {}
 
 ---
 --- 0

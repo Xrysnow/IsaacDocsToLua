@@ -1,5 +1,5 @@
 ---@class BombVariant @enum
-local BombVariant = {}
+BombVariant = {}
 
 ---
 --- 0

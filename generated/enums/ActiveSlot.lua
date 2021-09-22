@@ -1,5 +1,5 @@
 ---@class ActiveSlot @enum
-local ActiveSlot = {}
+ActiveSlot = {}
 
 --- main slot
 ---

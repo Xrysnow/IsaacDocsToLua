@@ -1,5 +1,5 @@
 ---@class EntityFlag @enum
-local EntityFlag = {}
+EntityFlag = {}
 
 --- prevent freeze/poison/slow/charm/confusion/fear/burn
 ---

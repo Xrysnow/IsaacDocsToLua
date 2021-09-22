@@ -1,5 +1,5 @@
 ---@class RoomType @enum
-local RoomType = {}
+RoomType = {}
 
 ---
 --- 0
