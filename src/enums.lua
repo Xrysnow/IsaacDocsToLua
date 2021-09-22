@@ -29,7 +29,7 @@ local function proc(content)
             else
                 append(('---@class %s @enum'):format(enum_name))
             end
-            append(('local %s = {}'):format(enum_name))
+            append(('%s = {}'):format(enum_name))
             append('')
         elseif is_proto then
             local words = line:split('|')
