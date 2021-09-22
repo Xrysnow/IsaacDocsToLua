@@ -29,8 +29,21 @@ local ClassNameMap = {
     ['CppContainer.ArrayProxy.RoomDescriptor'] = 'RoomDescriptor.List',
     ['CppContainer.EntityList']                = 'EntityList',
     ['CppContainer.Vector.EffectList']         = 'EffectList',
-    --['PlayerTypes.PosVel']                     = 'PosVel',
-    --['PlayerTypes.ActiveItemDesc']             = 'ActiveItemDesc',
+}
+-- already in global functions
+local SkippedCtor = {
+    Color            = true,
+    EntityPtr        = true,
+    EntityRef        = true,
+    Font             = true,
+    Game             = true,
+    KColor           = true,
+    MusicManager     = true,
+    ProjectileParams = true,
+    RNG              = true,
+    Sprite           = true,
+    SFXManager       = true,
+    Vector           = true,
 }
 
 local function procType(s)
@@ -48,6 +61,10 @@ local function procMember(t, cname)
     end
     table.insert(ret, desc)
     if t.type == 'func' then
+        -- skip global functions
+        if cname == t.name and SkippedCtor[cname] then
+            return ''
+        end
         -- workaround
         if cname == 'Vector' and t.name == 'Vector' then
             t.params = { { 'float', 'x' }, { 'float', 'y' } }
@@ -263,9 +280,10 @@ local function proc(content)
                         pwords[#pwords] = nil
                     end
                     local pname = pwords[#pwords]
-                    assert(pname ~= '')
                     pwords[#pwords] = nil
                     local ptype = extractCName(table.concat(pwords, ' '))
+                    assert(pname ~= '')
+                    --assert(ptype ~= '')
                     table.insert(cur_mem.params, { ptype, pname, default })
                 end
             elseif cur_mode == 'var' then
