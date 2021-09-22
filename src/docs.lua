@@ -66,8 +66,8 @@ local function procMember(t, cname)
             return ''
         end
         -- workaround
-        if cname == 'Vector' and t.name == 'Vector' then
-            t.params = { { 'float', 'x' }, { 'float', 'y' } }
+        if cname == 'Isaac' and t.name == 'GetItemConfig' then
+            t.ret = 'ItemConfig'
         end
         --
         local params_doc = {}
