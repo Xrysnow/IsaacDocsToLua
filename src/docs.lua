@@ -186,7 +186,11 @@ local function proc(content)
                     cls_doc = ('%s (%s)'):format(cls_doc, cname_origin)
                 end
                 append(cls_doc)
-                append(('local %s = {}'):format(cls.name))
+                if StaticClass[cls.name] then
+                    append(('%s = {}'):format(cls.name))
+                else
+                    append(('local %s = {}'):format(cls.name))
+                end
             end
             cls_flushed = true
         end
