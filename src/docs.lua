@@ -68,6 +68,9 @@ local function procMember(t, cname)
         -- workaround
         if cname == 'Isaac' and t.name == 'GetItemConfig' then
             t.ret = 'ItemConfig'
+        elseif cname == 'Sprite' and t.name == 'GetTexel' then
+            -- actually returns a KColor object
+            t.ret = 'KColor'
         end
         --
         local params_doc = {}
